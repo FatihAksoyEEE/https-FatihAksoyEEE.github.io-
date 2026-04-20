@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatih Aksoy - Electrical & Electronic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="topnav" id="topnav">
+        <div class="topnav-logo">FA</div>
+
+        <ul class="topnav-links">
+            <li><a href="#home" data-tr="Ana Sayfa" data-en="Home">Ana Sayfa</a></li>
+            <li><a href="#about" data-tr="Hakkında" data-en="About">Hakkında</a></li>
+            <li><a href="#projects" data-tr="Projeler" data-en="Projects">Projeler</a></li>
+            <li><a href="#contact" data-tr="İletişim" data-en="Contact">İletişim</a></li>
+        </ul>
+
+        <div class="topnav-controls">
+            <!-- Language Switcher -->
+            <button class="lang-btn" id="langBtn" title="Switch Language">
+                <span id="langLabel">TR</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+            </button>
+
+            <!-- Theme Toggle -->
+            <button class="theme-btn" id="themeBtn" title="Toggle Theme">
+                <span class="theme-icon" id="themeIcon">
+                    <!-- Sun icon (shown in dark mode to switch to light) -->
+                    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                    <!-- Moon icon (shown in light mode to switch to dark) -->
+                    <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="display:none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="content">
+
+        <!-- Header -->
+        <header id="home" class="hero-section">
+            <div class="hero-content">
+                <h1 class="main-title">FATİH AKSOY</h1>
+                <h2 class="sub-title" data-tr="ELEKTRİK &amp; ELEKTRONİK" data-en="ELECTRICAL &amp; ELECTRONIC">ELEKTRİK
+                    &amp; <br>ELEKTRONİK</h2>
+            </div>
+
+            <div class="portrait-container">
+                <img src="assets/images/portrait.png" alt="Fatih Aksoy" class="hero-image">
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="glass-header">
+                <h2 class="section-title" data-tr="HAKKINDA" data-en="ABOUT">HAKKINDA</h2>
+            </div>
+            <p class="about-text"
+                data-tr="Merhaba, Ben Fatih. Elektrik elektronik mühendisliği öğrencisiyim. Kendimi Gömülü sistemler, yazılım ve otomasyon alanlarında projeler üzerinde çalışarak geliştirmeyi amaçlıyorum."
+                data-en="Hello, I'm Fatih. I'm an Electrical and Electronics Engineering student. I aim to develop myself by working on projects in the fields of embedded systems, software and automation.">
+                Merhaba, Ben Fatih. Elektrik elektronik mühendisliği öğrencisiyim. Kendimi Gömülü sistemler, yazılım ve
+                otomasyon alanlarında projeler üzerinde çalışarak geliştirmeyi amaçlıyorum.
+            </p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="glass-header">
+                <h2 class="section-title" data-tr="PROJELER" data-en="PROJECTS">PROJELER</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <a href="project-uav.html" class="project-card-link">
+                    <div class="project-card">
+                        <div class="project-icon-wrapper">
+                            <img src="assets/images/İha.png" alt="Otonom İHA" class="project-icon">
+                        </div>
+                        <div class="project-details">
+                            <h3 class="project-title" data-tr="OTONOM İHA" data-en="AUTONOMOUS UAV">OTONOM İHA</h3>
+                            <p class="project-desc"
+                                data-tr="Otonom uçuş yeteneğine sahip insansız hava aracı projesi. Görüntü işleme ve rota takibi."
+                                data-en="An unmanned aerial vehicle project with autonomous flight capability. Image processing and route tracking.">
+                                Otonom uçuş yeteneğine sahip insansız hava aracı projesi. Görüntü işleme ve rota takibi.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="project-control-station.html" class="project-card-link">
+                    <div class="project-card">
+                        <div class="project-icon-wrapper">
+                            <img src="assets/images/robot-arm.png" alt="Kontrol İstasyonu" class="project-icon">
+                        </div>
+                        <div class="project-details">
+                            <h3 class="project-title" data-tr="KONTROL İSTASYONU" data-en="CONTROL STATION">KONTROL
+                                İSTASYONU</h3>
+                            <p class="project-desc"
+                                data-tr="İHA ve robotik sistemler için geliştirilmiş kapsamlı yer kontrol arayüzü ve haberleşme sistemi."
+                                data-en="A comprehensive ground control interface and communication system developed for UAVs and robotic systems.">
+                                İHA ve robotik sistemler için geliştirilmiş kapsamlı yer kontrol arayüzü ve haberleşme
+                                sistemi.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 3 -->
+                <a href="project-robot-arm.html" class="project-card-link">
+                    <div class="project-card">
+                        <div class="project-icon-wrapper">
+                            <img src="assets/images/drone.png" alt="Robot Kol" class="project-icon">
+                        </div>
+                        <div class="project-details">
+                            <h3 class="project-title" data-tr="ROBOT KOL" data-en="ROBOT ARM">ROBOT KOL</h3>
+                            <p class="project-desc"
+                                data-tr="Endüstriyel otomasyon için tasarlanmış, yüksek hassasiyetli 6 eksenli robot kol prototipi."
+                                data-en="A high-precision 6-axis robot arm prototype designed for industrial automation.">
+                                Endüstriyel otomasyon için tasarlanmış, yüksek hassasiyetli 6 eksenli robot kol prototipi.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 4 -->
+                <a href="project-flight-controller.html" class="project-card-link">
+                    <div class="project-card">
+                        <div class="project-icon-wrapper">
+                            <img src="assets/images/STM32Flightcontroller.png" alt="STM32 Flight Controller"
+                                class="project-icon">
+                        </div>
+                        <div class="project-details">
+                            <h3 class="project-title" data-tr="STM32 FLIGHT CONTROLLER" data-en="STM32 FLIGHT CONTROLLER">
+                                STM32 FLIGHT CONTROLLER</h3>
+                            <p class="project-desc"
+                                data-tr="STM32 işlemci tabanlı özel tasarım uçuş kontrol kartı ve stabilizasyon yazılımı."
+                                data-en="A custom-designed flight control board and stabilization software based on the STM32 processor.">
+                                STM32 işlemci tabanlı özel tasarım uçuş kontrol kartı ve stabilizasyon yazılımı.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 5 -->
+                <a href="project-order-management.html" class="project-card-link">
+                    <div class="project-card">
+                        <div class="project-icon-wrapper">
+                            <img src="assets/images/digitab_logo.png" alt="Adisyon Sistemi" class="project-icon" style="padding: 10px; background: rgba(0, 196, 204, 0.05);">
+                        </div>
+                        <div class="project-details">
+                            <h3 class="project-title" data-tr="ADİSYON SİSTEMİ" data-en="ORDER MANAGEMENT SYSTEM">ADİSYON SİSTEMİ</h3>
+                            <p class="project-desc"
+                                data-tr="Restoranlar için React ve Node.js tabanlı, gerçek zamanlı sipariş ve masa yönetim sistemi."
+                                data-en="React and Node.js based real-time order and table management system for restaurants.">
+                                Restoranlar için React ve Node.js tabanlı, gerçek zamanlı sipariş ve masa yönetim sistemi.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="social-links">
+                <a href="https://www.instagram.com/fatih_aksoy6741/" class="social-item" target="_blank">
+                    <img src="assets/images/instagram.svg" alt="Instagram">
+                    <span>INSTAGRAM</span>
+                </a>
+                <a href="https://www.youtube.com/@electronc_workshop" class="social-item" target="_blank">
+                    <img src="assets/images/youtube.svg" alt="YouTube">
+                    <span>YOUTUBE</span>
+                </a>
+                <a href="mailto:mf.aksoy34@gmail.com" class="social-item">
+                    <img src="assets/images/mail.svg" alt="Email">
+                    <span>EMAIL</span>
+                </a>
+                <a href="https://github.com/FatihAksoyEEE" class="social-item" target="_blank">
+                    <img src="assets/images/github.svg" alt="GitHub">
+                    <span>GITHUB</span>
+                </a>
+            </div>
+
+            <div class="cv-download-wrapper">
+                <a href="assets/FatihAksoy_CV.pdf" class="cv-button" download="Fatih_Aksoy_CV" data-tr="CV İNDİR"
+                    data-en="DOWNLOAD CV">DOWNLOAD CV</a>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
