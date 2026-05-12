@@ -2,7 +2,7 @@
    CSS VARIABLES - THEME TOKENS
 ═══════════════════════════════════════════════════════════════════ */
 :root {
-    --accent: #00C4CC;
+    --accent: hsl(182, 77%, 45%);
     --accent2: #7D2AE8;
 }
 
@@ -485,6 +485,10 @@ section {
 
 .project-card.hidden:nth-child(5) {
     transition-delay: 0.45s;
+}
+
+.project-card.hidden:nth-child(6) {
+    transition-delay: 0.55s;
 }
 
 /* ═══════════════════════════════════════════════════════════════════

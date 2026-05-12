@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNC Makinesi - Fatih Aksoy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-detail-section { padding-top: 4rem; min-height: 600px; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; margin-bottom: 2rem; transition: transform 0.3s; }
+        .back-link:hover { transform: translateX(-5px); }
+        .project-header { margin-bottom: 3rem; }
+        .project-main-image { width: 800px; height: 600px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); margin-bottom: 3rem; }
+        .project-info-grid { display: grid; grid-template-columns: 2fr; gap: 4rem; }
+        .project-hero-grid { display: grid; grid-template-columns: 1.6fr 0.9fr; gap: 2rem; align-items: start; margin-bottom: 3rem; }
+        .project-description h3 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .project-description h4 { color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.2rem; font-family: 'Orbitron', sans-serif; border-left: 3px solid var(--accent); padding-left: 1rem; }
+        .project-description p { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .project-meta { background: var(--bg-card); padding: 2rem; border: 1px solid var(--border); border-radius: 4px; height: fit-content; }
+        .meta-item { margin-bottom: 1.5rem; }
+        .meta-label { display: block; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.5rem; text-transform: uppercase; }
+        .meta-value { color: var(--text-primary); font-size: 1rem; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+        .tech-tag { background: rgba(0, 196, 204, 0.1); border: 1px solid var(--accent); color: var(--accent); padding: 0.3rem 0.8rem; font-size: 0.8rem; border-radius: 4px; font-family: 'Orbitron', sans-serif; }
+        
+        /* Scrollable Gallery - Mekanik */
+        .gallery-scroll { display: flex; gap: 1rem; overflow-x: auto; padding: 1rem 0; scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg-card); }
+        .gallery-scroll::-webkit-scrollbar { height: 6px; }
+        .gallery-scroll::-webkit-scrollbar-track { background: var(--bg-card); border-radius: 3px; }
+        .gallery-scroll::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+        .gallery-scroll .gallery-item { flex: 0 0 700px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+        .gallery-scroll .gallery-item img { width: 100%; height: 500px; object-fit: cover; transition: transform 0.3s; }
+        .gallery-scroll .gallery-item:hover img { transform: scale(1.05); }
+        
+        /* Gallery - Elektronik (Büyük boyut) */
+        .gallery-electronic { display: flex; gap: 1.5rem; overflow-x: auto; padding: 1rem 0; scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg-card); }
+        .gallery-electronic::-webkit-scrollbar { height: 6px; }
+        .gallery-electronic::-webkit-scrollbar-track { background: var(--bg-card); border-radius: 3px; }
+        .gallery-electronic::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+        .gallery-electronic .gallery-item { flex: 0 0 700px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+        .gallery-electronic .gallery-item img { width: 100%; height: 500px; object-fit: contain; background: var(--bg-card); transition: transform 0.3s; }
+        .gallery-electronic .gallery-item:hover img { transform: scale(1.02); }
+        
+        @media (max-width: 768px) { 
+            .project-hero-grid { grid-template-columns: 1fr; }
+            .project-info-grid { grid-template-columns: 1fr; gap: 2rem; } 
+            .gallery-scroll .gallery-item { flex: 0 0 220px; }
+            .gallery-electronic .gallery-item { flex: 0 0 300px; }
+            .gallery-electronic .gallery-item img { height: 220px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="topnav" id="topnav">
+        <div class="topnav-logo"><a href="index.html" style="text-decoration: none; color: inherit;">FA</a></div>
+        <ul class="topnav-links">
+            <li><a href="index.html#home" data-tr="Ana Sayfa" data-en="Home">Ana Sayfa</a></li>
+            <li><a href="index.html#about" data-tr="Hakkında" data-en="About">Hakkında</a></li>
+            <li><a href="index.html#projects" data-tr="Projeler" data-en="Projects">Projeler</a></li>
+            <li><a href="index.html#contact" data-tr="İletişim" data-en="Contact">İletişim</a></li>
+        </ul>
+        <div class="topnav-controls">
+            <button class="lang-btn" id="langBtn" title="Switch Language">
+                <span id="langLabel">TR</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+            </button>
+            <button class="theme-btn" id="themeBtn" title="Toggle Theme">
+                <span class="theme-icon" id="themeIcon">
+                    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                    <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="content">
+        <section class="project-detail-section">
+            <a href="index.html#projects" class="back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span data-tr="Geri Dön" data-en="Back to Projects">Geri Dön</span>
+            </a>
+
+            <div class="project-header">
+                <h1 class="main-title" data-tr="3 EKSENLİ CNC" data-en="3 AXIS CNC">3 EKSENLİ CNC</h1>
+            </div>
+
+            <div class="project-hero-grid">
+                <img src="assets/images/CNC/3D-1.png" alt="CNC Makinesi" class="project-main-image">
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-label" data-tr="Kategori" data-en="Category">Kategori</span>
+                        <span class="meta-value" data-tr="CNC & Otomasyon" data-en="CNC & Automation">CNC & Otomasyon</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label" data-tr="Yıl" data-en="Year">Yıl</span>
+                        <span class="meta-value">2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label" data-tr="Eksenler" data-en="Axes">Eksenler</span>
+                        <span class="meta-value">X: 200mm / Y: 150mm / Z: 200mm</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label" data-tr="Teknolojiler" data-en="Technologies">Teknolojiler</span>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Arduino Nano</span>
+                            <span class="tech-tag">GRBL</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">steel gear wheels</span>
+                        </div>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label" data-tr="Spindle" data-en="Spindle">Spindle</span>
+                        <span class="meta-value">500W DC Motor</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label" data-tr="İşleme Alanı" data-en="Working Area">İşleme Alanı</span>
+                        <span class="meta-value">200 x 150 x 200mm</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-info-grid">
+                <div class="project-description">
+                    <h3 data-tr="Mekanik Tasarım" data-en="Mechanical Design">Mekanik Tasarım</h3>
+                    <p data-tr="Tamamen özel tasarım ve üretim bir 3 eksenli CNC freze makinesidir. Alüminyum ve PVC gibi malzemelerin işlenmesi için tasarlanmıştır. X, Y ve Z eksenlerinde step motorlar kullanılarak hassas hareket kontrolü sağlanmaktadır."
+                        data-en="This is a completely custom-designed and manufactured 3-axis CNC milling machine. Designed for machining materials such as aluminum and PVC. Precise motion control is provided using stepper motors on X, Y and Z axes.">
+                        Tamamen özel tasarım ve üretim bir 3 eksenli CNC freze makinesidir. Alüminyum ve PVC gibi malzemelerin işlenmesi için tasarlanmıştır. X, Y ve Z eksenlerinde step motorlar kullanılarak hassas hareket kontrolü sağlanmaktadır.
+                    </p>
+                    <p data-tr="Mekanik yapıda X ekseni 200mm, Y ekseni 150mm, Z ekseni 200mm strok sunmaktadır. Çelik dişli miller kullanılarak maksimum dayanıklılık sağlanmıştır. Spindle olarak DC motor kullanılmıştır."
+                        data-en="The mechanical structure offers X axis 200mm, Y axis 150mm, Z axis 200mm stroke. Maximum durability is achieved using steel gear wheels. A 500W DC motor is used as a spindle.">
+                        Mekanik yapıda X ekseni 200mm, Y ekseni 150mm, Z ekseni 200mm strok sunmaktadır. Çelik dişli miller kullanılarak maksimum dayanıklılık sağlanmıştır. Spindle olarak DC motor kullanılmıştır.
+                    </p>
+
+                    <h4 data-tr="Mekanik Galeri" data-en="Mechanical Gallery">Mekanik Galeri</h4>
+                    <div class="gallery-scroll">
+                        <div class="gallery-item"><img src="assets/images/CNC/3d2.png" alt="CNC Mekanik 1"></div>
+                        <div class="gallery-item"><img src="assets/images/CNC/3d3.png" alt="CNC Mekanik 2"></div>
+                        <div class="gallery-item"><img src="assets/images/CNC/3d4.png" alt="CNC Mekanik 3"></div>
+                        <div class="gallery-item"><img src="assets/images/CNC/3d5.png" alt="CNC Mekanik 4"></div>
+                        <div class="gallery-item"><img src="assets/images/CNC/3d6.png" alt="CNC Mekanik 5"></div>
+                        <div class="gallery-item"><img src="assets/images/CNC/3d7.png" alt="CNC Mekanik 6"></div>
+                        <div class="gallery-item"><img src="assets/images/CNC/3d8.png" alt="CNC Mekanik 7"></div>
+                        <div class="gallery-item"><img src="assets/images/CNC/3d9.png" alt="CNC Mekanik 8"></div>
+                        <div class="gallery-item"><img src="assets/images/CNC/3d10.png" alt="CNC Mekanik 9"></div>
+                    </div>
+
+                    <h4 data-tr="Elektronik Tasarım" data-en="Electronic Design">Elektronik Tasarım</h4>
+                    <p data-tr="Projenin bu aşamasında elektronik kısımda kontrol kartının tasarlanması, özellikleri ve kullanılan komponentleri belirteceğiz. Kontrol kartında AtMega328P mikro denetleyiciye sahip bir Arduino Nano yer almaktadır. Arduino Nano modülü kolayca değiştirilebilmesi, düşük maliyetli olması, kolay programlanabilmesi gibi bir çok avantajı yanında getiriyor. Kart 3 adet Step motoru kontrol etmeyi amaçlamaktadır. Bu nedenle 3 adet modüler motor sürücü kullanıyoruz. Kartımız 12-36V aralığında bir güç beslemesini destekliyor. Dahili LM2596 Voltaj regülatörü ile sabit 12V ile motorlar için gerekli parazitsiz besleme voltajını sağlıyor. Ayrıca 12V'u mikro denetleyicinin ihtiyacı olan 5V gerilime dönüştürmek için dahili bir LM7805 Voltaj regülasyon devresi içerir."
+                        data-en="In this phase of the project, we will specify the control card design, its features and the components used. The control board features an Arduino Nano with AtMega328P microcontroller. The Arduino Nano module brings many advantages such as being easily replaceable, low cost and easy to program. The card is designed to control 3 stepper motors. For this reason, we use 3 modular motor drivers. Our card supports a power supply in the 12-36V range. It provides constant 12V for motors with a noise-free supply voltage thanks to the built-in LM2596 voltage regulator. It also includes a built-in LM7805 voltage regulation circuit to convert 12V to the 5V required by the microcontroller.">
+                        Projenin bu aşamasında elektronik kısımda kontrol kartının tasarlanması, özellikleri ve kullanılan komponentleri belirteceğiz. Kontrol kartında AtMega328P mikro denetleyiciye sahip bir Arduino Nano yer almaktadır. Arduino Nano modülü kolayca değiştirilebilmesi, düşük maliyetli olması, kolay programlanabilmesi gibi bir çok avantajı yanında getiriyor. Kart 3 adet Step motoru kontrol etmeyi amaçlamaktadır. Bu nedenle 3 adet modüler motor sürücü kullanıyoruz. Kartımız 12-36V aralığında bir güç beslemesini destekliyor. Dahili LM2596 Voltaj regülatörü ile sabit 12V ile motorlar için gerekli parazitsiz besleme voltajını sağlıyor. Ayrıca 12V'u mikro denetleyicinin ihtiyacı olan 5V gerilime dönüştürmek için dahili bir LM7805 Voltaj regülasyon devresi içerir.
+                    </p>
+                    <p data-tr="Kartta toplam 5 adet durum LED'i bulunmaktadır. Bu LED'ler ikisi güç indikatör LED'i diğer 3 tanesi ise motor çıkışlarını belirten LED'lerdir. Yeşil LED 12-36V gerilim ile kartın beslendiğini belirtirken kırmızı LED 5V beslemenin karta geldiğini belirtmektedir. Beyaz LED'ler ise OUT1, OUT2 ve OUT3 olmak üzere X, Y ve Z eksenlerindeki motorlara çıkış sinyali gittiğini belirtmektedir."
+                        data-en="The card has a total of 5 status LEDs. These LEDs consist of 2 power indicator LEDs and 3 motor output LEDs. The green LED indicates that the card is powered with 12-36V voltage, while the red LED indicates that the 5V supply has reached the card. The white LEDs indicate that output signals are sent to the motors on the X, Y and Z axes as OUT1, OUT2 and OUT3.">
+                        Kartta toplam 5 adet durum LED'i bulunmaktadır. Bu LED'ler ikisi güç indikatör LED'i diğer 3 tanesi ise motor çıkışlarını belirten LED'lerdir. Yeşil LED 12-36V gerilim ile kartın beslendiğini belirtirken kırmızı LED 5V beslemenin karta geldiğini belirtmektedir. Beyaz LED'ler ise OUT1, OUT2 ve OUT3 olmak üzere X, Y ve Z eksenlerindeki motorlara çıkış sinyali gittiğini belirtmektedir.
+                    </p>
+
+                    <h4 data-tr="Elektronik Galeri" data-en="Electronic Gallery">Elektronik Galeri</h4>
+                    <div class="gallery-electronic">
+                        <div class="gallery-item"><img src="assets/images/CNC/schmatics.png" alt="Elektronik Şema"></div>
+                        <div class="gallery-item"><img src="assets/images/CNC/Board.png" alt="PCB Tasarım"></div>
+                    </div>
+
+                    <h4 data-tr="Programlama & Yazılım" data-en="Programming & Software">Programlama & Yazılım</h4>
+                    <p data-tr="Makine, GRBL firmware'i üzerinde çalışmaktadır. G-code yorumlama ve motor kontrolü için özelleştirilmiş yazılım kullanılmaktadır. Arduino IDE ile geliştirme yapılmıştır."
+                        data-en="The machine runs on GRBL firmware. Custom software is used for G-code interpretation and motor control. Development was done with Arduino IDE.">
+                        Makine, GRBL firmware'i üzerinde çalışmaktadır. G-code yorumlama ve motor kontrolü için özelleştirilmiş yazılım kullanılmaktadır. Arduino IDE ile geliştirme yapılmıştır.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
