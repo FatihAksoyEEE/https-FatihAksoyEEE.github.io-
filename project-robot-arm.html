@@ -1,199 +1,162 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark">
-
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robot Kol - Fatih Aksoy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>6 Eksenli Robot Kol Kontrolcüsü · Fatih Aksoy</title>
+    <meta name="title-en" content="6-Axis Robot Arm Controller · Fatih Aksoy">
+    <meta name="description" content="STM32 Blackpill üzerinde çalışan 6 servolu robot kol firmware&#x27;i ve USB üzerinden kontrol eden PyQt6 masaüstü arayüzü.">
+    <meta name="author" content="Fatih Aksoy">
+    <link rel="canonical" href="https://fatihaksoy.com/project-robot-arm.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Fatih Aksoy">
+    <meta property="og:title" content="6 Eksenli Robot Kol Kontrolcüsü · Fatih Aksoy">
+    <meta property="og:description" content="STM32 Blackpill üzerinde çalışan 6 servolu robot kol firmware&#x27;i ve USB üzerinden kontrol eden PyQt6 masaüstü arayüzü.">
+    <meta property="og:url" content="https://fatihaksoy.com/project-robot-arm.html">
+    <meta property="og:image" content="https://fatihaksoy.com/assets/img/robot-arm/gui.webp">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#161718" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var l=localStorage.getItem('lang');if(l==='en')document.documentElement.lang='en'}catch(e){}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .project-detail-section {
-            padding-top: 4rem;
-            min-height: 80vh;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: transform 0.3s;
-        }
-
-        .back-link:hover {
-            transform: translateX(-5px);
-        }
-
-        .project-header {
-            margin-bottom: 3rem;
-        }
-
-        .project-main-image {
-            width: 100%;
-            max-height: 500px;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 1px solid var(--border);
-            margin-bottom: 3rem;
-        }
-
-        .project-info-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 4rem;
-        }
-
-        .project-description h3 {
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .project-description p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-meta {
-            background: var(--bg-card);
-            padding: 2rem;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            height: fit-content;
-        }
-
-        .meta-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .meta-label {
-            display: block;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .meta-value {
-            color: var(--text-primary);
-            font-size: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .project-info-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-    </style>
 </head>
-
 <body>
-
-    <!-- TOP NAVBAR -->
-    <nav class="topnav" id="topnav">
-        <div class="topnav-logo"><a href="index.html" style="text-decoration: none; color: inherit;">FA</a></div>
-
-        <ul class="topnav-links">
-            <li><a href="index.html#home" data-tr="Ana Sayfa" data-en="Home">Ana Sayfa</a></li>
-            <li><a href="index.html#about" data-tr="Hakkında" data-en="About">Hakkında</a></li>
-            <li><a href="index.html#projects" data-tr="Projeler" data-en="Projects">Projeler</a></li>
-            <li><a href="index.html#contact" data-tr="İletişim" data-en="Contact">İletişim</a></li>
-        </ul>
-
-        <div class="topnav-controls">
-            <button class="lang-btn" id="langBtn" title="Switch Language">
-                <span id="langLabel">TR</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path
-                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg>
-            </button>
-
-            <button class="theme-btn" id="themeBtn" title="Toggle Theme">
-                <span class="theme-icon" id="themeIcon">
-                    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5" />
-                        <line x1="12" y1="1" x2="12" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="23" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                        <line x1="1" y1="12" x2="3" y2="12" />
-                        <line x1="21" y1="12" x2="23" y2="12" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                    </svg>
-                    <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" style="display:none;">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                    </svg>
-                </span>
-            </button>
+    <a class="skip-link" href="#main"><span data-lang="tr">İçeriğe geç</span><span data-lang="en" lang="en">Skip to content</span></a>
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="index.html">Fatih Aksoy <span class="label">EEE</span></a>
+            <nav class="site-nav" aria-label="Ana menü">
+                <ul>
+                    <li><a href="index.html#about"><span data-lang="tr">Hakkında</span><span data-lang="en" lang="en">About</span></a></li>
+                    <li><a href="index.html#projects" aria-current="page"><span data-lang="tr">Projeler</span><span data-lang="en" lang="en">Projects</span></a></li>
+                    <li><a href="index.html#contact"><span data-lang="tr">İletişim</span><span data-lang="en" lang="en">Contact</span></a></li>
+                </ul>
+            </nav>
+            <div class="controls">
+                <button class="ctrl-btn" id="langBtn" type="button" lang="en" aria-label="Switch to English">EN</button>
+                <button class="ctrl-btn" id="themeBtn" type="button" aria-label="Temayı değiştir">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+                </button>
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <div class="content">
-        <section class="project-detail-section">
-            <a href="index.html#projects" class="back-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-                <span data-tr="Geri Dön" data-en="Back to Projects">Geri Dön</span>
-            </a>
+    <main id="main">
+        <div class="wrap">
+            <a class="crumb" href="index.html#projects">← <span data-lang="tr">Tüm projeler</span><span data-lang="en" lang="en">All projects</span></a>
+            <header class="ds-head">
+                <p class="label"><span data-lang="tr">Proje</span><span data-lang="en" lang="en">Project</span> 03 · 2026</p>
+                <h1><span data-lang="tr">6 Eksenli Robot Kol Kontrolcüsü</span><span data-lang="en" lang="en">6-Axis Robot Arm Controller</span></h1>
+                <p data-lang="tr" class="lead">STM32 Blackpill üzerinde çalışan 6 servolu robot kol firmware'i ve USB üzerinden kontrol eden PyQt6 masaüstü arayüzü.</p>
+<p data-lang="en" lang="en" class="lead">Firmware for a 6-servo robot arm on an STM32 Blackpill, plus a PyQt6 desktop app that controls it over USB.</p>
+                <dl class="ds-meta">
+<div><dt class="label"><span data-lang="tr">Rol</span><span data-lang="en" lang="en">Role</span></dt><dd><span data-lang="tr">Tek geliştirici</span><span data-lang="en" lang="en">Sole developer</span></dd></div>
+<div><dt class="label">MCU</dt><dd>STM32F411CE</dd></div>
+<div><dt class="label"><span data-lang="tr">Yazılım</span><span data-lang="en" lang="en">Software</span></dt><dd>C++ (STM32duino), Python</dd></div>
+<div><dt class="label"><span data-lang="tr">Kaynak</span><span data-lang="en" lang="en">Source</span></dt><dd><a href="https://github.com/FatihAksoyEEE/RoboArm">GitHub ↗</a></dd></div>
+                </dl>
+            </header>
+            <div class="ds-body">
+                <nav class="ds-toc" aria-label="İçindekiler">
+                    <p class="label"><span data-lang="tr">İçindekiler</span><span data-lang="en" lang="en">Contents</span></p>
+                    <ol><li><a href="#summary"><span class="n">1</span><span data-lang="tr">Özet</span><span data-lang="en" lang="en">Summary</span></a></li><li><a href="#diagram"><span class="n">2</span><span data-lang="tr">Blok diyagram</span><span data-lang="en" lang="en">Block diagram</span></a></li><li><a href="#hardware"><span class="n">3</span><span data-lang="tr">Donanım</span><span data-lang="en" lang="en">Hardware</span></a></li><li><a href="#software"><span class="n">4</span><span data-lang="tr">Yazılım</span><span data-lang="en" lang="en">Software</span></a></li><li><a href="#links"><span class="n">5</span><span data-lang="tr">Bağlantılar</span><span data-lang="en" lang="en">Links</span></a></li></ol>
+                </nav>
+                <div class="ds-content">
+<section class="ds-section" id="summary" aria-labelledby="summary-h">
+<h2 id="summary-h"><span class="num">03.1</span><span data-lang="tr">Özet</span><span data-lang="en" lang="en">Summary</span></h2>
+<p data-lang="tr">Altı servolu bir robot kolu bilgisayardan kontrol etmek için bir firmware ve bir masaüstü arayüzü yazdım. STM32, bilgisayara USB-CDC ile sanal seri port olarak bağlanıyor; ayrı bir USB-UART dönüştürücüye gerek kalmıyor.</p>
+<p data-lang="en" lang="en">I wrote firmware and a desktop app to control a six-servo robot arm from a computer. The STM32 shows up as a virtual serial port over USB-CDC, so no separate USB-UART converter is needed.</p>
+<p data-lang="tr">Komut seti bilinçli olarak düz metin tutuldu: aynı komutlar arayüzden de, <code>screen</code> gibi bir seri terminalden de gönderilebiliyor. Bu, donanımı arayüzden bağımsız olarak test etmeyi kolaylaştırıyor.</p>
+<p data-lang="en" lang="en">The command set is deliberately plain text: the same commands can be sent from the GUI or from a serial terminal such as <code>screen</code>. That makes it easy to test the hardware independently of the GUI.</p>
+</section>
+<section class="ds-section" id="diagram" aria-labelledby="diagram-h">
+<h2 id="diagram-h"><span class="num">03.2</span><span data-lang="tr">Blok diyagram</span><span data-lang="en" lang="en">Block diagram</span></h2>
+<div class="diagram"><svg viewBox="0 0 760 210" role="img" aria-label="Robot kol kontrol sistemi blok diyagramı"><defs><marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah4s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
+            <rect class="blk" x="10" y="75" width="150" height="56" rx="2"/>
+            <text class="t" x="85.0" y="100.0" text-anchor="middle">PyQt6 arayüz</text>
+            <text class="s" x="85.0" y="117.0" text-anchor="middle">slider · HOME</text>
+            <rect class="blk-accent" x="220" y="75" width="160" height="56" rx="2"/>
+            <text class="t" x="300.0" y="100.0" text-anchor="middle">STM32F411CE</text>
+            <text class="s" x="300.0" y="117.0" text-anchor="middle">Blackpill · USB-CDC</text>
+            <polyline class="wire" points="160,103 220,103" marker-end="url(#ah4)" marker-start="url(#ah4s)"/>
+            <text class="s" x="190" y="95" text-anchor="middle">USB</text>
+            <rect class="blk" x="460" y="15" width="130" height="46" rx="2"/>
+            <text class="t" x="525.0" y="35.0" text-anchor="middle">TIM1 CH1–3</text>
+            <text class="s" x="525.0" y="52.0" text-anchor="middle">PA8 · PA9 · PA10</text>
+            <rect class="blk" x="460" y="145" width="130" height="46" rx="2"/>
+            <text class="t" x="525.0" y="165.0" text-anchor="middle">TIM4 CH1–3</text>
+            <text class="s" x="525.0" y="182.0" text-anchor="middle">PB6 · PB7 · PB8</text>
+            <polyline class="wire" points="380,95 420,95 420,38 460,38" marker-end="url(#ah4)"/>
+            <text class="s" x="420" y="30" text-anchor="middle">PWM 50 Hz</text>
+            <polyline class="wire" points="380,111 420,111 420,168 460,168" marker-end="url(#ah4)"/>
+            <rect class="blk" x="640" y="15" width="110" height="46" rx="2"/>
+            <text class="t" x="695.0" y="42.0" text-anchor="middle">Servo 1–3</text>
+            <rect class="blk" x="640" y="145" width="110" height="46" rx="2"/>
+            <text class="t" x="695.0" y="172.0" text-anchor="middle">Servo 4–6</text>
+            <polyline class="wire" points="590,38 640,38" marker-end="url(#ah4)"/>
+            <polyline class="wire" points="590,168 640,168" marker-end="url(#ah4)"/>
+            <rect class="blk" x="640" y="80" width="110" height="46" rx="2"/>
+            <text class="t" x="695.0" y="100.0" text-anchor="middle">5 V / 10 A</text>
+            <text class="s" x="695.0" y="117.0" text-anchor="middle">servo gücü</text>
+            <polyline class="wire" points="695,80 695,61" marker-end="url(#ah4)"/>
+            <polyline class="wire" points="695,126 695,145" marker-end="url(#ah4)"/>
+            </svg></div>
+</section>
+<section class="ds-section" id="hardware" aria-labelledby="hardware-h">
+<h2 id="hardware-h"><span class="num">03.3</span><span data-lang="tr">Donanım</span><span data-lang="en" lang="en">Hardware</span></h2>
+<table class="spec">
+<tr><th scope="row">MCU</th><td>STM32 Blackpill F411CE</td></tr>
+<tr><th scope="row"><span data-lang="tr">Aktüatörler</span><span data-lang="en" lang="en">Actuators</span></th><td><span data-lang="tr">6 × PWM servo</span><span data-lang="en" lang="en">6 × PWM servo</span></td></tr>
+<tr><th scope="row">PWM</th><td><span data-lang="tr">50 Hz (20 ms), 16 bit çözünürlük; 0° = 1000 µs, 90° = 1500 µs, 180° = 2000 µs</span><span data-lang="en" lang="en">50 Hz (20 ms), 16-bit resolution; 0° = 1000 µs, 90° = 1500 µs, 180° = 2000 µs</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Zamanlayıcılar</span><span data-lang="en" lang="en">Timers</span></th><td>TIM1 CH1–3 (PA8, PA9, PA10) · TIM4 CH1–3 (PB6, PB7, PB8)</td></tr>
+<tr><th scope="row"><span data-lang="tr">Güç</span><span data-lang="en" lang="en">Power</span></th><td><span data-lang="tr">Servolar için ayrı 5 V / 10 A kaynak; STM32 USB'den beslenir</span><span data-lang="en" lang="en">Separate 5 V / 10 A supply for the servos; the STM32 is powered from USB</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Haberleşme</span><span data-lang="en" lang="en">Comms</span></th><td>USB-CDC, 115200 baud</td></tr>
+</table>
+<pre><code>duty = (pulse_us × 65535) / 20000
 
-            <div class="project-header">
-                <h1 class="main-title" data-tr="ROBOT KOL" data-en="ROBOT ARM">ROBOT KOL</h1>
-            </div>
-
-            <img src="assets/images/robot-arm.png" alt="Robot Kol" class="project-main-image">
-
-            <div class="project-info-grid">
-                <div class="project-description">
-                    <h3 data-tr="Proje Detayları" data-en="Project Details">Proje Detayları</h3>
-                    <p data-tr="Bu kısım yakında detaylı bilgilerle doldurulacaktır."
-                        data-en="This section will be filled with detailed information soon.">
-                        Bu kısım yakında detaylı bilgilerle doldurulacaktır.
-                    </p>
+  0° → (1000 × 65535) / 20000 = 3277
+ 90° → (1500 × 65535) / 20000 = 4915
+180° → (2000 × 65535) / 20000 = 6554</code></pre>
+<p data-lang="tr"><strong>Ortak toprak:</strong> Servo kaynağının eksi ucu STM32 GND'sine bağlanmazsa PWM sinyalinin referansı kayar ve servolar hareket etmez. Servo uçlarına konan 100 µF kapasitörler ani akım çekişlerinde gerilim çökmelerini azaltıyor.</p>
+<p data-lang="en" lang="en"><strong>Common ground:</strong> if the servo supply's negative terminal is not tied to the STM32 GND, the PWM reference floats and the servos do not move. 100 µF capacitors at the servo connectors reduce voltage dips during current spikes.</p>
+</section>
+<section class="ds-section" id="software" aria-labelledby="software-h">
+<h2 id="software-h"><span class="num">03.4</span><span data-lang="tr">Yazılım</span><span data-lang="en" lang="en">Software</span></h2>
+<div class="table-scroll"><table class="spec cols"><thead><tr><th scope="col"><span data-lang="tr">Komut</span><span data-lang="en" lang="en">Command</span></th><th scope="col"><span data-lang="tr">İşlev</span><span data-lang="en" lang="en">Function</span></th><th scope="col"><span data-lang="tr">Örnek</span><span data-lang="en" lang="en">Example</span></th></tr></thead>
+<tbody><tr><td><code>S&lt;n&gt;:&lt;açı&gt;</code></td><td><span data-lang="tr">n. servoyu açıya getir (n = 1–6, açı = 0–180)</span><span data-lang="en" lang="en">Move servo n to angle (n = 1–6, angle = 0–180)</span></td><td><code>S1:90</code></td></tr>
+<tr><td><code>ALL:&lt;açı&gt;</code></td><td><span data-lang="tr">Tüm servoları aynı açıya getir</span><span data-lang="en" lang="en">Move all servos to one angle</span></td><td><code>ALL:90</code></td></tr>
+<tr><td><code>STATUS</code></td><td><span data-lang="tr">Tüm açıları raporla</span><span data-lang="en" lang="en">Report all angles</span></td><td><code>S1:90,S2:45,…</code></td></tr>
+<tr><td><code>RESET</code></td><td><span data-lang="tr">Tüm servoları 90°'ye döndür</span><span data-lang="en" lang="en">Return all servos to 90°</span></td><td><code>RESET</code></td></tr></tbody></table></div>
+<p data-lang="tr">Hatalı komutlara açık hata mesajları dönüyor (<code>ERROR:Angle out of range</code>, <code>ERROR:Servo ID out of range</code> vb.). Arayüzde her servo için bir slider ve min/max açı sınırı var; HOME, RESET ve STATUS butonları aynı komutları gönderiyor. Arayüz macOS için <code>py2app</code> ile tek bir <code>.app</code> olarak paketlenebiliyor.</p>
+<p data-lang="en" lang="en">Bad commands get explicit error replies (<code>ERROR:Angle out of range</code>, <code>ERROR:Servo ID out of range</code>, etc.). The GUI has a slider and min/max limits per servo; HOME, RESET and STATUS buttons send the same commands. On macOS the GUI can be bundled into a single <code>.app</code> with <code>py2app</code>.</p>
+<figure class="fig"><a href="assets/img/robot-arm/gui.webp"><img src="assets/img/robot-arm/gui.webp" width="1600" height="899" alt="Kontrol arayüzü: Repodaki arayüz örneği (docs/GUI_Example)." class="on-white" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 1</span><span data-lang="en" lang="en">Fig. 1</span></span><span data-lang="tr">Kontrol arayüzü — Repodaki arayüz örneği (docs/GUI_Example).</span><span data-lang="en" lang="en">Control interface — GUI example from the repo (docs/GUI_Example).</span></figcaption></figure>
+</section>
+<section class="ds-section" id="links" aria-labelledby="links-h">
+<h2 id="links-h"><span class="num">03.5</span><span data-lang="tr">Bağlantılar</span><span data-lang="en" lang="en">Links</span></h2>
+<ul class="links-list"><li><span class="label" lang="en">GitHub</span><a href="https://github.com/FatihAksoyEEE/RoboArm">FatihAksoyEEE/RoboArm ↗</a></li></ul>
+</section>
                 </div>
-
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-label" data-tr="Kategori" data-en="Category">Kategori</span>
-                        <span class="meta-value" data-tr="Mekatronik" data-en="Mechatronics">Mekatronik</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label" data-tr="Yıl" data-en="Year">Yıl</span>
-                        <span class="meta-value">2023</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label" data-tr="Teknolojiler" data-en="Technologies">Teknolojiler</span>
-                        <span class="meta-value">Arduino, Servo Motors, Inverse Kinematics</span>
-                    </div>
-                </div>
             </div>
-        </section>
-    </div>
+        </div>
+        <nav class="pager wrap" aria-label="Proje gezinme"><a href="project-control-station.html"><span class="label">← <span data-lang="tr">Önceki</span><span data-lang="en" lang="en">Previous</span></span><strong><span data-lang="tr">Yer Kontrol İstasyonu</span><span data-lang="en" lang="en">Ground Control Station</span></strong></a><a href="project-uav.html"><span class="label"><span data-lang="tr">Sonraki</span><span data-lang="en" lang="en">Next</span> →</span><strong><span data-lang="tr">ESP32 Quadcopter</span><span data-lang="en" lang="en">ESP32 Quadcopter</span></strong></a></nav>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap">
+            <span class="label">© 2026 Fatih Aksoy</span>
+            <span class="label"><span data-lang="tr">Son güncelleme: Ekim 2026</span><span data-lang="en" lang="en">Last updated: October 2026</span></span>
+            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="tr">Sitenin kaynağı</span><span data-lang="en" lang="en">Site source</span> ↗</a>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>

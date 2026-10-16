@@ -1,97 +1,66 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Tema ve dil tercihleri. İlk değerler <head> içindeki küçük betikle,
+// sayfa çizilmeden önce uygulanır; burada yalnızca butonlar bağlanır.
+(function () {
+    const root = document.documentElement;
 
-    // ─── SCROLL: NAVBAR SHRINK ───────────────────────────────────────────────
-    const topnav = document.getElementById('topnav');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
-            topnav.classList.add('scrolled');
-        } else {
-            topnav.classList.remove('scrolled');
-        }
-    });
+    function store(key, value) {
+        try { localStorage.setItem(key, value); } catch (e) { /* gizli sekme vb. */ }
+    }
 
-    // ─── SMOOTH SCROLL ───────────────────────────────────────────────────────
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const offset = topnav.offsetHeight + 16;
-                const top = target.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({ top, behavior: 'smooth' });
-            }
-        });
-    });
-
-    // ─── THEME TOGGLE ────────────────────────────────────────────────────────
+    // ─── Tema ────────────────────────────────────────────────────────────────
     const themeBtn = document.getElementById('themeBtn');
-    const sunIcon = document.getElementById('sunIcon');
-    const moonIcon = document.getElementById('moonIcon');
-    const html = document.documentElement;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    applyTheme(savedTheme);
-
-    themeBtn.addEventListener('click', () => {
-        const current = html.getAttribute('data-theme');
-        applyTheme(current === 'dark' ? 'light' : 'dark');
-    });
-
-    function applyTheme(theme) {
-        html.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        if (theme === 'dark') {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
-        } else {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-        }
+    function currentTheme() {
+        return root.dataset.theme || (prefersDark.matches ? 'dark' : 'light');
     }
 
-    // ─── LANGUAGE TOGGLE ─────────────────────────────────────────────────────
-    const langBtn = document.getElementById('langBtn');
-    const langLabel = document.getElementById('langLabel');
+    function syncThemeBtn() {
+        if (!themeBtn) return;
+        const next = currentTheme() === 'dark' ? 'light' : 'dark';
+        const label = root.lang === 'en'
+            ? (next === 'dark' ? 'Switch to dark theme' : 'Switch to light theme')
+            : (next === 'dark' ? 'Koyu temaya geç' : 'Açık temaya geç');
+        themeBtn.setAttribute('aria-label', label);
+        themeBtn.title = label;
+    }
 
-    let currentLang = localStorage.getItem('lang') || 'tr';
-    applyLang(currentLang);
-
-    langBtn.addEventListener('click', () => {
-        currentLang = currentLang === 'tr' ? 'en' : 'tr';
-        applyLang(currentLang);
-    });
-
-    function applyLang(lang) {
-        localStorage.setItem('lang', lang);
-        langLabel.textContent = lang.toUpperCase();
-
-        // Translate all elements that have data-tr and data-en
-        document.querySelectorAll('[data-tr]').forEach(el => {
-            const text = el.getAttribute('data-' + lang);
-            if (text) el.innerHTML = text;
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            const next = currentTheme() === 'dark' ? 'light' : 'dark';
+            root.dataset.theme = next;
+            store('theme', next);
+            syncThemeBtn();
         });
-
-        // Update html lang attribute
-        document.documentElement.lang = lang;
     }
 
-    // ─── SCROLL ANIMATIONS ───────────────────────────────────────────────────
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+    // ─── Dil ─────────────────────────────────────────────────────────────────
+    const langBtn = document.getElementById('langBtn');
+    const titles = {
+        tr: document.title,
+        en: document.querySelector('meta[name="title-en"]')?.content || document.title,
     };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+    function applyLang(lang) {
+        root.lang = lang;
+        document.title = titles[lang];
+        if (langBtn) {
+            const other = lang === 'tr' ? 'en' : 'tr';
+            langBtn.textContent = other.toUpperCase();
+            langBtn.setAttribute('aria-label', lang === 'tr' ? 'Switch to English' : 'Türkçeye geç');
+            langBtn.title = langBtn.getAttribute('aria-label');
+            langBtn.lang = other;
+        }
+        syncThemeBtn();
+    }
 
-    document.querySelectorAll('.hero-content, .portrait-container, .glass-header, .about-text, .project-card, .social-links, .cv-button').forEach(el => {
-        el.classList.add('hidden');
-        observer.observe(el);
-    });
-});
+    if (langBtn) {
+        langBtn.addEventListener('click', () => {
+            const next = root.lang === 'tr' ? 'en' : 'tr';
+            store('lang', next);
+            applyLang(next);
+        });
+    }
+
+    applyLang(root.lang === 'en' ? 'en' : 'tr');
+})();
