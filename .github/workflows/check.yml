@@ -1,0 +1,35 @@
+# Her push ve PR'da: sayfalar build.py çıktısıyla aynı mı, site içi bağlantılar kırık mı?
+name: Site kontrolü
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sayfaları yeniden üret
+        run: |
+          pip install pillow
+          python3 tools/build/build.py
+
+      - name: Üretilen HTML repodakiyle aynı mı?
+        run: |
+          if ! git diff --exit-code --stat; then
+            echo "::error::HTML dosyaları build.py çıktısıyla uyuşmuyor. 'python3 tools/build/build.py' çalıştırıp sonucu commit'leyin."
+            exit 1
+          fi
+
+      - name: Kırık bağlantı kontrolü (site içi)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress --root-dir "${{ github.workspace }}" './**/*.html'
+          fail: true

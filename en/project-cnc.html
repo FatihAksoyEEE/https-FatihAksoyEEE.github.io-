@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3-Axis CNC Mill · Fatih Aksoy</title>
+    <meta name="description" content="A desktop CNC mill designed from scratch: mechanics, control board and software.">
+    <meta name="author" content="Fatih Aksoy">
+    <link rel="canonical" href="https://fatihaksoy.com/en/project-cnc.html">
+    <link rel="alternate" hreflang="tr" href="https://fatihaksoy.com/project-cnc.html">
+    <link rel="alternate" hreflang="en" href="https://fatihaksoy.com/en/project-cnc.html">
+    <link rel="alternate" hreflang="x-default" href="https://fatihaksoy.com/project-cnc.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Fatih Aksoy">
+    <meta property="og:title" content="3-Axis CNC Mill · Fatih Aksoy">
+    <meta property="og:description" content="A desktop CNC mill designed from scratch: mechanics, control board and software.">
+    <meta property="og:url" content="https://fatihaksoy.com/en/project-cnc.html">
+    <meta property="og:image" content="https://fatihaksoy.com/assets/img/cnc/cover.webp">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="tr_TR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#161718" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "3-Axis CNC Mill", "description": "A desktop CNC mill designed from scratch: mechanics, control board and software.", "url": "https://fatihaksoy.com/en/project-cnc.html", "image": "https://fatihaksoy.com/assets/img/cnc/cover.webp", "dateCreated": "2024", "inLanguage": "en", "keywords": "Mechanical, PCB, GRBL", "author": {"@id": "https://fatihaksoy.com/#person"}}</script>
+</head>
+<body>
+    <a class="skip-link" href="#main"><span data-lang="en" lang="en">Skip to content</span></a>
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="index.html">Fatih Aksoy <span class="label">EEE</span></a>
+            <nav class="site-nav" aria-label="Main menu">
+                <ul>
+                    <li><a href="index.html#about"><span data-lang="en" lang="en">About</span></a></li>
+                    <li><a href="index.html#projects" aria-current="page"><span data-lang="en" lang="en">Projects</span></a></li>
+                    <li><a href="index.html#contact"><span data-lang="en" lang="en">Contact</span></a></li>
+                </ul>
+            </nav>
+            <div class="controls">
+                <a class="ctrl-btn" id="langBtn" href="../project-cnc.html" hreflang="tr" lang="tr" aria-label="Türkçe" title="Türkçe">TR</a>
+                <button class="ctrl-btn" id="themeBtn" type="button" aria-label="Toggle theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="wrap">
+            <a class="crumb" href="index.html#projects">← <span data-lang="en" lang="en">All projects</span></a>
+            <header class="ds-head">
+                <p class="label"><span data-lang="en" lang="en">Project</span> 06 · 2024</p>
+                <h1><span data-lang="en" lang="en">3-Axis CNC Mill</span></h1>
+                
+<p data-lang="en" lang="en" class="lead">A desktop CNC mill designed from scratch: mechanics, control board and software.</p>
+                <dl class="ds-meta">
+<div><dt class="label"><span data-lang="en" lang="en">Role</span></dt><dd><span data-lang="en" lang="en">Mechanics, electronics, software</span></dd></div>
+<div><dt class="label"><span data-lang="en" lang="en">Work area</span></dt><dd>200 × 150 × 200 mm</dd></div>
+<div><dt class="label">Spindle</dt><dd>500 W DC</dd></div>
+<div><dt class="label">Firmware</dt><dd>GRBL</dd></div>
+                </dl>
+            </header>
+            <div class="ds-body">
+                <nav class="ds-toc" aria-label="Contents">
+                    <p class="label"><span data-lang="en" lang="en">Contents</span></p>
+                    <ol><li><a href="#summary"><span class="n">1</span><span data-lang="en" lang="en">Summary</span></a></li><li><a href="#diagram"><span class="n">2</span><span data-lang="en" lang="en">Block diagram</span></a></li><li><a href="#specs"><span class="n">3</span><span data-lang="en" lang="en">Specifications</span></a></li><li><a href="#mechanical"><span class="n">4</span><span data-lang="en" lang="en">Mechanical design</span></a></li><li><a href="#electronics"><span class="n">5</span><span data-lang="en" lang="en">Electronic design</span></a></li><li><a href="#software"><span class="n">6</span><span data-lang="en" lang="en">Software</span></a></li></ol>
+                </nav>
+                <div class="ds-content">
+<section class="ds-section" id="summary" aria-labelledby="summary-h">
+<h2 id="summary-h"><span class="num">06.1</span><span data-lang="en" lang="en">Summary</span></h2>
+
+<p data-lang="en" lang="en">A fully custom 3-axis CNC mill able to machine materials such as aluminium and PVC. The X, Y and Z axes are driven by stepper motors; the mechanical structure, control board and software are all part of the project.</p>
+<figure class="fig"><a href="../assets/img/cnc/cover.webp"><img src="../assets/img/cnc/cover.webp" width="1400" height="1156" alt="Overview: 3D model of the machine." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 1</span></span><span data-lang="en" lang="en">Overview — 3D model of the machine.</span></figcaption></figure>
+</section>
+<section class="ds-section" id="diagram" aria-labelledby="diagram-h">
+<h2 id="diagram-h"><span class="num">06.2</span><span data-lang="en" lang="en">Block diagram</span></h2>
+<div class="diagram"><svg viewBox="0 0 760 290" role="img"><title data-lang="en" lang="en">CNC controller board block diagram</title><defs><marker id="ah6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah6s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
+            <rect class="blk" x="10" y="20" width="130" height="50" rx="2"/>
+            <text class="t" x="75.0" y="49.0" text-anchor="middle"><tspan data-lang="en" lang="en">12–36 V input</tspan></text>
+            <rect class="blk" x="200" y="20" width="140" height="50" rx="2"/>
+            <text class="t" x="270.0" y="42.0" text-anchor="middle">LM2596</text>
+            <text class="s" x="270.0" y="59.0" text-anchor="middle"><tspan data-lang="en" lang="en">12 V · motors</tspan></text>
+            <polyline class="wire" points="140,45 200,45" marker-end="url(#ah6)"/>
+            <rect class="blk" x="200" y="90" width="140" height="50" rx="2"/>
+            <text class="t" x="270.0" y="112.0" text-anchor="middle">LM7805</text>
+            <text class="s" x="270.0" y="129.0" text-anchor="middle"><tspan data-lang="en" lang="en">5 V · logic</tspan></text>
+            <polyline class="wire" points="270,70 270,90" marker-end="url(#ah6)"/>
+            <polyline class="wire" points="340,45 680,45 680,150" marker-end="url(#ah6)"/>
+            <text class="s" x="510" y="37" text-anchor="middle">12 V</text>
+            <rect class="blk" x="10" y="165" width="130" height="50" rx="2"/>
+            <text class="t" x="75.0" y="187.0" text-anchor="middle">G-code</text>
+            <text class="s" x="75.0" y="204.0" text-anchor="middle"><tspan data-lang="en" lang="en">computer · USB</tspan></text>
+            <rect class="blk-accent" x="390" y="150" width="150" height="70" rx="2"/>
+            <text class="t" x="465.0" y="182.0" text-anchor="middle">Arduino Nano</text>
+            <text class="s" x="465.0" y="199.0" text-anchor="middle">ATmega328P · GRBL</text>
+            <polyline class="wire" points="140,190 390,190" marker-end="url(#ah6)"/>
+            <text class="s" x="265" y="182" text-anchor="middle">USB</text>
+            <polyline class="wire" points="340,115 365,115 365,165 390,165" marker-end="url(#ah6)"/>
+            <text class="s" x="372" y="108" text-anchor="start">5 V</text>
+            <rect class="blk" x="610" y="150" width="140" height="50" rx="2"/>
+            <text class="t" x="680.0" y="172.0" text-anchor="middle"><tspan data-lang="en" lang="en">3 × step driver</tspan></text>
+            <text class="s" x="680.0" y="189.0" text-anchor="middle">X · Y · Z</text>
+            <polyline class="wire" points="540,175 610,175" marker-end="url(#ah6)"/>
+            <text class="s" x="575" y="167" text-anchor="middle">STEP/DIR</text>
+            <rect class="blk" x="610" y="230" width="140" height="50" rx="2"/>
+            <text class="t" x="680.0" y="252.0" text-anchor="middle"><tspan data-lang="en" lang="en">Stepper motors</tspan></text>
+            <text class="s" x="680.0" y="269.0" text-anchor="middle">+ 500 W DC spindle</text>
+            <polyline class="wire" points="680,200 680,230" marker-end="url(#ah6)"/>
+            </svg></div>
+</section>
+<section class="ds-section" id="specs" aria-labelledby="specs-h">
+<h2 id="specs-h"><span class="num">06.3</span><span data-lang="en" lang="en">Specifications</span></h2>
+<table class="spec">
+<tr><th scope="row"><span data-lang="en" lang="en">Travel</span></th><td>X 200 mm · Y 150 mm · Z 200 mm</td></tr>
+<tr><th scope="row"><span data-lang="en" lang="en">Axis drive</span></th><td><span data-lang="en" lang="en">3 × stepper motor, modular stepper drivers</span></td></tr>
+<tr><th scope="row">Spindle</th><td>500 W DC <span data-lang="en" lang="en">motor</span></td></tr>
+<tr><th scope="row"><span data-lang="en" lang="en">Controller</span></th><td>Arduino Nano (ATmega328P)</td></tr>
+<tr><th scope="row"><span data-lang="en" lang="en">Supply</span></th><td>12–36 V <span data-lang="en" lang="en">input</span></td></tr>
+<tr><th scope="row"><span data-lang="en" lang="en">Regulation</span></th><td>LM2596 → 12 V <span data-lang="en" lang="en">(motors)</span> · LM7805 → 5 V <span data-lang="en" lang="en">(logic)</span></td></tr>
+<tr><th scope="row">Firmware</th><td>GRBL</td></tr>
+<tr><th scope="row"><span data-lang="en" lang="en">Materials</span></th><td><span data-lang="en" lang="en">Aluminium, PVC</span></td></tr>
+</table>
+</section>
+<section class="ds-section" id="mechanical" aria-labelledby="mechanical-h">
+<h2 id="mechanical-h"><span class="num">06.4</span><span data-lang="en" lang="en">Mechanical design</span></h2>
+
+<p data-lang="en" lang="en">The frame is built from aluminium extrusions; steel lead screws are used on the axes for durability.</p>
+<div class="fig-grid">
+<figure class="fig"><a href="../assets/img/cnc/render-01.webp"><img src="../assets/img/cnc/render-01.webp" width="1138" height="1092" alt="Mechanical 1" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 2</span></span><span data-lang="en" lang="en">Mechanical 1</span></figcaption></figure>
+<figure class="fig"><a href="../assets/img/cnc/render-02.webp"><img src="../assets/img/cnc/render-02.webp" width="1400" height="1026" alt="Mechanical 2" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 3</span></span><span data-lang="en" lang="en">Mechanical 2</span></figcaption></figure>
+<figure class="fig"><a href="../assets/img/cnc/render-03.webp"><img src="../assets/img/cnc/render-03.webp" width="1400" height="1041" alt="Mechanical 3" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 4</span></span><span data-lang="en" lang="en">Mechanical 3</span></figcaption></figure>
+<figure class="fig"><a href="../assets/img/cnc/render-04.webp"><img src="../assets/img/cnc/render-04.webp" width="1400" height="1172" alt="Mechanical 4" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 5</span></span><span data-lang="en" lang="en">Mechanical 4</span></figcaption></figure>
+<figure class="fig"><a href="../assets/img/cnc/render-05.webp"><img src="../assets/img/cnc/render-05.webp" width="1400" height="1131" alt="Mechanical 5" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 6</span></span><span data-lang="en" lang="en">Mechanical 5</span></figcaption></figure>
+<figure class="fig"><a href="../assets/img/cnc/render-06.webp"><img src="../assets/img/cnc/render-06.webp" width="1400" height="1054" alt="Mechanical 6" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 7</span></span><span data-lang="en" lang="en">Mechanical 6</span></figcaption></figure>
+<figure class="fig"><a href="../assets/img/cnc/render-07.webp"><img src="../assets/img/cnc/render-07.webp" width="1400" height="1046" alt="Mechanical 7" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 8</span></span><span data-lang="en" lang="en">Mechanical 7</span></figcaption></figure>
+</div>
+</section>
+<section class="ds-section" id="electronics" aria-labelledby="electronics-h">
+<h2 id="electronics-h"><span class="num">06.5</span><span data-lang="en" lang="en">Electronic design</span></h2>
+
+<p data-lang="en" lang="en">The control board uses an Arduino Nano module: it is easy to replace, cheap and simple to program. The board drives three steppers through three modular drivers. From the 12–36 V input, an LM2596 produces a stable, low-noise 12 V for the motors and an LM7805 produces 5 V for the microcontroller.</p>
+
+<p data-lang="en" lang="en">The board has 5 status LEDs: green for the 12–36 V input, red for the 5 V rail, and three white LEDs showing signal activity on the X, Y and Z motor outputs (OUT1–OUT3).</p>
+<figure class="fig"><a href="../assets/img/cnc/schematic.webp"><img src="../assets/img/cnc/schematic.webp" width="2400" height="1507" alt="Schematic: Control board schematic." class="on-white" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 9</span></span><span data-lang="en" lang="en">Schematic — Control board schematic.</span></figcaption></figure>
+<figure class="fig"><a href="../assets/img/cnc/pcb.webp"><img src="../assets/img/cnc/pcb.webp" width="1600" height="759" alt="PCB: Control board PCB design." class="on-white" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 10</span></span><span data-lang="en" lang="en">PCB — Control board PCB design.</span></figcaption></figure>
+</section>
+<section class="ds-section" id="software" aria-labelledby="software-h">
+<h2 id="software-h"><span class="num">06.6</span><span data-lang="en" lang="en">Software</span></h2>
+
+<p data-lang="en" lang="en">The machine runs GRBL firmware, which handles G-code interpretation and motion planning. Development was done in the Arduino IDE.</p>
+</section>
+                </div>
+            </div>
+        </div>
+        <nav class="pager wrap" aria-label="Project navigation"><a href="project-flight-controller.html"><span class="label">← <span data-lang="en" lang="en">Previous</span></span><strong><span data-lang="en" lang="en">STM32 Flight Controller</span></strong></a><a href="project-order-management.html"><span class="label"><span data-lang="en" lang="en">Next</span> →</span><strong><span data-lang="en" lang="en">DigiTab Order Management</span></strong></a></nav>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap">
+            <span class="label">© 2026 Fatih Aksoy</span>
+            <span class="label"><span data-lang="en" lang="en">Last updated: October 2026</span></span>
+            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="en" lang="en">Site source</span> ↗</a>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

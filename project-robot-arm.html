@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>6 Eksenli Robot Kol Kontrolcüsü · Fatih Aksoy</title>
-    <meta name="title-en" content="6-Axis Robot Arm Controller · Fatih Aksoy">
     <meta name="description" content="STM32 Blackpill üzerinde çalışan 6 servolu robot kol firmware&#x27;i ve USB üzerinden kontrol eden PyQt6 masaüstü arayüzü.">
     <meta name="author" content="Fatih Aksoy">
     <link rel="canonical" href="https://fatihaksoy.com/project-robot-arm.html">
+    <link rel="alternate" hreflang="tr" href="https://fatihaksoy.com/project-robot-arm.html">
+    <link rel="alternate" hreflang="en" href="https://fatihaksoy.com/en/project-robot-arm.html">
+    <link rel="alternate" hreflang="x-default" href="https://fatihaksoy.com/project-robot-arm.html">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fatih Aksoy">
     <meta property="og:title" content="6 Eksenli Robot Kol Kontrolcüsü · Fatih Aksoy">
     <meta property="og:description" content="STM32 Blackpill üzerinde çalışan 6 servolu robot kol firmware&#x27;i ve USB üzerinden kontrol eden PyQt6 masaüstü arayüzü.">
     <meta property="og:url" content="https://fatihaksoy.com/project-robot-arm.html">
-    <meta property="og:image" content="https://fatihaksoy.com/assets/img/robot-arm/gui.webp">
+    <meta property="og:image" content="https://fatihaksoy.com/assets/img/robot-arm/cover.webp">
     <meta property="og:locale" content="tr_TR">
     <meta property="og:locale:alternate" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
@@ -22,26 +24,27 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var l=localStorage.getItem('lang');if(l==='en')document.documentElement.lang='en'}catch(e){}</script>
+    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "6 Eksenli Robot Kol Kontrolcüsü", "description": "STM32 Blackpill üzerinde çalışan 6 servolu robot kol firmware'i ve USB üzerinden kontrol eden PyQt6 masaüstü arayüzü.", "url": "https://fatihaksoy.com/project-robot-arm.html", "image": "https://fatihaksoy.com/assets/img/robot-arm/cover.webp", "dateCreated": "2026", "inLanguage": "tr", "keywords": "STM32, PlatformIO, PyQt6", "author": {"@id": "https://fatihaksoy.com/#person"}}</script>
 </head>
 <body>
-    <a class="skip-link" href="#main"><span data-lang="tr">İçeriğe geç</span><span data-lang="en" lang="en">Skip to content</span></a>
+    <a class="skip-link" href="#main"><span data-lang="tr">İçeriğe geç</span></a>
     <header class="site-header">
         <div class="wrap">
             <a class="brand" href="index.html">Fatih Aksoy <span class="label">EEE</span></a>
             <nav class="site-nav" aria-label="Ana menü">
                 <ul>
-                    <li><a href="index.html#about"><span data-lang="tr">Hakkında</span><span data-lang="en" lang="en">About</span></a></li>
-                    <li><a href="index.html#projects" aria-current="page"><span data-lang="tr">Projeler</span><span data-lang="en" lang="en">Projects</span></a></li>
-                    <li><a href="index.html#contact"><span data-lang="tr">İletişim</span><span data-lang="en" lang="en">Contact</span></a></li>
+                    <li><a href="index.html#about"><span data-lang="tr">Hakkında</span></a></li>
+                    <li><a href="index.html#projects" aria-current="page"><span data-lang="tr">Projeler</span></a></li>
+                    <li><a href="index.html#contact"><span data-lang="tr">İletişim</span></a></li>
                 </ul>
             </nav>
             <div class="controls">
-                <button class="ctrl-btn" id="langBtn" type="button" lang="en" aria-label="Switch to English">EN</button>
+                <a class="ctrl-btn" id="langBtn" href="en/project-robot-arm.html" hreflang="en" lang="en" aria-label="English" title="English">EN</a>
                 <button class="ctrl-btn" id="themeBtn" type="button" aria-label="Temayı değiştir">
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
@@ -52,37 +55,37 @@
 
     <main id="main">
         <div class="wrap">
-            <a class="crumb" href="index.html#projects">← <span data-lang="tr">Tüm projeler</span><span data-lang="en" lang="en">All projects</span></a>
+            <a class="crumb" href="index.html#projects">← <span data-lang="tr">Tüm projeler</span></a>
             <header class="ds-head">
-                <p class="label"><span data-lang="tr">Proje</span><span data-lang="en" lang="en">Project</span> 03 · 2026</p>
-                <h1><span data-lang="tr">6 Eksenli Robot Kol Kontrolcüsü</span><span data-lang="en" lang="en">6-Axis Robot Arm Controller</span></h1>
+                <p class="label"><span data-lang="tr">Proje</span> 03 · 2026</p>
+                <h1><span data-lang="tr">6 Eksenli Robot Kol Kontrolcüsü</span></h1>
                 <p data-lang="tr" class="lead">STM32 Blackpill üzerinde çalışan 6 servolu robot kol firmware'i ve USB üzerinden kontrol eden PyQt6 masaüstü arayüzü.</p>
-<p data-lang="en" lang="en" class="lead">Firmware for a 6-servo robot arm on an STM32 Blackpill, plus a PyQt6 desktop app that controls it over USB.</p>
+
                 <dl class="ds-meta">
-<div><dt class="label"><span data-lang="tr">Rol</span><span data-lang="en" lang="en">Role</span></dt><dd><span data-lang="tr">Tek geliştirici</span><span data-lang="en" lang="en">Sole developer</span></dd></div>
+<div><dt class="label"><span data-lang="tr">Rol</span></dt><dd><span data-lang="tr">Tek geliştirici</span></dd></div>
 <div><dt class="label">MCU</dt><dd>STM32F411CE</dd></div>
-<div><dt class="label"><span data-lang="tr">Yazılım</span><span data-lang="en" lang="en">Software</span></dt><dd>C++ (STM32duino), Python</dd></div>
-<div><dt class="label"><span data-lang="tr">Kaynak</span><span data-lang="en" lang="en">Source</span></dt><dd><a href="https://github.com/FatihAksoyEEE/RoboArm">GitHub ↗</a></dd></div>
+<div><dt class="label"><span data-lang="tr">Yazılım</span></dt><dd>C++ (STM32duino), Python</dd></div>
+<div><dt class="label"><span data-lang="tr">Kaynak</span></dt><dd><a href="https://github.com/FatihAksoyEEE/RoboArm">GitHub ↗</a></dd></div>
                 </dl>
             </header>
             <div class="ds-body">
                 <nav class="ds-toc" aria-label="İçindekiler">
-                    <p class="label"><span data-lang="tr">İçindekiler</span><span data-lang="en" lang="en">Contents</span></p>
-                    <ol><li><a href="#summary"><span class="n">1</span><span data-lang="tr">Özet</span><span data-lang="en" lang="en">Summary</span></a></li><li><a href="#diagram"><span class="n">2</span><span data-lang="tr">Blok diyagram</span><span data-lang="en" lang="en">Block diagram</span></a></li><li><a href="#hardware"><span class="n">3</span><span data-lang="tr">Donanım</span><span data-lang="en" lang="en">Hardware</span></a></li><li><a href="#software"><span class="n">4</span><span data-lang="tr">Yazılım</span><span data-lang="en" lang="en">Software</span></a></li><li><a href="#links"><span class="n">5</span><span data-lang="tr">Bağlantılar</span><span data-lang="en" lang="en">Links</span></a></li></ol>
+                    <p class="label"><span data-lang="tr">İçindekiler</span></p>
+                    <ol><li><a href="#summary"><span class="n">1</span><span data-lang="tr">Özet</span></a></li><li><a href="#diagram"><span class="n">2</span><span data-lang="tr">Blok diyagram</span></a></li><li><a href="#model"><span class="n">3</span><span data-lang="tr">3D model</span></a></li><li><a href="#hardware"><span class="n">4</span><span data-lang="tr">Donanım</span></a></li><li><a href="#software"><span class="n">5</span><span data-lang="tr">Yazılım</span></a></li><li><a href="#links"><span class="n">6</span><span data-lang="tr">Bağlantılar</span></a></li></ol>
                 </nav>
                 <div class="ds-content">
 <section class="ds-section" id="summary" aria-labelledby="summary-h">
-<h2 id="summary-h"><span class="num">03.1</span><span data-lang="tr">Özet</span><span data-lang="en" lang="en">Summary</span></h2>
+<h2 id="summary-h"><span class="num">03.1</span><span data-lang="tr">Özet</span></h2>
 <p data-lang="tr">Altı servolu bir robot kolu bilgisayardan kontrol etmek için bir firmware ve bir masaüstü arayüzü yazdım. STM32, bilgisayara USB-CDC ile sanal seri port olarak bağlanıyor; ayrı bir USB-UART dönüştürücüye gerek kalmıyor.</p>
-<p data-lang="en" lang="en">I wrote firmware and a desktop app to control a six-servo robot arm from a computer. The STM32 shows up as a virtual serial port over USB-CDC, so no separate USB-UART converter is needed.</p>
+
 <p data-lang="tr">Komut seti bilinçli olarak düz metin tutuldu: aynı komutlar arayüzden de, <code>screen</code> gibi bir seri terminalden de gönderilebiliyor. Bu, donanımı arayüzden bağımsız olarak test etmeyi kolaylaştırıyor.</p>
-<p data-lang="en" lang="en">The command set is deliberately plain text: the same commands can be sent from the GUI or from a serial terminal such as <code>screen</code>. That makes it easy to test the hardware independently of the GUI.</p>
+
 </section>
 <section class="ds-section" id="diagram" aria-labelledby="diagram-h">
-<h2 id="diagram-h"><span class="num">03.2</span><span data-lang="tr">Blok diyagram</span><span data-lang="en" lang="en">Block diagram</span></h2>
-<div class="diagram"><svg viewBox="0 0 760 210" role="img" aria-label="Robot kol kontrol sistemi blok diyagramı"><defs><marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah4s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
+<h2 id="diagram-h"><span class="num">03.2</span><span data-lang="tr">Blok diyagram</span></h2>
+<div class="diagram"><svg viewBox="0 0 760 210" role="img"><title data-lang="tr">Robot kol kontrol sistemi blok diyagramı</title><defs><marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah4s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
             <rect class="blk" x="10" y="75" width="150" height="56" rx="2"/>
-            <text class="t" x="85.0" y="100.0" text-anchor="middle">PyQt6 arayüz</text>
+            <text class="t" x="85.0" y="100.0" text-anchor="middle"><tspan data-lang="tr">PyQt6 arayüz</tspan></text>
             <text class="s" x="85.0" y="117.0" text-anchor="middle">slider · HOME</text>
             <rect class="blk-accent" x="220" y="75" width="160" height="56" rx="2"/>
             <text class="t" x="300.0" y="100.0" text-anchor="middle">STM32F411CE</text>
@@ -106,20 +109,27 @@
             <polyline class="wire" points="590,168 640,168" marker-end="url(#ah4)"/>
             <rect class="blk" x="640" y="80" width="110" height="46" rx="2"/>
             <text class="t" x="695.0" y="100.0" text-anchor="middle">5 V / 10 A</text>
-            <text class="s" x="695.0" y="117.0" text-anchor="middle">servo gücü</text>
+            <text class="s" x="695.0" y="117.0" text-anchor="middle"><tspan data-lang="tr">servo gücü</tspan></text>
             <polyline class="wire" points="695,80 695,61" marker-end="url(#ah4)"/>
             <polyline class="wire" points="695,126 695,145" marker-end="url(#ah4)"/>
             </svg></div>
 </section>
+<section class="ds-section" id="model" aria-labelledby="model-h">
+<h2 id="model-h"><span class="num">03.3</span><span data-lang="tr">3D model</span></h2>
+<div class="fig-pair">
+<figure class="fig"><a href="assets/img/robot-arm/cad-01.webp"><img src="assets/img/robot-arm/cad-01.webp" width="1400" height="739" alt="Perspektif: Kolun 3D modeli, eklem açılarıyla." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 1</span></span><span data-lang="tr">Perspektif — Kolun 3D modeli, eklem açılarıyla.</span></figcaption></figure>
+<figure class="fig"><a href="assets/img/robot-arm/cad-02.webp"><img src="assets/img/robot-arm/cad-02.webp" width="1102" height="1356" alt="Yan görünüm: Kol dik konumda." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 2</span></span><span data-lang="tr">Yan görünüm — Kol dik konumda.</span></figcaption></figure>
+</div>
+</section>
 <section class="ds-section" id="hardware" aria-labelledby="hardware-h">
-<h2 id="hardware-h"><span class="num">03.3</span><span data-lang="tr">Donanım</span><span data-lang="en" lang="en">Hardware</span></h2>
+<h2 id="hardware-h"><span class="num">03.4</span><span data-lang="tr">Donanım</span></h2>
 <table class="spec">
 <tr><th scope="row">MCU</th><td>STM32 Blackpill F411CE</td></tr>
-<tr><th scope="row"><span data-lang="tr">Aktüatörler</span><span data-lang="en" lang="en">Actuators</span></th><td><span data-lang="tr">6 × PWM servo</span><span data-lang="en" lang="en">6 × PWM servo</span></td></tr>
-<tr><th scope="row">PWM</th><td><span data-lang="tr">50 Hz (20 ms), 16 bit çözünürlük; 0° = 1000 µs, 90° = 1500 µs, 180° = 2000 µs</span><span data-lang="en" lang="en">50 Hz (20 ms), 16-bit resolution; 0° = 1000 µs, 90° = 1500 µs, 180° = 2000 µs</span></td></tr>
-<tr><th scope="row"><span data-lang="tr">Zamanlayıcılar</span><span data-lang="en" lang="en">Timers</span></th><td>TIM1 CH1–3 (PA8, PA9, PA10) · TIM4 CH1–3 (PB6, PB7, PB8)</td></tr>
-<tr><th scope="row"><span data-lang="tr">Güç</span><span data-lang="en" lang="en">Power</span></th><td><span data-lang="tr">Servolar için ayrı 5 V / 10 A kaynak; STM32 USB'den beslenir</span><span data-lang="en" lang="en">Separate 5 V / 10 A supply for the servos; the STM32 is powered from USB</span></td></tr>
-<tr><th scope="row"><span data-lang="tr">Haberleşme</span><span data-lang="en" lang="en">Comms</span></th><td>USB-CDC, 115200 baud</td></tr>
+<tr><th scope="row"><span data-lang="tr">Aktüatörler</span></th><td><span data-lang="tr">6 × PWM servo</span></td></tr>
+<tr><th scope="row">PWM</th><td><span data-lang="tr">50 Hz (20 ms), 16 bit çözünürlük; 0° = 1000 µs, 90° = 1500 µs, 180° = 2000 µs</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Zamanlayıcılar</span></th><td>TIM1 CH1–3 (PA8, PA9, PA10) · TIM4 CH1–3 (PB6, PB7, PB8)</td></tr>
+<tr><th scope="row"><span data-lang="tr">Güç</span></th><td><span data-lang="tr">Servolar için ayrı 5 V / 10 A kaynak; STM32 USB'den beslenir</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Haberleşme</span></th><td>USB-CDC, 115200 baud</td></tr>
 </table>
 <pre><code>duty = (pulse_us × 65535) / 20000
 
@@ -127,33 +137,32 @@
  90° → (1500 × 65535) / 20000 = 4915
 180° → (2000 × 65535) / 20000 = 6554</code></pre>
 <p data-lang="tr"><strong>Ortak toprak:</strong> Servo kaynağının eksi ucu STM32 GND'sine bağlanmazsa PWM sinyalinin referansı kayar ve servolar hareket etmez. Servo uçlarına konan 100 µF kapasitörler ani akım çekişlerinde gerilim çökmelerini azaltıyor.</p>
-<p data-lang="en" lang="en"><strong>Common ground:</strong> if the servo supply's negative terminal is not tied to the STM32 GND, the PWM reference floats and the servos do not move. 100 µF capacitors at the servo connectors reduce voltage dips during current spikes.</p>
+
 </section>
 <section class="ds-section" id="software" aria-labelledby="software-h">
-<h2 id="software-h"><span class="num">03.4</span><span data-lang="tr">Yazılım</span><span data-lang="en" lang="en">Software</span></h2>
-<div class="table-scroll"><table class="spec cols"><thead><tr><th scope="col"><span data-lang="tr">Komut</span><span data-lang="en" lang="en">Command</span></th><th scope="col"><span data-lang="tr">İşlev</span><span data-lang="en" lang="en">Function</span></th><th scope="col"><span data-lang="tr">Örnek</span><span data-lang="en" lang="en">Example</span></th></tr></thead>
-<tbody><tr><td><code>S&lt;n&gt;:&lt;açı&gt;</code></td><td><span data-lang="tr">n. servoyu açıya getir (n = 1–6, açı = 0–180)</span><span data-lang="en" lang="en">Move servo n to angle (n = 1–6, angle = 0–180)</span></td><td><code>S1:90</code></td></tr>
-<tr><td><code>ALL:&lt;açı&gt;</code></td><td><span data-lang="tr">Tüm servoları aynı açıya getir</span><span data-lang="en" lang="en">Move all servos to one angle</span></td><td><code>ALL:90</code></td></tr>
-<tr><td><code>STATUS</code></td><td><span data-lang="tr">Tüm açıları raporla</span><span data-lang="en" lang="en">Report all angles</span></td><td><code>S1:90,S2:45,…</code></td></tr>
-<tr><td><code>RESET</code></td><td><span data-lang="tr">Tüm servoları 90°'ye döndür</span><span data-lang="en" lang="en">Return all servos to 90°</span></td><td><code>RESET</code></td></tr></tbody></table></div>
+<h2 id="software-h"><span class="num">03.5</span><span data-lang="tr">Yazılım</span></h2>
+<div class="table-scroll"><table class="spec cols"><thead><tr><th scope="col"><span data-lang="tr">Komut</span></th><th scope="col"><span data-lang="tr">İşlev</span></th><th scope="col"><span data-lang="tr">Örnek</span></th></tr></thead>
+<tbody><tr><td><code>S&lt;n&gt;:<span data-lang="tr">&lt;açı&gt;</span></code></td><td><span data-lang="tr">n. servoyu açıya getir (n = 1–6, açı = 0–180)</span></td><td><code>S1:90</code></td></tr>
+<tr><td><code>ALL:<span data-lang="tr">&lt;açı&gt;</span></code></td><td><span data-lang="tr">Tüm servoları aynı açıya getir</span></td><td><code>ALL:90</code></td></tr>
+<tr><td><code>STATUS</code></td><td><span data-lang="tr">Tüm açıları raporla</span></td><td><code>S1:90,S2:45,…</code></td></tr>
+<tr><td><code>RESET</code></td><td><span data-lang="tr">Tüm servoları 90°'ye döndür</span></td><td><code>RESET</code></td></tr></tbody></table></div>
 <p data-lang="tr">Hatalı komutlara açık hata mesajları dönüyor (<code>ERROR:Angle out of range</code>, <code>ERROR:Servo ID out of range</code> vb.). Arayüzde her servo için bir slider ve min/max açı sınırı var; HOME, RESET ve STATUS butonları aynı komutları gönderiyor. Arayüz macOS için <code>py2app</code> ile tek bir <code>.app</code> olarak paketlenebiliyor.</p>
-<p data-lang="en" lang="en">Bad commands get explicit error replies (<code>ERROR:Angle out of range</code>, <code>ERROR:Servo ID out of range</code>, etc.). The GUI has a slider and min/max limits per servo; HOME, RESET and STATUS buttons send the same commands. On macOS the GUI can be bundled into a single <code>.app</code> with <code>py2app</code>.</p>
-<figure class="fig"><a href="assets/img/robot-arm/gui.webp"><img src="assets/img/robot-arm/gui.webp" width="1600" height="899" alt="Kontrol arayüzü: Repodaki arayüz örneği (docs/GUI_Example)." class="on-white" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 1</span><span data-lang="en" lang="en">Fig. 1</span></span><span data-lang="tr">Kontrol arayüzü — Repodaki arayüz örneği (docs/GUI_Example).</span><span data-lang="en" lang="en">Control interface — GUI example from the repo (docs/GUI_Example).</span></figcaption></figure>
+
 </section>
 <section class="ds-section" id="links" aria-labelledby="links-h">
-<h2 id="links-h"><span class="num">03.5</span><span data-lang="tr">Bağlantılar</span><span data-lang="en" lang="en">Links</span></h2>
+<h2 id="links-h"><span class="num">03.6</span><span data-lang="tr">Bağlantılar</span></h2>
 <ul class="links-list"><li><span class="label" lang="en">GitHub</span><a href="https://github.com/FatihAksoyEEE/RoboArm">FatihAksoyEEE/RoboArm ↗</a></li></ul>
 </section>
                 </div>
             </div>
         </div>
-        <nav class="pager wrap" aria-label="Proje gezinme"><a href="project-control-station.html"><span class="label">← <span data-lang="tr">Önceki</span><span data-lang="en" lang="en">Previous</span></span><strong><span data-lang="tr">Yer Kontrol İstasyonu</span><span data-lang="en" lang="en">Ground Control Station</span></strong></a><a href="project-uav.html"><span class="label"><span data-lang="tr">Sonraki</span><span data-lang="en" lang="en">Next</span> →</span><strong><span data-lang="tr">ESP32 Quadcopter</span><span data-lang="en" lang="en">ESP32 Quadcopter</span></strong></a></nav>
+        <nav class="pager wrap" aria-label="Proje gezinme"><a href="project-control-station.html"><span class="label">← <span data-lang="tr">Önceki</span></span><strong><span data-lang="tr">Yer Kontrol İstasyonu: LoRa Kontrolcü ve Alıcı</span></strong></a><a href="project-uav.html"><span class="label"><span data-lang="tr">Sonraki</span> →</span><strong><span data-lang="tr">ESP32 Quadcopter</span></strong></a></nav>
     </main>
     <footer class="site-footer">
         <div class="wrap">
             <span class="label">© 2026 Fatih Aksoy</span>
-            <span class="label"><span data-lang="tr">Son güncelleme: Ekim 2026</span><span data-lang="en" lang="en">Last updated: October 2026</span></span>
-            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="tr">Sitenin kaynağı</span><span data-lang="en" lang="en">Site source</span> ↗</a>
+            <span class="label"><span data-lang="tr">Son güncelleme: Ekim 2026</span></span>
+            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="tr">Sitenin kaynağı</span> ↗</a>
         </div>
     </footer>
 

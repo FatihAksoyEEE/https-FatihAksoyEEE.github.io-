@@ -41,11 +41,11 @@ Yeni `styles.css`, tüm sayfaların paylaştığı tek bir dosya olarak sıfırd
 - [x] **Header:** İsim, sade nav (Hakkında · Projeler · İletişim), TR/EN ve tema butonları. Mobilde çalışan bir menü (hamburger ya da kompakt satır).
 - [x] **Giriş:** Portre (defter kâğıdına karakalem çizim, tasarım yönünün çıkış noktası), isim, tek cümlelik tanım, CV ve iletişim linkleri.
 - [x] **Hakkında:** Odak alanları ve araçlar (repolardan: KiCad, PlatformIO, PyQt6, React/Electron…) eklendi.
-- [ ] Okul/sınıf ve zaman çizelgesi → bilgi bekleniyor (`index.html` içinde `TODO(Fatih)` yorumu var).
+- [x] Okul/sınıf ve eğitim-staj çizelgesi yeni CV'den eklendi.
 - [x] **Projeler:** Kart grid'i yerine numaralı liste.
   Örnek: `01 — STM32 Flight Controller · 2025 · PCB / Firmware`, yanında küçük bir görsel.
 - [x] **İletişim:** E-posta, GitHub, YouTube, Instagram, CV.
-- [ ] LinkedIn → profil linki bekleniyor (`TODO(Fatih)` yorumu var).
+- [x] LinkedIn eklendi (CV'deki link). CV linkleri `Mehmet_Fatih_Aksoy_CV_TR-EN.pdf` dosyasına bağlandı.
 - [x] JS kapalıyken içerik görünür kalacak (`.hidden` mantığı kaldırılacak).
 
 ## Faz 3: Proje sayfaları (datasheet şablonu)
@@ -65,20 +65,20 @@ Tek bir ortak şablon hazırlanır ve tüm projeler ona taşınır.
 **Sayfalar:**
 - [x] `project-cnc.html`: Mevcut içerik şablona taşınacak (dolu sayfa, ilk prototip bu olacak).
 - [x] `project-order-management.html` (Digitab): Mevcut içerik şablona taşınacak.
-- [~] `project-flight-controller.html`: Şablona taşındı, kart render'ı ve görünen özellikler yazıldı. Bu kartın reposu yok; şema, özellik tablosu ve test sonuçları bekleniyor.
+- [x] `project-flight-controller.html`: Şablona taşındı, kart render'ı ve görünen özellikler yazıldı. Eksik bilgiler (şema, özellik tablosu, test sonuçları) Fatih'ten bekleniyor → Faz 12.
 - [x] `project-uav.html`: **ESP32 Quadcopter** sayfası oldu (`ESP32_Drone` reposu + KiCad şeması). Eski sayfadaki "otonom uçuş, görüntü işleme, OpenCV" iddiaları hiçbir kaynakta yok, kaldırıldı.
-- [x] `project-robot-arm.html`: `RoboArm` reposundan dolduruldu. Stok robot render'ı kaldırıldı. Eski "Arduino, inverse kinematics" bilgisi repoyla çeliştiği için düzeltildi.
+- [x] `project-robot-arm.html`: `RoboArm` reposundan dolduruldu. Stok robot render'ı ve arayüz görüntüsü kaldırıldı; yerine kolun kendi 3D CAD modelinden iki görünüm kondu. Eski "Arduino, inverse kinematics" bilgisi repoyla çeliştiği için düzeltildi.
 - [x] `project-control-station.html`: `Ground-Control-System` kaynak kodundan dolduruldu (paket formatı dahil). Eski "Qt, C++, MAVLink" bilgisi kodla çeliştiği için düzeltildi. Sana ait olmayan stok yer istasyonu fotoğrafı kaldırıldı.
 - [x] **Yeni:** `project-canbus-sniffer.html`, CANable ile tersine mühendislikle RPM çözme.
-- [ ] **Opsiyonel:** SnapRoute → eklenmedi, karar bekleniyor.
+- [x] **Opsiyonel:** SnapRoute → **Karar (Ekim 2026): eklenmeyecek.**
 
 > Not: Ölçüm ve sonuç değerleri uydurulmayacak. README'lerde olmayan bilgiler Fatih'ten alınacak, eksikler `TODO` olarak işaretlenecek.
 
 ## Faz 4: İçerik ve görseller
 
 - [x] Stok render'lar kaldırıldı; yerine repolardaki gerçek tasarım çıktıları (KiCad şema/PCB, arayüz ekranları) ve blok diyagramlar kondu.
-- [ ] Tezgâh, lehim ve test fotoğrafları → çekilmesi bekleniyor.
-- [ ] YouTube videoları → kanalda herkese açık video bulunamadı; video yayınlanınca eklenecek.
+- [x] Tezgâh, lehim ve test fotoğrafları → Faz 12'ye taşındı (Fatih'ten bekleniyor).
+- [x] YouTube videoları → Faz 12'ye taşındı. Ekim 2026'da tekrar kontrol edildi: kanalda hâlâ herkese açık video yok.
 - [x] `assets/images/digitab/` içindeki boşluklu WhatsApp dosya adları düzgün isimlerle değiştirilecek (`digitab-01.jpg` …).
 - [x] TR/EN metinleri gözden geçirilecek. Varsayılan dil HTML'de TR olacak.
 
@@ -88,7 +88,7 @@ Tek bir ortak şablon hazırlanır ve tüm projeler ona taşınır.
 - [x] **Fontlar:** Sadece kullanılan ağırlıklar yüklenecek, `font-display: swap`.
 - [x] **SEO:** Her sayfaya `<meta name="description">`, Open Graph/Twitter kartları (LinkedIn/WhatsApp önizleme görseli), canonical link, favicon, `sitemap.xml`, `robots.txt`.
 - [x] **Erişilebilirlik:** İkon butonlarına `aria-label`, anlamlı `alt` metinleri, klavye ile gezinme ve görünür focus, kontrast kontrolü (WCAG AA).
-- [~] **Kontrol:** Bu makinede Chrome/Node olmadığı için Lighthouse çalıştırılamadı. Yerine yapılanlar: WebKit ile 360/390/1280 px ekran görüntüleri (açık/koyu, TR/EN), yatay taşma ölçümü, HTML yapı/çapa/link kontrolü, WCAG kontrast hesabı (tüm metin renkleri ≥ 4.5:1). Yayından sonra PageSpeed Insights ile ölçülmeli.
+- [x] **Kontrol:** Lighthouse yerelde çalıştırılamadı (Node yok). Yerine yapılanlar: WebKit ile 360/390/1280 px ekran görüntüleri (açık/koyu, TR/EN), yatay taşma ölçümü, HTML yapı/çapa/link kontrolü, WCAG kontrast hesabı (tüm metin renkleri ≥ 4.5:1). Yayından sonra PageSpeed Insights ile ölçülmeli (Faz 9). Ekim 2026: Playwright/Chromium ile 34 sayfa açılışında konsol hatası, 4xx kaynak ve 360/1280 px yatay taşma kontrolü temiz.
 
 ## Faz 6: Bakım (opsiyonel)
 
@@ -96,6 +96,46 @@ Tek bir ortak şablon hazırlanır ve tüm projeler ona taşınır.
   - Düz HTML'de kalıp ortak parçaları basit bir JS include ile yüklemek, veya
   - Astro'ya geçmek (GitHub Pages ile sorunsuz çalışır, bileşen ve markdown tabanlı proje sayfaları sağlar).
 - [x] Karar verildi (yukarıda).
+
+## Faz 7: DigiTab görselleri
+
+- [x] Eski DigiTab ekran görüntüleri (`assets/img/digitab/tablet-*`, `mobile-*`) tamamen kaldırıldı.
+- [x] Yerine `~/Developer/DigiTab/Promo` içindeki tanıtım görselleri (WebP'ye dönüştürülerek) ve tanıtım videosu kondu.
+- [x] Ana sayfadaki proje satırı için DigiTab logosu tasarlandı (`assets/img/digitab/logo.svg`). Sosyal medya önizlemesi (og:image) için tanıtım görseli kullanılıyor.
+
+## Faz 8: Yayın öncesi
+
+- [ ] Bekleyen değişiklikler commit'lenip `main`'e push edilecek.
+- [x] Eski CV linki (`assets/FatihAksoy_CV.pdf`) kırılmasın diye güncel CV eski adla da bırakıldı.
+- [x] Videolar `ffmpeg` ile sıkıştırıldı (H.264, CRF 28, 1280 px, faststart): `demo-bench.mp4` 9,7 MB → 0,45 MB, `demo-tour.mp4` 2,3 → 0,14 MB, DigiTab `promo.mp4` 3,7 → 0,63 MB. Ekran kaydı olduğu için 720p yerine 1280 px genişlik korundu; kalite kare karşılaştırmasıyla kontrol edildi. DigiTab videosunun kapanış kartındaki "macOS masaüstü uygulaması" rozet satırı silindi.
+- [x] `404.html` eklendi ("Sinyal yok.", TR + EN, mutlak yollar sayesinde `/en/...` altında da çalışır, `noindex`).
+
+## Faz 9: SEO ve görünürlük
+
+- [x] İngilizce sayfalar `/en/` altında üretiliyor; her sayfada `hreflang` (tr, en, x-default) ve dile göre canonical/og etiketleri var. Her dilin sayfasında yalnızca o dilin metni kalıyor (build sırasında diğer dil çıkarılıyor). Dil butonu artık karşı dildeki sayfaya giden bir bağlantı; JS gerekmiyor. Diyagram etiketleri ve görsel alt metinleri de çevrildi. `sitemap.xml` iki dili `xhtml:link` ile listeliyor.
+- [x] JSON-LD: ana sayfada `Person` (isim, üniversite, uzmanlıklar, `sameAs`: GitHub, LinkedIn, YouTube, Instagram), proje sayfalarında yazara bağlı `CreativeWork`.
+- [ ] Yayından sonra PageSpeed Insights / Lighthouse ölçümü.
+
+## Faz 10: Kullanılabilirlik
+
+- [x] Proje sayfalarında önceki / sonraki proje linkleri (zaten mevcut, `build.py` içindeki `pager`).
+- [x] Şekillere tıklayınca `<dialog>` içinde büyütme (Esc / arka plana tıklama ile kapanır; JS yokken görsel yeni sayfada açılır).
+- [x] Ana sayfada filtre: Tümü · PCB · Firmware · Yazılım (kategoriler `projects.py` içinde `cats`). JS yokken gizli kalır, liste tam görünür.
+
+## Faz 11: Bakım ve ölçüm
+
+- [x] GitHub Actions (`.github/workflows/check.yml`): her push/PR'da `build.py` çalıştırılıp çıktının repodakiyle aynı olduğu doğrulanıyor, `lychee` ile site içi kırık bağlantı kontrolü yapılıyor.
+- [x] Çerezsiz ziyaretçi istatistiği (GoatCounter) hazır ama **kapalı**: Fatih şimdilik istemedi (Ekim 2026). Açmak için `tools/build/common.py` içindeki `GOATCOUNTER` değişkenine site kodunu yazıp build almak yeterli; CV indirme bağlantıları `data-goatcounter-click="cv-indir"` ile zaten işaretli.
+
+## Faz 12: İçerik (Fatih'ten gelecek)
+
+Bu maddeler site tarafında yapılacak bir iş değil; içerik gelince eklenecek. `[-]` = dış girdi bekleniyor (Ekim 2026'da soruldu: henüz yok).
+
+- [-] Tezgâh, lehim ve test fotoğrafları.
+- [-] STM32 uçuş kontrol kartı: MCU, IMU, şema/PCB görselleri, repo.
+- [-] DigiTab reposunun GitHub'da açılması (açılınca proje sayfasına bağlantı eklenecek; `projects.py` içinde TODO var).
+- [-] YouTube videoları (yayınlanınca ilgili proje sayfalarına eklenecek).
+- [-] Opsiyonel: "Notlar / Blog" bölümü (örn. CAN hattını çözme süreci). Yazıların Fatih'in kendi anlatımıyla gelmesi gerekiyor.
 
 ---
 
@@ -109,11 +149,8 @@ Tek bir ortak şablon hazırlanır ve tüm projeler ona taşınır.
 
 ## Açık sorular
 
-- [ ] Okul, sınıf ve kısa zaman çizelgesi (Hakkında bölümü)
-- [ ] LinkedIn profil linki
-- [ ] Proje yılları doğru mu? Repo tarihleri esas alındı: CAN 2026, GCS 2026, Robot Kol 2026, ESP32 Quadcopter 2025. CNC, STM32 FC ve DigiTab için eski sitedeki 2024 korundu.
-- [ ] STM32 uçuş kontrol kartı: MCU modeli, IMU, şema/PCB görselleri, repo
-- [ ] DigiTab reposu GitHub'da yok (eski sitedeki link 404 veriyordu, kaldırıldı). Açılacak mı?
-- [ ] Robot kol arayüz görüntüsündeki "FABRI CREATOR" markası sana mı ait? Değilse görsel değiştirilmeli.
-- [ ] Gerçek proje fotoğrafları (tezgâh, lehim, test)
-- [ ] SnapRoute siteye eklenecek mi?
+- [x] Proje yılları doğru mu? CAN 2026, GCS 2026, Robot Kol 2026, ESP32 Quadcopter 2025, CNC / STM32 FC / DigiTab 2024. **Fatih onayladı (Ekim 2026).**
+- [-] STM32 uçuş kontrol kartı: MCU modeli, IMU, şema/PCB görselleri, repo → Faz 12
+- [-] DigiTab reposu GitHub'da yok (Ekim 2026'da tekrar kontrol edildi: 404) → Faz 12
+- [-] Gerçek proje fotoğrafları (tezgâh, lehim, test) → Faz 12
+- [x] SnapRoute siteye eklenecek mi? → Hayır.

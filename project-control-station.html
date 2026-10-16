@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Yer Kontrol İstasyonu · Fatih Aksoy</title>
-    <meta name="title-en" content="Ground Control Station · Fatih Aksoy">
+    <title>Yer Kontrol İstasyonu: LoRa Kontrolcü ve Alıcı Tasarımı · Fatih Aksoy</title>
     <meta name="description" content="İHA&#x27;lar için masaüstü yer kontrol yazılımı: seri hattan gelen telemetriyi çözer, uçuş göstergelerini çizer ve harita üzerinden görev yükler.">
     <meta name="author" content="Fatih Aksoy">
     <link rel="canonical" href="https://fatihaksoy.com/project-control-station.html">
+    <link rel="alternate" hreflang="tr" href="https://fatihaksoy.com/project-control-station.html">
+    <link rel="alternate" hreflang="en" href="https://fatihaksoy.com/en/project-control-station.html">
+    <link rel="alternate" hreflang="x-default" href="https://fatihaksoy.com/project-control-station.html">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fatih Aksoy">
-    <meta property="og:title" content="Yer Kontrol İstasyonu · Fatih Aksoy">
+    <meta property="og:title" content="Yer Kontrol İstasyonu: LoRa Kontrolcü ve Alıcı Tasarımı · Fatih Aksoy">
     <meta property="og:description" content="İHA&#x27;lar için masaüstü yer kontrol yazılımı: seri hattan gelen telemetriyi çözer, uçuş göstergelerini çizer ve harita üzerinden görev yükler.">
     <meta property="og:url" content="https://fatihaksoy.com/project-control-station.html">
-    <meta property="og:image" content="https://fatihaksoy.com/assets/og.jpg">
+    <meta property="og:image" content="https://fatihaksoy.com/assets/img/control-station/controller-thumb.webp">
     <meta property="og:locale" content="tr_TR">
     <meta property="og:locale:alternate" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
@@ -22,26 +24,27 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var l=localStorage.getItem('lang');if(l==='en')document.documentElement.lang='en'}catch(e){}</script>
+    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Yer Kontrol İstasyonu: LoRa Kontrolcü ve Alıcı Tasarımı", "description": "İHA'lar için masaüstü yer kontrol yazılımı: seri hattan gelen telemetriyi çözer, uçuş göstergelerini çizer ve harita üzerinden görev yükler.", "url": "https://fatihaksoy.com/project-control-station.html", "image": "https://fatihaksoy.com/assets/img/control-station/controller-thumb.webp", "dateCreated": "2026", "inLanguage": "tr", "keywords": "LoRa, React, Electron, Seri haberleşme", "author": {"@id": "https://fatihaksoy.com/#person"}}</script>
 </head>
 <body>
-    <a class="skip-link" href="#main"><span data-lang="tr">İçeriğe geç</span><span data-lang="en" lang="en">Skip to content</span></a>
+    <a class="skip-link" href="#main"><span data-lang="tr">İçeriğe geç</span></a>
     <header class="site-header">
         <div class="wrap">
             <a class="brand" href="index.html">Fatih Aksoy <span class="label">EEE</span></a>
             <nav class="site-nav" aria-label="Ana menü">
                 <ul>
-                    <li><a href="index.html#about"><span data-lang="tr">Hakkında</span><span data-lang="en" lang="en">About</span></a></li>
-                    <li><a href="index.html#projects" aria-current="page"><span data-lang="tr">Projeler</span><span data-lang="en" lang="en">Projects</span></a></li>
-                    <li><a href="index.html#contact"><span data-lang="tr">İletişim</span><span data-lang="en" lang="en">Contact</span></a></li>
+                    <li><a href="index.html#about"><span data-lang="tr">Hakkında</span></a></li>
+                    <li><a href="index.html#projects" aria-current="page"><span data-lang="tr">Projeler</span></a></li>
+                    <li><a href="index.html#contact"><span data-lang="tr">İletişim</span></a></li>
                 </ul>
             </nav>
             <div class="controls">
-                <button class="ctrl-btn" id="langBtn" type="button" lang="en" aria-label="Switch to English">EN</button>
+                <a class="ctrl-btn" id="langBtn" href="en/project-control-station.html" hreflang="en" lang="en" aria-label="English" title="English">EN</a>
                 <button class="ctrl-btn" id="themeBtn" type="button" aria-label="Temayı değiştir">
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
@@ -52,40 +55,40 @@
 
     <main id="main">
         <div class="wrap">
-            <a class="crumb" href="index.html#projects">← <span data-lang="tr">Tüm projeler</span><span data-lang="en" lang="en">All projects</span></a>
+            <a class="crumb" href="index.html#projects">← <span data-lang="tr">Tüm projeler</span></a>
             <header class="ds-head">
-                <p class="label"><span data-lang="tr">Proje</span><span data-lang="en" lang="en">Project</span> 02 · 2026</p>
-                <h1><span data-lang="tr">Yer Kontrol İstasyonu</span><span data-lang="en" lang="en">Ground Control Station</span></h1>
+                <p class="label"><span data-lang="tr">Proje</span> 02 · 2026</p>
+                <h1><span data-lang="tr">Yer Kontrol İstasyonu: LoRa Kontrolcü ve Alıcı Tasarımı</span></h1>
                 <p data-lang="tr" class="lead">İHA'lar için masaüstü yer kontrol yazılımı: seri hattan gelen telemetriyi çözer, uçuş göstergelerini çizer ve harita üzerinden görev yükler.</p>
-<p data-lang="en" lang="en" class="lead">Desktop ground control software for UAVs: decodes telemetry from a serial link, draws flight instruments and uploads missions from a map.</p>
+
                 <dl class="ds-meta">
-<div><dt class="label"><span data-lang="tr">Rol</span><span data-lang="en" lang="en">Role</span></dt><dd><span data-lang="tr">Tek geliştirici</span><span data-lang="en" lang="en">Sole developer</span></dd></div>
-<div><dt class="label"><span data-lang="tr">Platform</span><span data-lang="en" lang="en">Platform</span></dt><dd>Electron (macOS / Windows)</dd></div>
-<div><dt class="label"><span data-lang="tr">Yığın</span><span data-lang="en" lang="en">Stack</span></dt><dd>React 19, Vite, Leaflet</dd></div>
-<div><dt class="label"><span data-lang="tr">Kaynak</span><span data-lang="en" lang="en">Source</span></dt><dd><a href="https://github.com/FatihAksoyEEE/Ground-Control-System">GitHub ↗</a></dd></div>
+<div><dt class="label"><span data-lang="tr">Rol</span></dt><dd><span data-lang="tr">Tek geliştirici</span></dd></div>
+<div><dt class="label"><span data-lang="tr">Platform</span></dt><dd>Electron (macOS / Windows)</dd></div>
+<div><dt class="label"><span data-lang="tr">Yığın</span></dt><dd>React 19, Vite, Leaflet</dd></div>
+<div><dt class="label"><span data-lang="tr">Kaynak</span></dt><dd><a href="https://github.com/FatihAksoyEEE/Ground-Control-System">GitHub ↗</a></dd></div>
                 </dl>
             </header>
             <div class="ds-body">
                 <nav class="ds-toc" aria-label="İçindekiler">
-                    <p class="label"><span data-lang="tr">İçindekiler</span><span data-lang="en" lang="en">Contents</span></p>
-                    <ol><li><a href="#summary"><span class="n">1</span><span data-lang="tr">Özet</span><span data-lang="en" lang="en">Summary</span></a></li><li><a href="#diagram"><span class="n">2</span><span data-lang="tr">Blok diyagram</span><span data-lang="en" lang="en">Block diagram</span></a></li><li><a href="#protocol"><span class="n">3</span><span data-lang="tr">Telemetri paketi</span><span data-lang="en" lang="en">Telemetry packet</span></a></li><li><a href="#features"><span class="n">4</span><span data-lang="tr">Özellikler</span><span data-lang="en" lang="en">Features</span></a></li><li><a href="#status"><span class="n">5</span><span data-lang="tr">Durum</span><span data-lang="en" lang="en">Status</span></a></li><li><a href="#links"><span class="n">6</span><span data-lang="tr">Bağlantılar</span><span data-lang="en" lang="en">Links</span></a></li></ol>
+                    <p class="label"><span data-lang="tr">İçindekiler</span></p>
+                    <ol><li><a href="#summary"><span class="n">1</span><span data-lang="tr">Özet</span></a></li><li><a href="#diagram"><span class="n">2</span><span data-lang="tr">Blok diyagram</span></a></li><li><a href="#protocol"><span class="n">3</span><span data-lang="tr">Telemetri paketi</span></a></li><li><a href="#features"><span class="n">4</span><span data-lang="tr">Özellikler</span></a></li><li><a href="#status"><span class="n">5</span><span data-lang="tr">Durum</span></a></li><li><a href="#links"><span class="n">6</span><span data-lang="tr">Bağlantılar</span></a></li></ol>
                 </nav>
                 <div class="ds-content">
 <section class="ds-section" id="summary" aria-labelledby="summary-h">
-<h2 id="summary-h"><span class="num">02.1</span><span data-lang="tr">Özet</span><span data-lang="en" lang="en">Summary</span></h2>
+<h2 id="summary-h"><span class="num">02.1</span><span data-lang="tr">Özet</span></h2>
 <p data-lang="tr">Uçuş sırasında operatörün aracın durumunu tek ekranda görmesi ve rotayı uçuş sırasında değiştirebilmesi gerekiyor. Hazır yer istasyonları (Mission Planner, QGroundControl) MAVLink'e bağlı; benim kartlarım ise kendi tanımladığım daha küçük bir ikili protokol kullanıyor.</p>
-<p data-lang="en" lang="en">During a flight the operator needs to see the vehicle's state on one screen and be able to change the route on the fly. Off-the-shelf ground stations (Mission Planner, QGroundControl) are tied to MAVLink, whereas my boards use a smaller binary protocol I defined myself.</p>
+
 <p data-lang="tr">Bu yüzden Electron üzerinde çalışan bir yer kontrol istasyonu yazdım. Seri porttan gelen paketleri çözüyor, yapay ufuk ve hız/irtifa şeritleriyle bir birincil uçuş ekranı (PFD) çiziyor ve harita üzerinde oluşturulan görevi sağlama toplamıyla birlikte araca gönderiyor.</p>
-<p data-lang="en" lang="en">So I wrote a ground control station that runs on Electron. It decodes packets from the serial port, draws a primary flight display (PFD) with an artificial horizon and speed/altitude tapes, and sends a mission built on the map to the vehicle with a checksum.</p>
+
 </section>
 <section class="ds-section" id="diagram" aria-labelledby="diagram-h">
-<h2 id="diagram-h"><span class="num">02.2</span><span data-lang="tr">Blok diyagram</span><span data-lang="en" lang="en">Block diagram</span></h2>
-<div class="diagram"><svg viewBox="0 0 760 230" role="img" aria-label="Yer kontrol istasyonu blok diyagramı"><defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah3s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
+<h2 id="diagram-h"><span class="num">02.2</span><span data-lang="tr">Blok diyagram</span></h2>
+<div class="diagram"><svg viewBox="0 0 760 230" role="img"><title data-lang="tr">Yer kontrol istasyonu blok diyagramı</title><defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah3s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
             <rect class="blk" x="10" y="85" width="130" height="56" rx="2"/>
-            <text class="t" x="75.0" y="110.0" text-anchor="middle">İHA</text>
-            <text class="s" x="75.0" y="127.0" text-anchor="middle">uçuş kontrolcüsü</text>
+            <text class="t" x="75.0" y="110.0" text-anchor="middle"><tspan data-lang="tr">İHA</tspan></text>
+            <text class="s" x="75.0" y="127.0" text-anchor="middle"><tspan data-lang="tr">uçuş kontrolcüsü</tspan></text>
             <rect class="blk" x="190" y="85" width="140" height="56" rx="2"/>
-            <text class="t" x="260.0" y="110.0" text-anchor="middle">Telsiz / seri</text>
+            <text class="t" x="260.0" y="110.0" text-anchor="middle"><tspan data-lang="tr">Telsiz / seri</tspan></text>
             <text class="s" x="260.0" y="127.0" text-anchor="middle">57600 baud</text>
             <polyline class="wire" points="140,113 190,113" marker-end="url(#ah3)" marker-start="url(#ah3s)"/>
             <rect class="blk-accent" x="380" y="85" width="150" height="56" rx="2"/>
@@ -93,75 +96,75 @@
             <text class="s" x="455.0" y="127.0" text-anchor="middle">serialport · IPC</text>
             <polyline class="wire" points="330,113 380,113" marker-end="url(#ah3)" marker-start="url(#ah3s)"/>
             <rect class="blk" x="590" y="15" width="160" height="50" rx="2"/>
-            <text class="t" x="670.0" y="37.0" text-anchor="middle">Paket ayrıştırıcı</text>
+            <text class="t" x="670.0" y="37.0" text-anchor="middle"><tspan data-lang="tr">Paket ayrıştırıcı</tspan></text>
             <text class="s" x="670.0" y="54.0" text-anchor="middle">DataView · 0xAA 0xBB</text>
             <rect class="blk" x="590" y="90" width="160" height="50" rx="2"/>
-            <text class="t" x="670.0" y="112.0" text-anchor="middle">PFD + telemetri</text>
-            <text class="s" x="670.0" y="129.0" text-anchor="middle">ufuk · şeritler</text>
+            <text class="t" x="670.0" y="112.0" text-anchor="middle"><tspan data-lang="tr">PFD + telemetri</tspan></text>
+            <text class="s" x="670.0" y="129.0" text-anchor="middle"><tspan data-lang="tr">ufuk · şeritler</tspan></text>
             <rect class="blk" x="590" y="165" width="160" height="50" rx="2"/>
-            <text class="t" x="670.0" y="187.0" text-anchor="middle">Görev planlayıcı</text>
+            <text class="t" x="670.0" y="187.0" text-anchor="middle"><tspan data-lang="tr">Görev planlayıcı</tspan></text>
             <text class="s" x="670.0" y="204.0" text-anchor="middle">Leaflet · waypoint</text>
             <polyline class="wire" points="530,100 560,100 560,40 590,40" marker-end="url(#ah3)"/>
-            <text class="s" x="552" y="62" text-anchor="end">telemetri</text>
+            <text class="s" x="552" y="62" text-anchor="end"><tspan data-lang="tr">telemetri</tspan></text>
             <polyline class="wire" points="670,65 670,90" marker-end="url(#ah3)"/>
             <polyline class="wire" points="590,190 560,190 560,126 530,126" marker-end="url(#ah3)"/>
-            <text class="s" x="552" y="170" text-anchor="end">görev</text>
+            <text class="s" x="552" y="170" text-anchor="end"><tspan data-lang="tr">görev</tspan></text>
             </svg></div>
 </section>
 <section class="ds-section" id="protocol" aria-labelledby="protocol-h">
-<h2 id="protocol-h"><span class="num">02.3</span><span data-lang="tr">Telemetri paketi</span><span data-lang="en" lang="en">Telemetry packet</span></h2>
+<h2 id="protocol-h"><span class="num">02.3</span><span data-lang="tr">Telemetri paketi</span></h2>
 <p data-lang="tr">Araçtan gelen her paket 34 bayt. <code>0xAA 0xBB</code> başlığıyla senkronize olunuyor, alanlar little-endian ve ölçekli tam sayı olarak taşınıyor.</p>
-<p data-lang="en" lang="en">Every packet from the vehicle is 34 bytes. The parser syncs on the <code>0xAA 0xBB</code> header; fields are little-endian scaled integers.</p>
-<div class="table-scroll"><table class="spec cols"><thead><tr><th scope="col"><span data-lang="tr">Ofset</span><span data-lang="en" lang="en">Offset</span></th><th scope="col"><span data-lang="tr">Tip</span><span data-lang="en" lang="en">Type</span></th><th scope="col"><span data-lang="tr">Alan</span><span data-lang="en" lang="en">Field</span></th><th scope="col"><span data-lang="tr">Ölçek</span><span data-lang="en" lang="en">Scale</span></th></tr></thead>
+
+<div class="table-scroll"><table class="spec cols"><thead><tr><th scope="col"><span data-lang="tr">Ofset</span></th><th scope="col"><span data-lang="tr">Tip</span></th><th scope="col"><span data-lang="tr">Alan</span></th><th scope="col"><span data-lang="tr">Ölçek</span></th></tr></thead>
 <tbody><tr><td>0–1</td><td>u8 ×2</td><td>header</td><td><code>0xAA 0xBB</code></td></tr>
 <tr><td>2</td><td>int16</td><td>roll</td><td>/100 → °</td></tr>
 <tr><td>4</td><td>int16</td><td>pitch</td><td>/100 → °</td></tr>
 <tr><td>6</td><td>int16</td><td>yaw</td><td>/100 → °</td></tr>
-<tr><td>8</td><td>int16</td><td><span data-lang="tr">irtifa</span><span data-lang="en" lang="en">altitude</span></td><td>/10 → m</td></tr>
-<tr><td>10</td><td>int16</td><td><span data-lang="tr">hız</span><span data-lang="en" lang="en">speed</span></td><td>/100 → m/s</td></tr>
-<tr><td>12</td><td>uint8</td><td><span data-lang="tr">batarya</span><span data-lang="en" lang="en">battery</span></td><td>/10 → V</td></tr>
-<tr><td>13</td><td>uint8</td><td><span data-lang="tr">uydu sayısı</span><span data-lang="en" lang="en">satellites</span></td><td>—</td></tr>
+<tr><td>8</td><td>int16</td><td><span data-lang="tr">irtifa</span></td><td>/10 → m</td></tr>
+<tr><td>10</td><td>int16</td><td><span data-lang="tr">hız</span></td><td>/100 → m/s</td></tr>
+<tr><td>12</td><td>uint8</td><td><span data-lang="tr">batarya</span></td><td>/10 → V</td></tr>
+<tr><td>13</td><td>uint8</td><td><span data-lang="tr">uydu sayısı</span></td><td>—</td></tr>
 <tr><td>14</td><td>uint8</td><td>GPS fix</td><td>—</td></tr>
-<tr><td>15</td><td>uint8</td><td><span data-lang="tr">uçuş modu</span><span data-lang="en" lang="en">flight mode</span></td><td>—</td></tr>
-<tr><td>16</td><td>int32</td><td><span data-lang="tr">enlem</span><span data-lang="en" lang="en">latitude</span></td><td>/10⁷ → °</td></tr>
-<tr><td>20</td><td>int32</td><td><span data-lang="tr">boylam</span><span data-lang="en" lang="en">longitude</span></td><td>/10⁷ → °</td></tr></tbody></table></div>
+<tr><td>15</td><td>uint8</td><td><span data-lang="tr">uçuş modu</span></td><td>—</td></tr>
+<tr><td>16</td><td>int32</td><td><span data-lang="tr">enlem</span></td><td>/10⁷ → °</td></tr>
+<tr><td>20</td><td>int32</td><td><span data-lang="tr">boylam</span></td><td>/10⁷ → °</td></tr></tbody></table></div>
 <p data-lang="tr">Görev yüklenirken her waypoint 11 bayta paketleniyor: enlem ve boylam <code>float32</code>, irtifa <code>int16</code>, komut <code>uint8</code> (16 waypoint, 20 RTL, 21 land, 22 takeoff). Paket sonunda iki baytlık Fletcher-16 sağlama toplamı var.</p>
-<p data-lang="en" lang="en">When a mission is uploaded, each waypoint is packed into 11 bytes: latitude and longitude as <code>float32</code>, altitude as <code>int16</code>, command as <code>uint8</code> (16 waypoint, 20 RTL, 21 land, 22 takeoff). The packet ends with a two-byte Fletcher-16 checksum.</p>
+
 </section>
 <section class="ds-section" id="features" aria-labelledby="features-h">
-<h2 id="features-h"><span class="num">02.4</span><span data-lang="tr">Özellikler</span><span data-lang="en" lang="en">Features</span></h2>
+<h2 id="features-h"><span class="num">02.4</span><span data-lang="tr">Özellikler</span></h2>
 <table class="spec">
-<tr><th scope="row">PFD</th><td><span data-lang="tr">Yapay ufuk, hız ve irtifa şeritleri, dairesel göstergeler</span><span data-lang="en" lang="en">Artificial horizon, speed and altitude tapes, circular gauges</span></td></tr>
-<tr><th scope="row"><span data-lang="tr">Harita</span><span data-lang="en" lang="en">Map</span></th><td><span data-lang="tr">Leaflet ile canlı konum, rota çizimi, sürükle-bırak waypoint düzenleme</span><span data-lang="en" lang="en">Live position with Leaflet, route drawing, drag-and-drop waypoint editing</span></td></tr>
-<tr><th scope="row"><span data-lang="tr">Güvenlik</span><span data-lang="en" lang="en">Safety</span></th><td><span data-lang="tr">Waypoint'lerin zemin yüksekliği sorgulanır; minimum güvenli irtifanın altındakiler uyarı verir</span><span data-lang="en" lang="en">Ground elevation is fetched for each waypoint; those below the minimum safe altitude raise a warning</span></td></tr>
-<tr><th scope="row"><span data-lang="tr">Performans</span><span data-lang="en" lang="en">Performance</span></th><td><span data-lang="tr">Arayüz yenileme hızı sınırlanır (throttle), gelen veri tamponda biriktirilir</span><span data-lang="en" lang="en">UI refresh rate is throttled; incoming data is buffered</span></td></tr>
-<tr><th scope="row"><span data-lang="tr">Kalıcılık</span><span data-lang="en" lang="en">Persistence</span></th><td><span data-lang="tr">Tema, birimler, baud hızı ve sesli uyarı ayarları saklanır; görev JSON olarak kaydedilip yüklenebilir</span><span data-lang="en" lang="en">Theme, units, baud rate and audio alert settings persist; missions save/load as JSON</span></td></tr>
-<tr><th scope="row">Setup</th><td><span data-lang="tr">Gövde tipi seçimi, motor testi ve yön, servo min/max/trim sınırları (arayüz)</span><span data-lang="en" lang="en">Frame type selection, motor test and direction, servo min/max/trim limits (UI)</span></td></tr>
+<tr><th scope="row">PFD</th><td><span data-lang="tr">Yapay ufuk, hız ve irtifa şeritleri, dairesel göstergeler</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Harita</span></th><td><span data-lang="tr">Leaflet ile canlı konum, rota çizimi, sürükle-bırak waypoint düzenleme</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Güvenlik</span></th><td><span data-lang="tr">Waypoint'lerin zemin yüksekliği sorgulanır; minimum güvenli irtifanın altındakiler uyarı verir</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Performans</span></th><td><span data-lang="tr">Arayüz yenileme hızı sınırlanır (throttle), gelen veri tamponda biriktirilir</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Kalıcılık</span></th><td><span data-lang="tr">Tema, birimler, baud hızı ve sesli uyarı ayarları saklanır; görev JSON olarak kaydedilip yüklenebilir</span></td></tr>
+<tr><th scope="row">Setup</th><td><span data-lang="tr">Gövde tipi seçimi, motor testi ve yön, servo min/max/trim sınırları (arayüz)</span></td></tr>
 </table>
 </section>
 <section class="ds-section" id="status" aria-labelledby="status-h">
-<h2 id="status-h"><span class="num">02.5</span><span data-lang="tr">Durum</span><span data-lang="en" lang="en">Status</span></h2>
-<ul class="status-list"><li class="done"><span data-lang="tr">Seri port yönetimi ve ikili protokol ayrıştırıcı</span><span data-lang="en" lang="en">Serial port management and binary protocol parser</span></li>
-<li class="done"><span data-lang="tr">PFD, harita ve telemetri panelleri</span><span data-lang="en" lang="en">PFD, map and telemetry panels</span></li>
-<li class="done"><span data-lang="tr">Waypoint yükleme ve uçuş sırasında rota değiştirme</span><span data-lang="en" lang="en">Waypoint upload and in-flight re-routing</span></li>
-<li class=""><span data-lang="tr">Araçtaki görevi geri okuma (waypoint download)</span><span data-lang="en" lang="en">Reading the mission back from the vehicle (waypoint download)</span></li>
-<li class=""><span data-lang="tr">USB gamepad ile RC override</span><span data-lang="en" lang="en">RC override with a USB gamepad</span></li>
-<li class=""><span data-lang="tr">Setup ekranındaki ayarların araca yazılması</span><span data-lang="en" lang="en">Writing Setup screen settings to the vehicle</span></li></ul>
+<h2 id="status-h"><span class="num">02.5</span><span data-lang="tr">Durum</span></h2>
+<ul class="status-list"><li class="done"><span data-lang="tr">Seri port yönetimi ve ikili protokol ayrıştırıcı</span></li>
+<li class="done"><span data-lang="tr">PFD, harita ve telemetri panelleri</span></li>
+<li class="done"><span data-lang="tr">Waypoint yükleme ve uçuş sırasında rota değiştirme</span></li>
+<li class=""><span data-lang="tr">Araçtaki görevi geri okuma (waypoint download)</span></li>
+<li class=""><span data-lang="tr">USB gamepad ile RC override</span></li>
+<li class=""><span data-lang="tr">Setup ekranındaki ayarların araca yazılması</span></li></ul>
 </section>
 <section class="ds-section" id="links" aria-labelledby="links-h">
-<h2 id="links-h"><span class="num">02.6</span><span data-lang="tr">Bağlantılar</span><span data-lang="en" lang="en">Links</span></h2>
+<h2 id="links-h"><span class="num">02.6</span><span data-lang="tr">Bağlantılar</span></h2>
 <ul class="links-list"><li><span class="label" lang="en">GitHub</span><a href="https://github.com/FatihAksoyEEE/Ground-Control-System">FatihAksoyEEE/Ground-Control-System ↗</a></li></ul>
 </section>
                 </div>
             </div>
         </div>
-        <nav class="pager wrap" aria-label="Proje gezinme"><a href="project-canbus-sniffer.html"><span class="label">← <span data-lang="tr">Önceki</span><span data-lang="en" lang="en">Previous</span></span><strong><span data-lang="tr">CAN-Bus Sniffer</span><span data-lang="en" lang="en">CAN-Bus Sniffer</span></strong></a><a href="project-robot-arm.html"><span class="label"><span data-lang="tr">Sonraki</span><span data-lang="en" lang="en">Next</span> →</span><strong><span data-lang="tr">Robot Kol Kontrolcüsü</span><span data-lang="en" lang="en">Robot Arm Controller</span></strong></a></nav>
+        <nav class="pager wrap" aria-label="Proje gezinme"><a href="project-canbus-sniffer.html"><span class="label">← <span data-lang="tr">Önceki</span></span><strong><span data-lang="tr">CAN-Bus Sniffer</span></strong></a><a href="project-robot-arm.html"><span class="label"><span data-lang="tr">Sonraki</span> →</span><strong><span data-lang="tr">Robot Kol Kontrolcüsü</span></strong></a></nav>
     </main>
     <footer class="site-footer">
         <div class="wrap">
             <span class="label">© 2026 Fatih Aksoy</span>
-            <span class="label"><span data-lang="tr">Son güncelleme: Ekim 2026</span><span data-lang="en" lang="en">Last updated: October 2026</span></span>
-            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="tr">Sitenin kaynağı</span><span data-lang="en" lang="en">Site source</span> ↗</a>
+            <span class="label"><span data-lang="tr">Son güncelleme: Ekim 2026</span></span>
+            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="tr">Sitenin kaynağı</span> ↗</a>
         </div>
     </footer>
 

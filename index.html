@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fatih Aksoy · Elektrik-Elektronik Mühendisliği</title>
-    <meta name="title-en" content="Fatih Aksoy · Electrical &amp; Electronics Engineering">
     <meta name="description" content="Fatih Aksoy: gömülü sistemler, PCB tasarımı ve otomasyon üzerine çalışan elektrik-elektronik mühendisliği öğrencisi. Projeler, şemalar ve kaynak kodlar.">
     <meta name="author" content="Fatih Aksoy">
     <link rel="canonical" href="https://fatihaksoy.com/">
+    <link rel="alternate" hreflang="tr" href="https://fatihaksoy.com/">
+    <link rel="alternate" hreflang="en" href="https://fatihaksoy.com/en/">
+    <link rel="alternate" hreflang="x-default" href="https://fatihaksoy.com/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Fatih Aksoy">
     <meta property="og:title" content="Fatih Aksoy · Elektrik-Elektronik Mühendisliği">
@@ -22,26 +24,27 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var l=localStorage.getItem('lang');if(l==='en')document.documentElement.lang='en'}catch(e){}</script>
+    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://fatihaksoy.com/#person", "name": "Mehmet Fatih Aksoy", "alternateName": "Fatih Aksoy", "url": "https://fatihaksoy.com/", "image": "https://fatihaksoy.com/assets/img/portrait.webp", "jobTitle": "Electrical and Electronics Engineering Student", "affiliation": {"@type": "CollegeOrUniversity", "name": "Zonguldak Bülent Ecevit Üniversitesi"}, "knowsAbout": ["Embedded systems", "PCB design", "STM32", "ESP32", "KiCad", "CAN bus", "Industrial automation", "PLC"], "sameAs": ["https://github.com/FatihAksoyEEE", "https://www.linkedin.com/in/mehmet-fatih-aksoy-1217443ba", "https://www.youtube.com/@electronc_workshop", "https://www.instagram.com/fatih_aksoy6741/"]}</script>
 </head>
 <body>
-    <a class="skip-link" href="#main"><span data-lang="tr">İçeriğe geç</span><span data-lang="en" lang="en">Skip to content</span></a>
+    <a class="skip-link" href="#main"><span data-lang="tr">İçeriğe geç</span></a>
     <header class="site-header">
         <div class="wrap">
             <a class="brand" href="#top">Fatih Aksoy <span class="label">EEE</span></a>
             <nav class="site-nav" aria-label="Ana menü">
                 <ul>
-                    <li><a href="#about"><span data-lang="tr">Hakkında</span><span data-lang="en" lang="en">About</span></a></li>
-                    <li><a href="#projects"><span data-lang="tr">Projeler</span><span data-lang="en" lang="en">Projects</span></a></li>
-                    <li><a href="#contact"><span data-lang="tr">İletişim</span><span data-lang="en" lang="en">Contact</span></a></li>
+                    <li><a href="#about"><span data-lang="tr">Hakkında</span></a></li>
+                    <li><a href="#projects"><span data-lang="tr">Projeler</span></a></li>
+                    <li><a href="#contact"><span data-lang="tr">İletişim</span></a></li>
                 </ul>
             </nav>
             <div class="controls">
-                <button class="ctrl-btn" id="langBtn" type="button" lang="en" aria-label="Switch to English">EN</button>
+                <a class="ctrl-btn" id="langBtn" href="en/" hreflang="en" lang="en" aria-label="English" title="English">EN</a>
                 <button class="ctrl-btn" id="themeBtn" type="button" aria-label="Temayı değiştir">
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
@@ -54,97 +57,106 @@
         <section class="hero" id="top">
             <div class="wrap">
                 <div>
-                    <p class="label"><span data-lang="tr">Elektrik-elektronik mühendisliği öğrencisi</span><span data-lang="en" lang="en">Electrical &amp; electronics engineering student</span></p>
+                    <p class="label"><span data-lang="tr">Elektrik-elektronik mühendisliği · 4. sınıf</span></p>
                     <h1>Fatih Aksoy</h1>
                     <p data-lang="tr" class="lead">Gömülü sistemler, PCB tasarımı ve otomasyon üzerine çalışıyorum. Kartı tasarlamaktan firmware'ini ve onu kullanan masaüstü arayüzü yazmaya kadar projenin tamamını üstlenmeyi seviyorum.</p>
-<p data-lang="en" lang="en" class="lead">I work on embedded systems, PCB design and automation. I like owning a project end to end: from designing the board to writing its firmware and the desktop app that drives it.</p>
+
                     <div class="actions">
-                        <a class="btn btn-primary" href="#projects"><span data-lang="tr">Projeler</span><span data-lang="en" lang="en">Projects</span> <span class="arrow">↓</span></a>
-                        <a class="btn" href="assets/FatihAksoy_CV.pdf" download="Fatih_Aksoy_CV.pdf"><span data-lang="tr">CV indir</span><span data-lang="en" lang="en">Download CV</span> <span class="arrow">PDF</span></a>
+                        <a class="btn btn-primary" href="#projects"><span data-lang="tr">Projeler</span> <span class="arrow">↓</span></a>
+                        <a class="btn" href="assets/Mehmet_Fatih_Aksoy_CV_TR-EN.pdf" download="Mehmet_Fatih_Aksoy_CV.pdf" data-goatcounter-click="cv-indir"><span data-lang="tr">CV indir</span> <span class="arrow">PDF</span></a>
                         <a class="btn" href="https://github.com/FatihAksoyEEE">GitHub <span class="arrow">↗</span></a>
                     </div>
                 </div>
                 <figure class="hero-figure">
                     <img src="assets/img/portrait.webp" srcset="assets/img/portrait-480.webp 480w, assets/img/portrait.webp 900w" sizes="(min-width: 860px) 420px, 90vw" width="900" height="958" alt="Fatih Aksoy'nun karakalem portresi" fetchpriority="high">
-                    <figcaption class="label"><span data-lang="tr">Portre · karakalem, çizgili defter</span><span data-lang="en" lang="en">Portrait · pencil on lined paper</span></figcaption>
                 </figure>
             </div>
         </section>
 
         <section class="section" id="about" aria-labelledby="about-h">
             <div class="wrap">
-                <div class="section-head"><span class="num">01</span><h2 id="about-h"><span data-lang="tr">Hakkında</span><span data-lang="en" lang="en">About</span></h2></div>
+                <div class="section-head"><span class="num">01</span><h2 id="about-h"><span data-lang="tr">Hakkında</span></h2></div>
                 <div class="about-grid">
                     <div>
-                        <p data-lang="tr">Merhaba, ben Fatih. Elektrik-elektronik mühendisliği öğrencisiyim. Kendimi en çok <strong>gömülü sistemler</strong>, <strong>PCB tasarımı</strong> ve <strong>otomasyon</strong> alanlarında, gerçek donanım üzerinde çalışarak geliştiriyorum.</p>
-<p data-lang="en" lang="en">Hi, I'm Fatih, an electrical and electronics engineering student. I learn best by working on real hardware, mostly in <strong>embedded systems</strong>, <strong>PCB design</strong> and <strong>automation</strong>.</p>
+                        <p data-lang="tr">Merhaba, ben Fatih. Zonguldak Bülent Ecevit Üniversitesi'nde elektrik-elektronik mühendisliği son sınıf öğrencisiyim. Kendimi en çok <strong>gömülü sistemler</strong>, <strong>PCB tasarımı</strong> ve <strong>otomasyon</strong> alanlarında, gerçek donanım üzerinde çalışarak geliştiriyorum.</p>
+
                         <p data-lang="tr">Son projelerimde bir quadcopter'ın uçuş kartını KiCad'de çizdim, STM32 ile bir robot kolu sürdüm, bir aracın CAN hattını dinleyerek motor devri sinyalini tersine mühendislikle çözdüm ve bunlarla konuşan masaüstü arayüzleri yazdım.</p>
-<p data-lang="en" lang="en">Recently I drew a quadcopter flight board in KiCad, drove a robot arm with an STM32, reverse-engineered a vehicle's engine-speed signal by listening to its CAN bus, and wrote the desktop apps that talk to them.</p>
-                        <!-- TODO(Fatih): okul, sınıf ve kısa zaman çizelgesi eklenecek. -->
+
+                        <p data-lang="tr">Endüstriyel otomasyon ve iş makinesi haberleşmesi üzerine iki staj yaptım.</p>
+
                     </div>
                     <table class="spec">
-                        <tr><th scope="row"><span data-lang="tr">Odak</span><span data-lang="en" lang="en">Focus</span></th><td><span data-lang="tr">Gömülü yazılım, PCB tasarımı, haberleşme protokolleri, otomasyon</span><span data-lang="en" lang="en">Embedded software, PCB design, communication protocols, automation</span></td></tr>
+                        <tr><th scope="row"><span data-lang="tr">Odak</span></th><td><span data-lang="tr">Gömülü yazılım, PCB tasarımı, haberleşme protokolleri, otomasyon</span></td></tr>
                         <tr><th scope="row">MCU</th><td>STM32, ESP32, AVR (ATmega328P)</td></tr>
-                        <tr><th scope="row"><span data-lang="tr">Donanım</span><span data-lang="en" lang="en">Hardware</span></th><td>KiCad, <span data-lang="tr">şema ve PCB yerleşimi</span><span data-lang="en" lang="en">schematic and PCB layout</span></td></tr>
-                        <tr><th scope="row"><span data-lang="tr">Yazılım</span><span data-lang="en" lang="en">Software</span></th><td>C/C++ (PlatformIO, Arduino), Python (PyQt6, python-can), JavaScript (React, Electron, Node.js)</td></tr>
-                        <tr><th scope="row"><span data-lang="tr">Protokoller</span><span data-lang="en" lang="en">Protocols</span></th><td>CAN, UART, I²C, SPI, USB-CDC, ESP-NOW</td></tr>
+                        <tr><th scope="row"><span data-lang="tr">Donanım</span></th><td>KiCad, Altium, Fusion 360, SolidWorks</td></tr>
+                        <tr><th scope="row"><span data-lang="tr">Yazılım</span></th><td>C/C++ (PlatformIO, Arduino), Python (PyQt6, python-can), JavaScript (React, Electron, Node.js)</td></tr>
+                        <tr><th scope="row"><span data-lang="tr">Protokoller</span></th><td>CAN, UART, I²C, SPI, USB-CDC, LoRa, ESP-NOW</td></tr>
+                        <tr><th scope="row"><span data-lang="tr">Otomasyon</span></th><td><span data-lang="tr">Siemens ve Delta PLC, TIA Portal, motor sürücüleri, elektrik panoları</span></td></tr>
+                        <tr><th scope="row"><span data-lang="tr">Simülasyon</span></th><td>MATLAB, Simulink</td></tr>
                     </table>
                 </div>
+                <h3 class="label timeline-title"><span data-lang="tr">Eğitim ve staj</span></h3>
+                <table class="spec timeline">
+                    <tr><th scope="row"><span data-lang="tr">2027 (beklenen)</span></th><td><strong><span data-lang="tr">Lisans · Zonguldak Bülent Ecevit Üniversitesi</span></strong><br><span data-lang="tr">Elektrik-Elektronik Mühendisliği</span></td></tr>
+                    <tr><th scope="row"><span data-lang="tr">Haziran 2026</span></th><td><strong><span data-lang="tr">Stajyer · Sistem Vinç A.Ş.</span></strong><br><span data-lang="tr">Ağır iş makinelerindeki elektrik ve elektronik arızalara çözümler; CAN tabanlı sensör haberleşmesi, hidrolik ve pnömatik kontrol.</span></td></tr>
+                    <tr><th scope="row"><span data-lang="tr">Haziran–Temmuz 2024</span></th><td><strong><span data-lang="tr">Stajyer · Ensan, Otomasyon Bölümü</span></strong><br><span data-lang="tr">Endüstriyel otomasyon makinelerinin bakım ve onarımında Siemens ve Delta PLC'ler, motor sürücüleri ve elektrik panoları; sıfırdan makine üretiminin elektrik-elektronik tarafı; görüntü tabanlı hata tespit sistemleri.</span></td></tr>
+                </table>
             </div>
         </section>
 
         <section class="section" id="projects" aria-labelledby="projects-h">
             <div class="wrap">
-                <div class="section-head"><span class="num">02</span><h2 id="projects-h"><span data-lang="tr">Projeler</span><span data-lang="en" lang="en">Projects</span></h2></div>
+                <div class="section-head"><span class="num">02</span><h2 id="projects-h"><span data-lang="tr">Projeler</span></h2></div>
+                <div class="filter" role="group" aria-label="Projeleri filtrele" hidden><button type="button" aria-pressed="true" data-cat=""><span data-lang="tr">Tümü</span> <span class="n">7</span></button><button type="button" aria-pressed="false" data-cat="pcb"><span data-lang="tr">PCB</span> <span class="n">3</span></button><button type="button" aria-pressed="false" data-cat="fw"><span data-lang="tr">Firmware</span> <span class="n">3</span></button><button type="button" aria-pressed="false" data-cat="sw"><span data-lang="tr">Yazılım</span> <span class="n">4</span></button></div>
                 <ol class="project-list">
-<li><a class="project-row" href="project-canbus-sniffer.html">
+<li data-cats="sw"><a class="project-row" href="project-canbus-sniffer.html">
     <span class="idx">01</span>
-    <div class="body"><h3><span data-lang="tr">CAN-Bus Sniffer</span><span data-lang="en" lang="en">CAN-Bus Sniffer</span></h3><p data-lang="tr" class="desc">Bir aracın OBD-II soketinden CAN trafiğini dinleyip, üreticiye özel motor devri sinyalini tersine mühendislikle bulan araç seti.</p>
-<p data-lang="en" lang="en" class="desc">A toolset that listens to a vehicle's CAN traffic through the OBD-II port and reverse-engineers the manufacturer-specific engine RPM signal.</p></div>
-    <div class="meta"><span>2026</span><span><span data-lang="tr">Python · python-can · CANable · Tersine mühendislik</span><span data-lang="en" lang="en">Python · python-can · CANable · Reverse engineering</span></span></div>
-    <span class="thumb thumb-text" aria-hidden="true">0x2C4 → RPM</span>
+    <div class="body"><h3><span data-lang="tr">CAN-Bus Sniffer</span></h3><p data-lang="tr" class="desc">Bir aracın OBD-II soketinden CAN trafiğini dinleyip, üreticiye özel motor devri sinyalini tersine mühendislikle bulan araç seti.</p>
+</div>
+    <div class="meta"><span>2026</span><span><span data-lang="tr">Python · python-can · CANable · Tersine mühendislik</span></span></div>
+    <img src="assets/img/canbus/canable.webp" width="634" height="420" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
-<li><a class="project-row" href="project-control-station.html">
+<li data-cats="sw"><a class="project-row" href="project-control-station.html">
     <span class="idx">02</span>
-    <div class="body"><h3><span data-lang="tr">Yer Kontrol İstasyonu</span><span data-lang="en" lang="en">Ground Control Station</span></h3><p data-lang="tr" class="desc">İHA'lar için masaüstü yer kontrol yazılımı: seri hattan gelen telemetriyi çözer, uçuş göstergelerini çizer ve harita üzerinden görev yükler.</p>
-<p data-lang="en" lang="en" class="desc">Desktop ground control software for UAVs: decodes telemetry from a serial link, draws flight instruments and uploads missions from a map.</p></div>
-    <div class="meta"><span>2026</span><span><span data-lang="tr">React · Electron · Seri haberleşme</span><span data-lang="en" lang="en">React · Electron · Serial comms</span></span></div>
-    <span class="thumb thumb-text" aria-hidden="true">0xAA 0xBB …</span>
+    <div class="body"><h3><span data-lang="tr">Yer Kontrol İstasyonu: LoRa Kontrolcü ve Alıcı</span></h3><p data-lang="tr" class="desc">İHA'lar için masaüstü yer kontrol yazılımı: seri hattan gelen telemetriyi çözer, uçuş göstergelerini çizer ve harita üzerinden görev yükler.</p>
+</div>
+    <div class="meta"><span>2026</span><span><span data-lang="tr">LoRa · React · Electron · Seri haberleşme</span></span></div>
+    <img src="assets/img/control-station/controller-thumb.webp" width="1200" height="900" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
-<li><a class="project-row" href="project-robot-arm.html">
+<li data-cats="fw sw"><a class="project-row" href="project-robot-arm.html">
     <span class="idx">03</span>
-    <div class="body"><h3><span data-lang="tr">Robot Kol Kontrolcüsü</span><span data-lang="en" lang="en">Robot Arm Controller</span></h3><p data-lang="tr" class="desc">STM32 Blackpill üzerinde çalışan 6 servolu robot kol firmware'i ve USB üzerinden kontrol eden PyQt6 masaüstü arayüzü.</p>
-<p data-lang="en" lang="en" class="desc">Firmware for a 6-servo robot arm on an STM32 Blackpill, plus a PyQt6 desktop app that controls it over USB.</p></div>
-    <div class="meta"><span>2026</span><span><span data-lang="tr">STM32 · PlatformIO · PyQt6</span><span data-lang="en" lang="en">STM32 · PlatformIO · PyQt6</span></span></div>
-    <img src="assets/img/robot-arm/gui.webp" width="1600" height="899" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
+    <div class="body"><h3><span data-lang="tr">Robot Kol Kontrolcüsü</span></h3><p data-lang="tr" class="desc">STM32 Blackpill üzerinde çalışan 6 servolu robot kol firmware'i ve USB üzerinden kontrol eden PyQt6 masaüstü arayüzü.</p>
+</div>
+    <div class="meta"><span>2026</span><span><span data-lang="tr">STM32 · PlatformIO · PyQt6</span></span></div>
+    <img src="assets/img/robot-arm/cover.webp" width="800" height="620" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
-<li><a class="project-row" href="project-uav.html">
+<li data-cats="pcb fw"><a class="project-row" href="project-uav.html">
     <span class="idx">04</span>
-    <div class="body"><h3><span data-lang="tr">ESP32 Quadcopter</span><span data-lang="en" lang="en">ESP32 Quadcopter</span></h3><p data-lang="tr" class="desc">Gövdesi de PCB olan, ESP32 tabanlı küçük bir quadcopter: şema, kart tasarımı ve PID stabilizasyonlu uçuş yazılımı.</p>
-<p data-lang="en" lang="en" class="desc">A small ESP32-based quadcopter whose frame is the PCB itself: schematic, board layout and PID-stabilised flight firmware.</p></div>
-    <div class="meta"><span>2025</span><span><span data-lang="tr">PCB · KiCad · ESP32 · Firmware</span><span data-lang="en" lang="en">PCB · KiCad · ESP32 · Firmware</span></span></div>
+    <div class="body"><h3><span data-lang="tr">ESP32 Quadcopter</span></h3><p data-lang="tr" class="desc">Gövdesi de PCB olan, ESP32 tabanlı küçük bir quadcopter: şema, kart tasarımı ve PID stabilizasyonlu uçuş yazılımı.</p>
+</div>
+    <div class="meta"><span>2025</span><span><span data-lang="tr">PCB · KiCad · ESP32 · Firmware</span></span></div>
     <img src="assets/img/quadcopter/pcb-3d.webp" width="1092" height="1038" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
-<li><a class="project-row" href="project-flight-controller.html">
+<li data-cats="pcb fw"><a class="project-row" href="project-flight-controller.html">
     <span class="idx">05</span>
-    <div class="body"><h3><span data-lang="tr">STM32 Uçuş Kontrol Kartı</span><span data-lang="en" lang="en">STM32 Flight Controller</span></h3><p data-lang="tr" class="desc">STM32 tabanlı, özel tasarım uçuş kontrol kartı ve stabilizasyon yazılımı.</p>
-<p data-lang="en" lang="en" class="desc">A custom STM32-based flight control board and stabilisation firmware.</p></div>
-    <div class="meta"><span>2024</span><span><span data-lang="tr">PCB · STM32 · Gömülü</span><span data-lang="en" lang="en">PCB · STM32 · Embedded</span></span></div>
+    <div class="body"><h3><span data-lang="tr">STM32 Uçuş Kontrol Kartı</span></h3><p data-lang="tr" class="desc">STM32 tabanlı, özel tasarım uçuş kontrol kartı ve stabilizasyon yazılımı.</p>
+</div>
+    <div class="meta"><span>2024</span><span><span data-lang="tr">PCB · STM32 · Gömülü</span></span></div>
     <img src="assets/img/flight-controller/pcb-3d.webp" width="799" height="670" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
-<li><a class="project-row" href="project-cnc.html">
+<li data-cats="pcb"><a class="project-row" href="project-cnc.html">
     <span class="idx">06</span>
-    <div class="body"><h3><span data-lang="tr">3 Eksenli CNC Freze</span><span data-lang="en" lang="en">3-Axis CNC Mill</span></h3><p data-lang="tr" class="desc">Mekaniği, kontrol kartı ve yazılımıyla baştan tasarlanmış masaüstü CNC freze.</p>
-<p data-lang="en" lang="en" class="desc">A desktop CNC mill designed from scratch: mechanics, control board and software.</p></div>
-    <div class="meta"><span>2024</span><span><span data-lang="tr">Mekanik · PCB · GRBL</span><span data-lang="en" lang="en">Mechanical · PCB · GRBL</span></span></div>
+    <div class="body"><h3><span data-lang="tr">3 Eksenli CNC Freze</span></h3><p data-lang="tr" class="desc">Mekaniği, kontrol kartı ve yazılımıyla baştan tasarlanmış masaüstü CNC freze.</p>
+</div>
+    <div class="meta"><span>2024</span><span><span data-lang="tr">Mekanik · PCB · GRBL</span></span></div>
     <img src="assets/img/cnc/cover.webp" width="1400" height="1156" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
-<li><a class="project-row" href="project-order-management.html">
+<li data-cats="sw"><a class="project-row" href="project-order-management.html">
     <span class="idx">07</span>
-    <div class="body"><h3><span data-lang="tr">DigiTab Adisyon Sistemi</span><span data-lang="en" lang="en">DigiTab Order Management</span></h3><p data-lang="tr" class="desc">Restoran ve kafeler için gerçek zamanlı sipariş, masa ve menü yönetim sistemi.</p>
-<p data-lang="en" lang="en" class="desc">A real-time order, table and menu management system for restaurants and cafés.</p></div>
-    <div class="meta"><span>2024</span><span><span data-lang="tr">React · Node.js · Socket.io</span><span data-lang="en" lang="en">React · Node.js · Socket.io</span></span></div>
-    <img src="assets/img/digitab/tablet-02-tables.webp" width="1280" height="841" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
+    <div class="body"><h3><span data-lang="tr">DigiTab Adisyon Sistemi</span></h3><p data-lang="tr" class="desc">Restoran ve kafeler için gerçek zamanlı sipariş, masa ve menü yönetim sistemi.</p>
+</div>
+    <div class="meta"><span>2024</span><span><span data-lang="tr">React · Node.js · Socket.io</span></span></div>
+    <img src="assets/img/digitab/logo.svg" width="400" height="300" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
                 </ol>
             </div>
@@ -152,17 +164,17 @@
 
         <section class="section" id="contact" aria-labelledby="contact-h">
             <div class="wrap">
-                <div class="section-head"><span class="num">03</span><h2 id="contact-h"><span data-lang="tr">İletişim</span><span data-lang="en" lang="en">Contact</span></h2></div>
+                <div class="section-head"><span class="num">03</span><h2 id="contact-h"><span data-lang="tr">İletişim</span></h2></div>
                 <div class="contact-grid">
                     <p data-lang="tr">Staj, proje ya da sadece bir soru için bana e-postayla ulaşabilirsin. Projelerin kaynak kodları GitHub'da.</p>
-<p data-lang="en" lang="en">For internships, projects or just a question, email is the best way to reach me. Source code for the projects is on GitHub.</p>
+
                     <table class="spec">
-                        <tr><th scope="row"><span data-lang="tr">E-posta</span><span data-lang="en" lang="en">Email</span></th><td><a href="mailto:mf.aksoy34@gmail.com">mf.aksoy34@gmail.com</a></td></tr>
+                        <tr><th scope="row"><span data-lang="tr">E-posta</span></th><td><a href="mailto:mf.aksoy34@gmail.com">mf.aksoy34@gmail.com</a></td></tr>
                         <tr><th scope="row" lang="en">GitHub</th><td><a href="https://github.com/FatihAksoyEEE">FatihAksoyEEE ↗</a></td></tr>
-                        <!-- TODO(Fatih): LinkedIn profil linki eklenecek. -->
+                        <tr><th scope="row" lang="en">LinkedIn</th><td><a href="https://www.linkedin.com/in/mehmet-fatih-aksoy-1217443ba">mehmet-fatih-aksoy ↗</a></td></tr>
                         <tr><th scope="row" lang="en">YouTube</th><td><a href="https://www.youtube.com/@electronc_workshop">@electronc_workshop ↗</a></td></tr>
                         <tr><th scope="row" lang="en">Instagram</th><td><a href="https://www.instagram.com/fatih_aksoy6741/">@fatih_aksoy6741 ↗</a></td></tr>
-                        <tr><th scope="row">CV</th><td><a href="assets/FatihAksoy_CV.pdf" download="Fatih_Aksoy_CV.pdf">FatihAksoy_CV.pdf</a></td></tr>
+                        <tr><th scope="row">CV</th><td><a href="assets/Mehmet_Fatih_Aksoy_CV_TR-EN.pdf" download="Mehmet_Fatih_Aksoy_CV.pdf" data-goatcounter-click="cv-indir"><span data-lang="tr">PDF · Türkçe ve İngilizce</span></a></td></tr>
                     </table>
                 </div>
             </div>
@@ -171,8 +183,8 @@
     <footer class="site-footer">
         <div class="wrap">
             <span class="label">© 2026 Fatih Aksoy</span>
-            <span class="label"><span data-lang="tr">Son güncelleme: Ekim 2026</span><span data-lang="en" lang="en">Last updated: October 2026</span></span>
-            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="tr">Sitenin kaynağı</span><span data-lang="en" lang="en">Site source</span> ↗</a>
+            <span class="label"><span data-lang="tr">Son güncelleme: Ekim 2026</span></span>
+            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="tr">Sitenin kaynağı</span> ↗</a>
         </div>
     </footer>
 

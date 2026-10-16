@@ -220,6 +220,7 @@ html[lang="en"] [data-lang="tr"] { display: none !important; }
     letter-spacing: 0.04em;
     cursor: pointer;
 }
+a.ctrl-btn { text-decoration: none; }
 .ctrl-btn:hover { color: var(--ink); border-color: var(--ink-2); }
 .ctrl-btn svg { width: 16px; height: 16px; }
 
@@ -370,6 +371,25 @@ main { display: block; }
 .spec.cols th { width: auto; }
 
 /* ---------- Project index ---------- */
+/* Proje filtresi (JS ile görünür olur) */
+.filter { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 20px; }
+.filter[hidden] { display: none; }
+.filter button {
+    height: 32px;
+    padding: 0 12px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--ink-2);
+    font: 500 12.5px/1 var(--font-mono);
+    cursor: pointer;
+}
+.filter button .n { color: var(--ink-3); margin-left: 4px; }
+.filter button:hover { color: var(--ink); border-color: var(--ink-2); }
+.filter button[aria-pressed="true"] { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.filter button[aria-pressed="true"] .n { color: var(--paper); opacity: 0.7; }
+.project-list li[hidden] { display: none; }
+
 .project-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
 .project-list li { margin: 0; border-bottom: 1px solid var(--rule); }
 
@@ -549,8 +569,11 @@ main { display: block; }
 /* Figürler */
 .fig { margin: 8px 0 32px; }
 .fig a { display: block; }
-.fig img {
+.fig img,
+.fig video {
+    display: block;
     width: 100%;
+    height: auto;
     border: 1px solid var(--rule-strong);
     background: var(--paper-2);
 }
@@ -565,6 +588,12 @@ main { display: block; }
     margin: 8px 0 32px;
 }
 .fig-grid .fig { margin: 0; }
+/* Yatay + dikey iki görsel, eşit yükseklikte (oranlar: 1.89 ve 0.81) */
+.fig-pair { display: grid; gap: 16px; margin: 8px 0 32px; }
+.fig-pair .fig { margin: 0; }
+@media (min-width: 720px) {
+    .fig-pair { grid-template-columns: 2.33fr 1fr; }
+}
 .fig-grid.phones { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
 
 /* Blok diyagram (inline SVG) */
@@ -624,9 +653,49 @@ pre code { background: none; border: 0; padding: 0; white-space: pre; font-size:
 .pager a strong { display: block; font-weight: 600; margin-top: 4px; }
 .pager a:hover strong { color: var(--accent); }
 
+/* ---------- Görsel büyütme ---------- */
+.fig > a { cursor: zoom-in; }
+.lightbox {
+    width: min(96vw, 1600px);
+    max-width: none;
+    max-height: 94vh;
+    padding: 12px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 4px;
+    background: var(--paper);
+    color: var(--ink);
+}
+.lightbox::backdrop { background: rgba(10, 10, 10, 0.78); }
+.lightbox img {
+    display: block;
+    width: 100%;
+    max-height: calc(94vh - 96px);
+    object-fit: contain;
+    background: var(--paper-2);
+}
+.lightbox-close { float: right; margin: 0 0 10px 10px; }
+.lightbox-cap { clear: both; margin: 10px 0 0; font-size: 14px; color: var(--ink-3); }
+
+/* ---------- 404 ---------- */
+.not-found { padding: 96px 0 120px; min-height: 60vh; }
+.not-found h1 { margin: 12px 0 20px; }
+.not-found .lead { max-width: 36em; font-size: 19px; color: var(--ink-2); }
+.not-found .actions { margin-top: 32px; }
+
 /* ---------- Print ---------- */
 @media print {
     body { background: #fff; color: #000; }
-    .site-header, .controls, .ds-toc, .pager, .skip-link { display: none; }
+    .site-header, .controls, .ds-toc, .pager, .skip-link, .filter { display: none; }
     .section, .ds-section { break-inside: avoid; }
+}
+
+/* Hakkında: eğitim ve staj zaman çizelgesi */
+.timeline-title { margin: 48px 0 12px; font-weight: 500; }
+.spec.timeline th { width: 200px; }
+.spec.timeline td { color: var(--ink-2); }
+.spec.timeline td strong { color: var(--ink); font-weight: 600; }
+@media (max-width: 719px) {
+    .spec.timeline th, .spec.timeline td { display: block; width: auto; }
+    .spec.timeline th { padding-bottom: 0; border-bottom: 0; }
+    .spec.timeline tr:first-child td { border-top: 0; }
 }

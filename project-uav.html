@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ESP32 Quadcopter Uçuş Kartı · Fatih Aksoy</title>
-    <meta name="title-en" content="ESP32 Quadcopter Flight Board · Fatih Aksoy">
     <meta name="description" content="Gövdesi de PCB olan, ESP32 tabanlı küçük bir quadcopter: şema, kart tasarımı ve PID stabilizasyonlu uçuş yazılımı.">
     <meta name="author" content="Fatih Aksoy">
     <link rel="canonical" href="https://fatihaksoy.com/project-uav.html">
+    <link rel="alternate" hreflang="tr" href="https://fatihaksoy.com/project-uav.html">
+    <link rel="alternate" hreflang="en" href="https://fatihaksoy.com/en/project-uav.html">
+    <link rel="alternate" hreflang="x-default" href="https://fatihaksoy.com/project-uav.html">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fatih Aksoy">
     <meta property="og:title" content="ESP32 Quadcopter Uçuş Kartı · Fatih Aksoy">
@@ -22,26 +24,27 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var l=localStorage.getItem('lang');if(l==='en')document.documentElement.lang='en'}catch(e){}</script>
+    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "ESP32 Quadcopter Uçuş Kartı", "description": "Gövdesi de PCB olan, ESP32 tabanlı küçük bir quadcopter: şema, kart tasarımı ve PID stabilizasyonlu uçuş yazılımı.", "url": "https://fatihaksoy.com/project-uav.html", "image": "https://fatihaksoy.com/assets/img/quadcopter/pcb-3d.webp", "dateCreated": "2025", "inLanguage": "tr", "keywords": "PCB, KiCad, ESP32, Firmware", "author": {"@id": "https://fatihaksoy.com/#person"}}</script>
 </head>
 <body>
-    <a class="skip-link" href="#main"><span data-lang="tr">İçeriğe geç</span><span data-lang="en" lang="en">Skip to content</span></a>
+    <a class="skip-link" href="#main"><span data-lang="tr">İçeriğe geç</span></a>
     <header class="site-header">
         <div class="wrap">
             <a class="brand" href="index.html">Fatih Aksoy <span class="label">EEE</span></a>
             <nav class="site-nav" aria-label="Ana menü">
                 <ul>
-                    <li><a href="index.html#about"><span data-lang="tr">Hakkında</span><span data-lang="en" lang="en">About</span></a></li>
-                    <li><a href="index.html#projects" aria-current="page"><span data-lang="tr">Projeler</span><span data-lang="en" lang="en">Projects</span></a></li>
-                    <li><a href="index.html#contact"><span data-lang="tr">İletişim</span><span data-lang="en" lang="en">Contact</span></a></li>
+                    <li><a href="index.html#about"><span data-lang="tr">Hakkında</span></a></li>
+                    <li><a href="index.html#projects" aria-current="page"><span data-lang="tr">Projeler</span></a></li>
+                    <li><a href="index.html#contact"><span data-lang="tr">İletişim</span></a></li>
                 </ul>
             </nav>
             <div class="controls">
-                <button class="ctrl-btn" id="langBtn" type="button" lang="en" aria-label="Switch to English">EN</button>
+                <a class="ctrl-btn" id="langBtn" href="en/project-uav.html" hreflang="en" lang="en" aria-label="English" title="English">EN</a>
                 <button class="ctrl-btn" id="themeBtn" type="button" aria-label="Temayı değiştir">
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
@@ -52,41 +55,41 @@
 
     <main id="main">
         <div class="wrap">
-            <a class="crumb" href="index.html#projects">← <span data-lang="tr">Tüm projeler</span><span data-lang="en" lang="en">All projects</span></a>
+            <a class="crumb" href="index.html#projects">← <span data-lang="tr">Tüm projeler</span></a>
             <header class="ds-head">
-                <p class="label"><span data-lang="tr">Proje</span><span data-lang="en" lang="en">Project</span> 04 · 2025</p>
-                <h1><span data-lang="tr">ESP32 Quadcopter Uçuş Kartı</span><span data-lang="en" lang="en">ESP32 Quadcopter Flight Board</span></h1>
+                <p class="label"><span data-lang="tr">Proje</span> 04 · 2025</p>
+                <h1><span data-lang="tr">ESP32 Quadcopter Uçuş Kartı</span></h1>
                 <p data-lang="tr" class="lead">Gövdesi de PCB olan, ESP32 tabanlı küçük bir quadcopter: şema, kart tasarımı ve PID stabilizasyonlu uçuş yazılımı.</p>
-<p data-lang="en" lang="en" class="lead">A small ESP32-based quadcopter whose frame is the PCB itself: schematic, board layout and PID-stabilised flight firmware.</p>
+
                 <dl class="ds-meta">
-<div><dt class="label"><span data-lang="tr">Rol</span><span data-lang="en" lang="en">Role</span></dt><dd><span data-lang="tr">Tasarım ve yazılım</span><span data-lang="en" lang="en">Design and firmware</span></dd></div>
+<div><dt class="label"><span data-lang="tr">Rol</span></dt><dd><span data-lang="tr">Tasarım ve yazılım</span></dd></div>
 <div><dt class="label">MCU</dt><dd>ESP32-WROOM-32</dd></div>
-<div><dt class="label"><span data-lang="tr">Araçlar</span><span data-lang="en" lang="en">Tools</span></dt><dd>KiCad, PlatformIO</dd></div>
-<div><dt class="label"><span data-lang="tr">Kaynak</span><span data-lang="en" lang="en">Source</span></dt><dd><a href="https://github.com/FatihAksoyEEE/ESP32_Drone">GitHub ↗</a></dd></div>
+<div><dt class="label"><span data-lang="tr">Araçlar</span></dt><dd>KiCad, PlatformIO</dd></div>
+<div><dt class="label"><span data-lang="tr">Kaynak</span></dt><dd><a href="https://github.com/FatihAksoyEEE/ESP32_Drone">GitHub ↗</a></dd></div>
                 </dl>
             </header>
             <div class="ds-body">
                 <nav class="ds-toc" aria-label="İçindekiler">
-                    <p class="label"><span data-lang="tr">İçindekiler</span><span data-lang="en" lang="en">Contents</span></p>
-                    <ol><li><a href="#summary"><span class="n">1</span><span data-lang="tr">Özet</span><span data-lang="en" lang="en">Summary</span></a></li><li><a href="#diagram"><span class="n">2</span><span data-lang="tr">Blok diyagram</span><span data-lang="en" lang="en">Block diagram</span></a></li><li><a href="#hardware"><span class="n">3</span><span data-lang="tr">Donanım</span><span data-lang="en" lang="en">Hardware</span></a></li><li><a href="#software"><span class="n">4</span><span data-lang="tr">Yazılım</span><span data-lang="en" lang="en">Software</span></a></li><li><a href="#status"><span class="n">5</span><span data-lang="tr">Durum</span><span data-lang="en" lang="en">Status</span></a></li><li><a href="#links"><span class="n">6</span><span data-lang="tr">Bağlantılar</span><span data-lang="en" lang="en">Links</span></a></li></ol>
+                    <p class="label"><span data-lang="tr">İçindekiler</span></p>
+                    <ol><li><a href="#summary"><span class="n">1</span><span data-lang="tr">Özet</span></a></li><li><a href="#diagram"><span class="n">2</span><span data-lang="tr">Blok diyagram</span></a></li><li><a href="#hardware"><span class="n">3</span><span data-lang="tr">Donanım</span></a></li><li><a href="#software"><span class="n">4</span><span data-lang="tr">Yazılım</span></a></li><li><a href="#status"><span class="n">5</span><span data-lang="tr">Durum</span></a></li><li><a href="#links"><span class="n">6</span><span data-lang="tr">Bağlantılar</span></a></li></ol>
                 </nav>
                 <div class="ds-content">
 <section class="ds-section" id="summary" aria-labelledby="summary-h">
-<h2 id="summary-h"><span class="num">04.1</span><span data-lang="tr">Özet</span><span data-lang="en" lang="en">Summary</span></h2>
+<h2 id="summary-h"><span class="num">04.1</span><span data-lang="tr">Özet</span></h2>
 <p data-lang="tr">Amaç, uçuş kontrolcüsünü hazır bir kart almadan sıfırdan tasarlamak ve bu sırada güç, sensör ve motor sürme tarafını tek kartta çözmekti. Kartın kolları aynı zamanda gövde: motorlar kolların uçlarındaki yuvalara oturuyor.</p>
-<p data-lang="en" lang="en">The goal was to design a flight controller from scratch instead of buying one, solving power, sensing and motor drive on a single board. The board's arms are also the frame: the motors sit in the mounts at the ends of the arms.</p>
+
 <p data-lang="tr">ESP32'nin iki çekirdeği iş bölümü için kullanılıyor: bir çekirdek sensör okuma ve PID döngüsünü, diğeri yer istasyonuyla haberleşmeyi yürütüyor.</p>
-<p data-lang="en" lang="en">The ESP32's two cores split the work: one runs sensor reads and the PID loop, the other handles communication with the ground station.</p>
+
 </section>
 <section class="ds-section" id="diagram" aria-labelledby="diagram-h">
-<h2 id="diagram-h"><span class="num">04.2</span><span data-lang="tr">Blok diyagram</span><span data-lang="en" lang="en">Block diagram</span></h2>
-<div class="diagram"><svg viewBox="0 0 760 250" role="img" aria-label="ESP32 quadcopter kartı blok diyagramı"><defs><marker id="ah5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah5s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
+<h2 id="diagram-h"><span class="num">04.2</span><span data-lang="tr">Blok diyagram</span></h2>
+<div class="diagram"><svg viewBox="0 0 760 250" role="img"><title data-lang="tr">ESP32 quadcopter kartı blok diyagramı</title><defs><marker id="ah5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah5s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
             <rect class="blk" x="10" y="20" width="130" height="50" rx="2"/>
             <text class="t" x="75.0" y="42.0" text-anchor="middle">USB-C</text>
             <text class="s" x="75.0" y="59.0" text-anchor="middle">5 V</text>
             <rect class="blk" x="10" y="100" width="130" height="50" rx="2"/>
             <text class="t" x="75.0" y="122.0" text-anchor="middle">TP4056</text>
-            <text class="s" x="75.0" y="139.0" text-anchor="middle">1S Li-Po şarj</text>
+            <text class="s" x="75.0" y="139.0" text-anchor="middle"><tspan data-lang="tr">1S Li-Po şarj</tspan></text>
             <rect class="blk" x="10" y="180" width="130" height="50" rx="2"/>
             <text class="t" x="75.0" y="202.0" text-anchor="middle">Li-Po 1S</text>
             <text class="s" x="75.0" y="219.0" text-anchor="middle">+BATT</text>
@@ -114,61 +117,62 @@
             <text class="s" x="606" y="80" text-anchor="start">I²C</text>
             <rect class="blk" x="630" y="110" width="120" height="50" rx="2"/>
             <text class="t" x="690.0" y="132.0" text-anchor="middle">4 × SI2302</text>
-            <text class="s" x="690.0" y="149.0" text-anchor="middle">fırçalı motor</text>
+            <text class="s" x="690.0" y="149.0" text-anchor="middle"><tspan data-lang="tr">fırçalı motor</tspan></text>
             <polyline class="wire" points="570,135 630,135" marker-end="url(#ah5)"/>
             <text class="s" x="600" y="127" text-anchor="middle">PWM</text>
             <rect class="blk" x="410" y="195" width="160" height="40" rx="2"/>
             <text class="t" x="490.0" y="212.0" text-anchor="middle">ADC_BAT · IO35</text>
-            <text class="s" x="490.0" y="229.0" text-anchor="middle">batarya gerilimi</text>
+            <text class="s" x="490.0" y="229.0" text-anchor="middle"><tspan data-lang="tr">batarya gerilimi</tspan></text>
             <polyline class="wire" points="490,195 490,165" marker-end="url(#ah5)"/>
             </svg></div>
 </section>
 <section class="ds-section" id="hardware" aria-labelledby="hardware-h">
-<h2 id="hardware-h"><span class="num">04.3</span><span data-lang="tr">Donanım</span><span data-lang="en" lang="en">Hardware</span></h2>
+<h2 id="hardware-h"><span class="num">04.3</span><span data-lang="tr">Donanım</span></h2>
 <table class="spec">
 <tr><th scope="row">MCU</th><td>ESP32-WROOM-32 (dual-core, 240 MHz)</td></tr>
 <tr><th scope="row">IMU</th><td>MPU-6050 · I²C (SDA IO21, SCL IO22)</td></tr>
-<tr><th scope="row"><span data-lang="tr">Motor sürme</span><span data-lang="en" lang="en">Motor drive</span></th><td><span data-lang="tr">4 × SI2302 N-MOSFET, low-side; her motorda 1N4148W serbest geçiş diyodu ve 1 µF kapasitör</span><span data-lang="en" lang="en">4 × SI2302 N-MOSFET, low-side; 1N4148W flyback diode and 1 µF capacitor on each motor</span></td></tr>
-<tr><th scope="row"><span data-lang="tr">Motor pinleri</span><span data-lang="en" lang="en">Motor pins</span></th><td>MOT_1 IO4 · MOT_2 IO33 · MOT_3 IO32 · MOT_4 IO25</td></tr>
-<tr><th scope="row"><span data-lang="tr">Güç</span><span data-lang="en" lang="en">Power</span></th><td><span data-lang="tr">1S Li-Po; TP4056 ile USB-C'den şarj; MIC5219 3.3 V LDO; AO3401 ile USB/batarya yol seçimi</span><span data-lang="en" lang="en">1S Li-Po; charged from USB-C via TP4056; MIC5219 3.3 V LDO; AO3401 for USB/battery path selection</span></td></tr>
-<tr><th scope="row"><span data-lang="tr">Programlama</span><span data-lang="en" lang="en">Programming</span></th><td><span data-lang="tr">CP2102N USB-UART, otomatik reset/boot devresi</span><span data-lang="en" lang="en">CP2102N USB-UART with auto reset/boot circuit</span></td></tr>
-<tr><th scope="row"><span data-lang="tr">Diğer</span><span data-lang="en" lang="en">Other</span></th><td><span data-lang="tr">Batarya gerilimi ölçümü (IO35), açma/kapama devresi, 3 debug LED'i, genişleme konnektörü (UART2, I²C)</span><span data-lang="en" lang="en">Battery voltage sense (IO35), on/off circuit, 3 debug LEDs, expansion header (UART2, I²C)</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Motor sürme</span></th><td><span data-lang="tr">4 × SI2302 N-MOSFET, low-side; her motorda 1N4148W serbest geçiş diyodu ve 1 µF kapasitör</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Motor pinleri</span></th><td>MOT_1 IO4 · MOT_2 IO33 · MOT_3 IO32 · MOT_4 IO25</td></tr>
+<tr><th scope="row"><span data-lang="tr">Güç</span></th><td><span data-lang="tr">1S Li-Po; TP4056 ile USB-C'den şarj; MIC5219 3.3 V LDO; AO3401 ile USB/batarya yol seçimi</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Programlama</span></th><td><span data-lang="tr">CP2102N USB-UART, otomatik reset/boot devresi</span></td></tr>
+<tr><th scope="row"><span data-lang="tr">Diğer</span></th><td><span data-lang="tr">Batarya gerilimi ölçümü (IO35), açma/kapama devresi, 3 debug LED'i, genişleme konnektörü (UART2, I²C)</span></td></tr>
 </table>
-<figure class="fig"><a href="assets/img/quadcopter/schematic.webp"><img src="assets/img/quadcopter/schematic.webp" width="2400" height="1842" alt="Şema: KiCad şeması: regülatör, şarj, USB-UART, SoC, IMU ve motor sürücüleri." class="on-white" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 1</span><span data-lang="en" lang="en">Fig. 1</span></span><span data-lang="tr">Şema — KiCad şeması: regülatör, şarj, USB-UART, SoC, IMU ve motor sürücüleri.</span><span data-lang="en" lang="en">Schematic — KiCad schematic: regulator, charger, USB-UART, SoC, IMU and motor drivers.</span></figcaption></figure>
+<figure class="fig"><a href="assets/img/quadcopter/schematic.webp"><img src="assets/img/quadcopter/schematic.webp" width="2302" height="1756" alt="Şema: KiCad şeması: regülatör, şarj, USB-UART, SoC, IMU ve motor sürücüleri." class="on-white" loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 1</span></span><span data-lang="tr">Şema — KiCad şeması: regülatör, şarj, USB-UART, SoC, IMU ve motor sürücüleri.</span></figcaption></figure>
 <div class="fig-grid">
-<figure class="fig"><a href="assets/img/quadcopter/pcb-layout.webp"><img src="assets/img/quadcopter/pcb-layout.webp" width="1092" height="1038" alt="PCB yerleşimi: Kart yerleşimi; kollar ve motor yuvaları kartın parçası." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 2</span><span data-lang="en" lang="en">Fig. 2</span></span><span data-lang="tr">PCB yerleşimi — Kart yerleşimi; kollar ve motor yuvaları kartın parçası.</span><span data-lang="en" lang="en">PCB layout — Board layout; arms and motor mounts are part of the PCB.</span></figcaption></figure>
-<figure class="fig"><a href="assets/img/quadcopter/pcb-3d.webp"><img src="assets/img/quadcopter/pcb-3d.webp" width="1092" height="1038" alt="3D görünüm: KiCad 3D görünümü." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 3</span><span data-lang="en" lang="en">Fig. 3</span></span><span data-lang="tr">3D görünüm — KiCad 3D görünümü.</span><span data-lang="en" lang="en">3D view — KiCad 3D view.</span></figcaption></figure>
+<figure class="fig"><a href="assets/img/quadcopter/pcb-front.webp"><img src="assets/img/quadcopter/pcb-front.webp" width="1302" height="1244" alt="PCB, üst katman: Üst bakır katmanı öne alınmış yerleşim; kollar ve motor yuvaları kartın parçası." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 2</span></span><span data-lang="tr">PCB, üst katman — Üst bakır katmanı öne alınmış yerleşim; kollar ve motor yuvaları kartın parçası.</span></figcaption></figure>
+<figure class="fig"><a href="assets/img/quadcopter/pcb-back.webp"><img src="assets/img/quadcopter/pcb-back.webp" width="1298" height="1274" alt="PCB, alt katman: Alt bakır katmanı öne alınmış yerleşim." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 3</span></span><span data-lang="tr">PCB, alt katman — Alt bakır katmanı öne alınmış yerleşim.</span></figcaption></figure>
+<figure class="fig"><a href="assets/img/quadcopter/pcb-3d-top.webp"><img src="assets/img/quadcopter/pcb-3d-top.webp" width="1440" height="1250" alt="3D görünüm: Kartın üstten KiCad 3D görünümü." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 4</span></span><span data-lang="tr">3D görünüm — Kartın üstten KiCad 3D görünümü.</span></figcaption></figure>
 </div>
 </section>
 <section class="ds-section" id="software" aria-labelledby="software-h">
-<h2 id="software-h"><span class="num">04.4</span><span data-lang="tr">Yazılım</span><span data-lang="en" lang="en">Software</span></h2>
+<h2 id="software-h"><span class="num">04.4</span><span data-lang="tr">Yazılım</span></h2>
 <ul>
 <li data-lang="tr"><strong>Core 0:</strong> MPU-6050 okuma, complementary filtre ile ivmeölçer ve jiroskop füzyonu, roll/pitch/yaw PID döngüsü.</li>
-<li data-lang="en" lang="en"><strong>Core 0:</strong> MPU-6050 reads, accelerometer/gyro fusion with a complementary filter, roll/pitch/yaw PID loop.</li>
+
 <li data-lang="tr"><strong>Core 1:</strong> ESP-NOW (veya Wi-Fi üzerinden UDP) ile kumanda ve telemetri.</li>
-<li data-lang="en" lang="en"><strong>Core 1:</strong> control input and telemetry over ESP-NOW (or UDP over Wi-Fi).</li>
+
 </ul>
 </section>
 <section class="ds-section" id="status" aria-labelledby="status-h">
-<h2 id="status-h"><span class="num">04.5</span><span data-lang="tr">Durum</span><span data-lang="en" lang="en">Status</span></h2>
-<ul class="status-list"><li class="done"><span data-lang="tr">Şema ve PCB tasarımı</span><span data-lang="en" lang="en">Schematic and PCB design</span></li>
-<li class="done"><span data-lang="tr">PID stabilizasyonu ve complementary filtre</span><span data-lang="en" lang="en">PID stabilisation and complementary filter</span></li>
-<li class=""><span data-lang="tr">GPS tabanlı otonom rota takibi (geliştirme aşamasında)</span><span data-lang="en" lang="en">GPS-based autonomous waypoint following (in development)</span></li></ul>
+<h2 id="status-h"><span class="num">04.5</span><span data-lang="tr">Durum</span></h2>
+<ul class="status-list"><li class="done"><span data-lang="tr">Şema ve PCB tasarımı</span></li>
+<li class="done"><span data-lang="tr">PID stabilizasyonu ve complementary filtre</span></li>
+<li class=""><span data-lang="tr">GPS tabanlı otonom rota takibi (geliştirme aşamasında)</span></li></ul>
 </section>
 <section class="ds-section" id="links" aria-labelledby="links-h">
-<h2 id="links-h"><span class="num">04.6</span><span data-lang="tr">Bağlantılar</span><span data-lang="en" lang="en">Links</span></h2>
+<h2 id="links-h"><span class="num">04.6</span><span data-lang="tr">Bağlantılar</span></h2>
 <ul class="links-list"><li><span class="label" lang="en">GitHub</span><a href="https://github.com/FatihAksoyEEE/ESP32_Drone">FatihAksoyEEE/ESP32_Drone ↗</a></li></ul>
 </section>
                 </div>
             </div>
         </div>
-        <nav class="pager wrap" aria-label="Proje gezinme"><a href="project-robot-arm.html"><span class="label">← <span data-lang="tr">Önceki</span><span data-lang="en" lang="en">Previous</span></span><strong><span data-lang="tr">Robot Kol Kontrolcüsü</span><span data-lang="en" lang="en">Robot Arm Controller</span></strong></a><a href="project-flight-controller.html"><span class="label"><span data-lang="tr">Sonraki</span><span data-lang="en" lang="en">Next</span> →</span><strong><span data-lang="tr">STM32 Uçuş Kontrol Kartı</span><span data-lang="en" lang="en">STM32 Flight Controller</span></strong></a></nav>
+        <nav class="pager wrap" aria-label="Proje gezinme"><a href="project-robot-arm.html"><span class="label">← <span data-lang="tr">Önceki</span></span><strong><span data-lang="tr">Robot Kol Kontrolcüsü</span></strong></a><a href="project-flight-controller.html"><span class="label"><span data-lang="tr">Sonraki</span> →</span><strong><span data-lang="tr">STM32 Uçuş Kontrol Kartı</span></strong></a></nav>
     </main>
     <footer class="site-footer">
         <div class="wrap">
             <span class="label">© 2026 Fatih Aksoy</span>
-            <span class="label"><span data-lang="tr">Son güncelleme: Ekim 2026</span><span data-lang="en" lang="en">Last updated: October 2026</span></span>
-            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="tr">Sitenin kaynağı</span><span data-lang="en" lang="en">Site source</span> ↗</a>
+            <span class="label"><span data-lang="tr">Son güncelleme: Ekim 2026</span></span>
+            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="tr">Sitenin kaynağı</span> ↗</a>
         </div>
     </footer>
 

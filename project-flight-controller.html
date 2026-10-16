@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>STM32 Uçuş Kontrol Kartı · Fatih Aksoy</title>
-    <meta name="title-en" content="STM32 Flight Controller Board · Fatih Aksoy">
     <meta name="description" content="STM32 tabanlı, özel tasarım uçuş kontrol kartı ve stabilizasyon yazılımı.">
     <meta name="author" content="Fatih Aksoy">
     <link rel="canonical" href="https://fatihaksoy.com/project-flight-controller.html">
+    <link rel="alternate" hreflang="tr" href="https://fatihaksoy.com/project-flight-controller.html">
+    <link rel="alternate" hreflang="en" href="https://fatihaksoy.com/en/project-flight-controller.html">
+    <link rel="alternate" hreflang="x-default" href="https://fatihaksoy.com/project-flight-controller.html">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fatih Aksoy">
     <meta property="og:title" content="STM32 Uçuş Kontrol Kartı · Fatih Aksoy">
@@ -22,26 +24,27 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var l=localStorage.getItem('lang');if(l==='en')document.documentElement.lang='en'}catch(e){}</script>
+    <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "STM32 Uçuş Kontrol Kartı", "description": "STM32 tabanlı, özel tasarım uçuş kontrol kartı ve stabilizasyon yazılımı.", "url": "https://fatihaksoy.com/project-flight-controller.html", "image": "https://fatihaksoy.com/assets/img/flight-controller/pcb-3d.webp", "dateCreated": "2024", "inLanguage": "tr", "keywords": "PCB, STM32, Gömülü", "author": {"@id": "https://fatihaksoy.com/#person"}}</script>
 </head>
 <body>
-    <a class="skip-link" href="#main"><span data-lang="tr">İçeriğe geç</span><span data-lang="en" lang="en">Skip to content</span></a>
+    <a class="skip-link" href="#main"><span data-lang="tr">İçeriğe geç</span></a>
     <header class="site-header">
         <div class="wrap">
             <a class="brand" href="index.html">Fatih Aksoy <span class="label">EEE</span></a>
             <nav class="site-nav" aria-label="Ana menü">
                 <ul>
-                    <li><a href="index.html#about"><span data-lang="tr">Hakkında</span><span data-lang="en" lang="en">About</span></a></li>
-                    <li><a href="index.html#projects" aria-current="page"><span data-lang="tr">Projeler</span><span data-lang="en" lang="en">Projects</span></a></li>
-                    <li><a href="index.html#contact"><span data-lang="tr">İletişim</span><span data-lang="en" lang="en">Contact</span></a></li>
+                    <li><a href="index.html#about"><span data-lang="tr">Hakkında</span></a></li>
+                    <li><a href="index.html#projects" aria-current="page"><span data-lang="tr">Projeler</span></a></li>
+                    <li><a href="index.html#contact"><span data-lang="tr">İletişim</span></a></li>
                 </ul>
             </nav>
             <div class="controls">
-                <button class="ctrl-btn" id="langBtn" type="button" lang="en" aria-label="Switch to English">EN</button>
+                <a class="ctrl-btn" id="langBtn" href="en/project-flight-controller.html" hreflang="en" lang="en" aria-label="English" title="English">EN</a>
                 <button class="ctrl-btn" id="themeBtn" type="button" aria-label="Temayı değiştir">
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
@@ -52,43 +55,45 @@
 
     <main id="main">
         <div class="wrap">
-            <a class="crumb" href="index.html#projects">← <span data-lang="tr">Tüm projeler</span><span data-lang="en" lang="en">All projects</span></a>
+            <a class="crumb" href="index.html#projects">← <span data-lang="tr">Tüm projeler</span></a>
             <header class="ds-head">
-                <p class="label"><span data-lang="tr">Proje</span><span data-lang="en" lang="en">Project</span> 05 · 2024</p>
-                <h1><span data-lang="tr">STM32 Uçuş Kontrol Kartı</span><span data-lang="en" lang="en">STM32 Flight Controller Board</span></h1>
+                <p class="label"><span data-lang="tr">Proje</span> 05 · 2024</p>
+                <h1><span data-lang="tr">STM32 Uçuş Kontrol Kartı</span></h1>
                 <p data-lang="tr" class="lead">STM32 tabanlı, özel tasarım uçuş kontrol kartı ve stabilizasyon yazılımı.</p>
-<p data-lang="en" lang="en" class="lead">A custom STM32-based flight control board and stabilisation firmware.</p>
+
                 <dl class="ds-meta">
-<div><dt class="label"><span data-lang="tr">Rol</span><span data-lang="en" lang="en">Role</span></dt><dd><span data-lang="tr">Kart tasarımı ve yazılım</span><span data-lang="en" lang="en">Board design and firmware</span></dd></div>
+<div><dt class="label"><span data-lang="tr">Rol</span></dt><dd><span data-lang="tr">Kart tasarımı ve yazılım</span></dd></div>
 <div><dt class="label">MCU</dt><dd>STM32</dd></div>
-<div><dt class="label"><span data-lang="tr">Yazılım</span><span data-lang="en" lang="en">Software</span></dt><dd>FreeRTOS, PID</dd></div>
-<div><dt class="label"><span data-lang="tr">Durum</span><span data-lang="en" lang="en">Status</span></dt><dd><span data-lang="tr">Belgeleniyor</span><span data-lang="en" lang="en">Being documented</span></dd></div>
+<div><dt class="label"><span data-lang="tr">Yazılım</span></dt><dd>FreeRTOS, PID</dd></div>
+<div><dt class="label"><span data-lang="tr">Durum</span></dt><dd><span data-lang="tr">Belgeleniyor</span></dd></div>
                 </dl>
             </header>
             <div class="ds-body">
                 <nav class="ds-toc" aria-label="İçindekiler">
-                    <p class="label"><span data-lang="tr">İçindekiler</span><span data-lang="en" lang="en">Contents</span></p>
-                    <ol><li><a href="#summary"><span class="n">1</span><span data-lang="tr">Özet</span><span data-lang="en" lang="en">Summary</span></a></li></ol>
+                    <p class="label"><span data-lang="tr">İçindekiler</span></p>
+                    <ol><li><a href="#summary"><span class="n">1</span><span data-lang="tr">Özet</span></a></li></ol>
                 </nav>
                 <div class="ds-content">
 <section class="ds-section" id="summary" aria-labelledby="summary-h">
-<h2 id="summary-h"><span class="num">05.1</span><span data-lang="tr">Özet</span><span data-lang="en" lang="en">Summary</span></h2>
+<h2 id="summary-h"><span class="num">05.1</span><span data-lang="tr">Özet</span></h2>
 <p data-lang="tr">STM32 mikrodenetleyici etrafında tasarlanmış bir uçuş kontrol kartı. Kart üzerinde ESC/servo çıkışları için GND-5V-SIG pin sıraları, alıcı ve telemetri için ayrı UART'lar, harici sensörler için SPI konnektörü ve durum LED'leri bulunuyor. Yazılım tarafında FreeRTOS üzerinde PID kontrol ve IMU sensör füzyonu hedefleniyor.</p>
-<p data-lang="en" lang="en">A flight control board designed around an STM32 microcontroller. The board carries GND-5V-SIG headers for ESC/servo outputs, separate UARTs for receiver and telemetry, an SPI header for external sensors, and status LEDs. On the firmware side it targets PID control and IMU sensor fusion on FreeRTOS.</p>
-<figure class="fig"><a href="assets/img/flight-controller/pcb-3d.webp"><img src="assets/img/flight-controller/pcb-3d.webp" width="799" height="670" alt="3D görünüm: Kartın 3D render&#x27;ı." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 1</span><span data-lang="en" lang="en">Fig. 1</span></span><span data-lang="tr">3D görünüm — Kartın 3D render'ı.</span><span data-lang="en" lang="en">3D view — 3D render of the board.</span></figcaption></figure>
+
+<p data-lang="tr">Aynı dönemde otonom bir İHA üzerinde OpenCV ile görüntü işleme ve rota takibi üzerinde de çalıştım.</p>
+
+<figure class="fig"><a href="assets/img/flight-controller/pcb-3d.webp"><img src="assets/img/flight-controller/pcb-3d.webp" width="799" height="670" alt="3D görünüm: Kartın 3D render&#x27;ı." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="tr">Şekil 1</span></span><span data-lang="tr">3D görünüm — Kartın 3D render'ı.</span></figcaption></figure>
 <!-- TODO(Fatih): MCU modeli, IMU, şema/PCB görselleri, test sonuçları ve repo linki eklenecek. -->
-<p class="note"><span data-lang="tr">Bu sayfanın şema, özellik tablosu ve test sonuçları bölümleri hazırlanıyor.</span><span data-lang="en" lang="en">Schematic, specifications and test results for this page are being prepared.</span></p>
+<p class="note"><span data-lang="tr">Bu sayfanın şema, özellik tablosu ve test sonuçları bölümleri hazırlanıyor.</span></p>
 </section>
                 </div>
             </div>
         </div>
-        <nav class="pager wrap" aria-label="Proje gezinme"><a href="project-uav.html"><span class="label">← <span data-lang="tr">Önceki</span><span data-lang="en" lang="en">Previous</span></span><strong><span data-lang="tr">ESP32 Quadcopter</span><span data-lang="en" lang="en">ESP32 Quadcopter</span></strong></a><a href="project-cnc.html"><span class="label"><span data-lang="tr">Sonraki</span><span data-lang="en" lang="en">Next</span> →</span><strong><span data-lang="tr">3 Eksenli CNC Freze</span><span data-lang="en" lang="en">3-Axis CNC Mill</span></strong></a></nav>
+        <nav class="pager wrap" aria-label="Proje gezinme"><a href="project-uav.html"><span class="label">← <span data-lang="tr">Önceki</span></span><strong><span data-lang="tr">ESP32 Quadcopter</span></strong></a><a href="project-cnc.html"><span class="label"><span data-lang="tr">Sonraki</span> →</span><strong><span data-lang="tr">3 Eksenli CNC Freze</span></strong></a></nav>
     </main>
     <footer class="site-footer">
         <div class="wrap">
             <span class="label">© 2026 Fatih Aksoy</span>
-            <span class="label"><span data-lang="tr">Son güncelleme: Ekim 2026</span><span data-lang="en" lang="en">Last updated: October 2026</span></span>
-            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="tr">Sitenin kaynağı</span><span data-lang="en" lang="en">Site source</span> ↗</a>
+            <span class="label"><span data-lang="tr">Son güncelleme: Ekim 2026</span></span>
+            <a class="label" href="https://github.com/FatihAksoyEEE/https-FatihAksoyEEE.github.io-"><span data-lang="tr">Sitenin kaynağı</span> ↗</a>
         </div>
     </footer>
 

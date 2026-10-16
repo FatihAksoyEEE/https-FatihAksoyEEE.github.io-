@@ -58,13 +58,13 @@ CAN_FRAME = f.render()
 
 CANBUS = dict(
     slug="project-canbus-sniffer.html",
+    cats=["sw"],
     title=("CAN-Bus Sniffer ve RPM Çözümleme", "CAN-Bus Sniffer and RPM Decoding"),
     short=("CAN-Bus Sniffer", "CAN-Bus Sniffer"),
     year="2026",
     tags="Python · python-can · CANable · Tersine mühendislik",
     tags_en="Python · python-can · CANable · Reverse engineering",
-    thumb=None,
-    thumb_text="0x2C4 → RPM",
+    thumb=("canbus/canable.webp", "CANable V2.1 USB-CAN adaptörü"),
     desc=("Bir aracın OBD-II soketinden CAN trafiğini dinleyip, üreticiye özel motor devri sinyalini tersine mühendislikle bulan araç seti.",
           "A toolset that listens to a vehicle's CAN traffic through the OBD-II port and reverse-engineers the manufacturer-specific engine RPM signal."),
     meta=[(("Rol", "Role"), b("Tek geliştirici", "Sole developer")),
@@ -106,6 +106,12 @@ CANBUS = dict(
             ]),
             B("p", "Örnek terminal çıktısı:", "Sample terminal output:"),
             '<pre><code>     1.242s  RPM:   768.0  raw: 03 C0 00 00 00 00 00 00</code></pre>',
+            B("p", "CANalyzer'ın Dashboard sekmesinde devir saati, gaz pedalı sinyali ve tezgâh testi için sanal gaz pedalı bir arada:",
+              "CANalyzer's Dashboard tab combines the tachometer, the throttle pedal signal and a virtual throttle pedal for bench testing:"),
+            "{fig:canbus/canalyzer-dashboard.webp|CANalyzer Dashboard|CANalyzer Dashboard|Gösterge (0x2C4, ×0.8) ve gaz pedalı (0x2C1) yapılandırması, sanal pedal ve ACİL STOP.|Gauge (0x2C4, ×0.8) and throttle pedal (0x2C1) configuration, virtual pedal and EMERGENCY STOP.|}",
+            "{fig:canbus/canalyzer-filter.webp|Filtre paneli|Filter panel|Yön (RX/TX), ID aralığı ve ID listesine göre filtreleme.|Filtering by direction (RX/TX), ID range and an ID list.|}",
+            "{vid:canbus/demo-bench.mp4|canbus/demo-bench-poster.webp|Tezgâh testi|Bench test|CANable'a bağlanıp sanal gaz pedalıyla <code>0x2C1</code> çerçevelerinin her 32 ms'de gönderilmesi.|Connecting to the CANable and sending <code>0x2C1</code> frames every 32 ms with the virtual throttle pedal.}",
+            "{vid:canbus/demo-tour.mp4|canbus/demo-tour-poster.webp|Arayüz turu|Interface tour|Bağlantı, gönderim (OBD-II hazır sorguları dahil) ve filtre sekmeleri.|Connection, send (including OBD-II presets) and filter tabs.}",
         ])),
         ("learned", ("Sonuçlar ve öğrenilenler", "Results and lessons"), "\n".join([
             '<ul>',
@@ -142,13 +148,13 @@ GCS_DIAGRAM = d.render()
 
 GCS = dict(
     slug="project-control-station.html",
-    title=("Yer Kontrol İstasyonu", "Ground Control Station"),
-    short=("Yer Kontrol İstasyonu", "Ground Control Station"),
+    cats=["sw"],
+    title=("Yer Kontrol İstasyonu: LoRa Kontrolcü ve Alıcı Tasarımı", "Ground Control Station: LoRa Controller and Receiver Design"),
+    short=("Yer Kontrol İstasyonu: LoRa Kontrolcü ve Alıcı", "Ground Control Station: LoRa Controller and Receiver"),
     year="2026",
-    tags="React · Electron · Seri haberleşme",
-    tags_en="React · Electron · Serial comms",
-    thumb=None,
-    thumb_text="0xAA 0xBB …",
+    tags="LoRa · React · Electron · Seri haberleşme",
+    tags_en="LoRa · React · Electron · Serial comms",
+    thumb=("control-station/controller-thumb.webp", "LoRa kumanda"),
     desc=("İHA'lar için masaüstü yer kontrol yazılımı: seri hattan gelen telemetriyi çözer, uçuş göstergelerini çizer ve harita üzerinden görev yükler.",
           "Desktop ground control software for UAVs: decodes telemetry from a serial link, draws flight instruments and uploads missions from a map."),
     meta=[(("Rol", "Role"), b("Tek geliştirici", "Sole developer")),
@@ -227,12 +233,13 @@ ARM_DIAGRAM = d.render()
 
 ARM = dict(
     slug="project-robot-arm.html",
+    cats=["fw", "sw"],
     title=("6 Eksenli Robot Kol Kontrolcüsü", "6-Axis Robot Arm Controller"),
     short=("Robot Kol Kontrolcüsü", "Robot Arm Controller"),
     year="2026",
     tags="STM32 · PlatformIO · PyQt6",
     tags_en="STM32 · PlatformIO · PyQt6",
-    thumb=("robot-arm/gui.webp", "Robot kol kontrol arayüzü"),
+    thumb=("robot-arm/cover.webp", "Robot kolun 3D modeli"),
     desc=("STM32 Blackpill üzerinde çalışan 6 servolu robot kol firmware'i ve USB üzerinden kontrol eden PyQt6 masaüstü arayüzü.",
           "Firmware for a 6-servo robot arm on an STM32 Blackpill, plus a PyQt6 desktop app that controls it over USB."),
     meta=[(("Rol", "Role"), b("Tek geliştirici", "Sole developer")),
@@ -247,6 +254,12 @@ ARM = dict(
               "The command set is deliberately plain text: the same commands can be sent from the GUI or from a serial terminal such as <code>screen</code>. That makes it easy to test the hardware independently of the GUI."),
         ])),
         ("diagram", ("Blok diyagram", "Block diagram"), ARM_DIAGRAM),
+        ("model", ("3D model", "3D model"), "\n".join([
+            '<div class="fig-pair">',
+            "{fig:robot-arm/cad-01.webp|Perspektif|Perspective|Kolun 3D modeli, eklem açılarıyla.|3D model of the arm with joint angles.|}",
+            "{fig:robot-arm/cad-02.webp|Yan görünüm|Side view|Kol dik konumda.|Arm in upright pose.|}",
+            '</div>',
+        ])),
         ("hardware", ("Donanım", "Hardware"), "\n".join([
             spec([
                 ("MCU", "STM32 Blackpill F411CE"),
@@ -262,14 +275,13 @@ ARM = dict(
         ])),
         ("software", ("Yazılım", "Software"), "\n".join([
             table([b("Komut", "Command"), b("İşlev", "Function"), b("Örnek", "Example")], [
-                ["<code>S&lt;n&gt;:&lt;açı&gt;</code>", b("n. servoyu açıya getir (n = 1–6, açı = 0–180)", "Move servo n to angle (n = 1–6, angle = 0–180)"), "<code>S1:90</code>"],
-                ["<code>ALL:&lt;açı&gt;</code>", b("Tüm servoları aynı açıya getir", "Move all servos to one angle"), "<code>ALL:90</code>"],
+                ["<code>S&lt;n&gt;:" + b("&lt;açı&gt;", "&lt;angle&gt;") + "</code>", b("n. servoyu açıya getir (n = 1–6, açı = 0–180)", "Move servo n to angle (n = 1–6, angle = 0–180)"), "<code>S1:90</code>"],
+                ["<code>ALL:" + b("&lt;açı&gt;", "&lt;angle&gt;") + "</code>", b("Tüm servoları aynı açıya getir", "Move all servos to one angle"), "<code>ALL:90</code>"],
                 ["<code>STATUS</code>", b("Tüm açıları raporla", "Report all angles"), "<code>S1:90,S2:45,…</code>"],
                 ["<code>RESET</code>", b("Tüm servoları 90°'ye döndür", "Return all servos to 90°"), "<code>RESET</code>"],
             ]),
             B("p", "Hatalı komutlara açık hata mesajları dönüyor (<code>ERROR:Angle out of range</code>, <code>ERROR:Servo ID out of range</code> vb.). Arayüzde her servo için bir slider ve min/max açı sınırı var; HOME, RESET ve STATUS butonları aynı komutları gönderiyor. Arayüz macOS için <code>py2app</code> ile tek bir <code>.app</code> olarak paketlenebiliyor.",
               "Bad commands get explicit error replies (<code>ERROR:Angle out of range</code>, <code>ERROR:Servo ID out of range</code>, etc.). The GUI has a slider and min/max limits per servo; HOME, RESET and STATUS buttons send the same commands. On macOS the GUI can be bundled into a single <code>.app</code> with <code>py2app</code>."),
-            "{fig:robot-arm/gui.webp|Kontrol arayüzü|Control interface|Repodaki arayüz örneği (docs/GUI_Example).|GUI example from the repo (docs/GUI_Example).|on-white}",
         ])),
         ("links", ("Bağlantılar", "Links"), links([
             ("GitHub", "FatihAksoyEEE/RoboArm", GH + "RoboArm"),
@@ -303,6 +315,7 @@ QUAD_DIAGRAM = d.render()
 
 QUAD = dict(
     slug="project-uav.html",
+    cats=["pcb", "fw"],
     title=("ESP32 Quadcopter Uçuş Kartı", "ESP32 Quadcopter Flight Board"),
     short=("ESP32 Quadcopter", "ESP32 Quadcopter"),
     year="2025",
@@ -335,8 +348,9 @@ QUAD = dict(
             ]),
             "{fig:quadcopter/schematic.webp|Şema|Schematic|KiCad şeması: regülatör, şarj, USB-UART, SoC, IMU ve motor sürücüleri.|KiCad schematic: regulator, charger, USB-UART, SoC, IMU and motor drivers.|on-white}",
             '<div class="fig-grid">',
-            "{fig:quadcopter/pcb-layout.webp|PCB yerleşimi|PCB layout|Kart yerleşimi; kollar ve motor yuvaları kartın parçası.|Board layout; arms and motor mounts are part of the PCB.|}",
-            "{fig:quadcopter/pcb-3d.webp|3D görünüm|3D view|KiCad 3D görünümü.|KiCad 3D view.|}",
+            "{fig:quadcopter/pcb-front.webp|PCB, üst katman|PCB, top layer|Üst bakır katmanı öne alınmış yerleşim; kollar ve motor yuvaları kartın parçası.|Layout with the top copper layer in front; arms and motor mounts are part of the PCB.|}",
+            "{fig:quadcopter/pcb-back.webp|PCB, alt katman|PCB, bottom layer|Alt bakır katmanı öne alınmış yerleşim.|Layout with the bottom copper layer in front.|}",
+            "{fig:quadcopter/pcb-3d-top.webp|3D görünüm|3D view|Kartın üstten KiCad 3D görünümü.|Top-down KiCad 3D view of the board.|}",
             '</div>',
         ])),
         ("software", ("Yazılım", "Software"), "\n".join([
@@ -363,6 +377,7 @@ QUAD = dict(
 # ---------------------------------------------------------------------------
 FC = dict(
     slug="project-flight-controller.html",
+    cats=["pcb", "fw"],
     title=("STM32 Uçuş Kontrol Kartı", "STM32 Flight Controller Board"),
     short=("STM32 Uçuş Kontrol Kartı", "STM32 Flight Controller"),
     year="2024",
@@ -379,6 +394,8 @@ FC = dict(
         ("summary", ("Özet", "Summary"), "\n".join([
             B("p", "STM32 mikrodenetleyici etrafında tasarlanmış bir uçuş kontrol kartı. Kart üzerinde ESC/servo çıkışları için GND-5V-SIG pin sıraları, alıcı ve telemetri için ayrı UART'lar, harici sensörler için SPI konnektörü ve durum LED'leri bulunuyor. Yazılım tarafında FreeRTOS üzerinde PID kontrol ve IMU sensör füzyonu hedefleniyor.",
               "A flight control board designed around an STM32 microcontroller. The board carries GND-5V-SIG headers for ESC/servo outputs, separate UARTs for receiver and telemetry, an SPI header for external sensors, and status LEDs. On the firmware side it targets PID control and IMU sensor fusion on FreeRTOS."),
+            B("p", "Aynı dönemde otonom bir İHA üzerinde OpenCV ile görüntü işleme ve rota takibi üzerinde de çalıştım.",
+              "In the same period I also worked on image processing and route tracking with OpenCV for an autonomous UAV."),
             "{fig:flight-controller/pcb-3d.webp|3D görünüm|3D view|Kartın 3D render'ı.|3D render of the board.|}",
             "<!-- TODO(Fatih): MCU modeli, IMU, şema/PCB görselleri, test sonuçları ve repo linki eklenecek. -->",
             '<p class="note">' + b("Bu sayfanın şema, özellik tablosu ve test sonuçları bölümleri hazırlanıyor.", "Schematic, specifications and test results for this page are being prepared.") + "</p>",
@@ -408,6 +425,7 @@ CNC_DIAGRAM = d.render()
 
 CNC = dict(
     slug="project-cnc.html",
+    cats=["pcb"],
     title=("3 Eksenli CNC Freze", "3-Axis CNC Mill"),
     short=("3 Eksenli CNC Freze", "3-Axis CNC Mill"),
     year="2024",
@@ -476,12 +494,14 @@ DIGI_DIAGRAM = d.render()
 
 DIGI = dict(
     slug="project-order-management.html",
+    cats=["sw"],
     title=("DigiTab Adisyon Sistemi", "DigiTab Order Management"),
     short=("DigiTab Adisyon Sistemi", "DigiTab Order Management"),
     year="2024",
     tags="React · Node.js · Socket.io",
     tags_en="React · Node.js · Socket.io",
-    thumb=("digitab/tablet-02-tables.webp", "DigiTab masa ekranı"),
+    thumb=("digitab/logo.svg", "DigiTab logosu"),
+    og="digitab/promo-02-cashier.webp",
     desc=("Restoran ve kafeler için gerçek zamanlı sipariş, masa ve menü yönetim sistemi.",
           "A real-time order, table and menu management system for restaurants and cafés."),
     meta=[(("Kategori", "Category"), b("Full-stack web uygulaması", "Full-stack web app")),
@@ -504,21 +524,11 @@ DIGI = dict(
             (b("Dil", "Language"), b("TR / EN arayüz", "TR / EN interface")),
         ])),
         ("screens", ("Ekranlar", "Screens"), "\n".join([
-            "<h3>" + b("Kasa / yönetim (tablet)", "Cashier / admin (tablet)") + "</h3>",
-            '<div class="fig-grid">',
-            "{fig:digitab/tablet-01-home.webp|Giriş|Home|Kasa paneli ve garson ekranı seçimi.|Choose cashier panel or waiter screen.|}",
-            "{fig:digitab/tablet-02-tables.webp|Masalar|Tables|Masa durumu.|Table status.|}",
-            "{fig:digitab/tablet-03-menu.webp|Menü|Menu|Kategori ve ürün yönetimi.|Category and product management.|}",
-            "{fig:digitab/tablet-04-table-settings.webp|Masa ayarları|Table settings|Masa sayısı ve garson QR kodu.|Table count and waiter QR code.|}",
-            "{fig:digitab/tablet-05-system-settings.webp|Sistem|System|Sistem ayarları.|System settings.|}",
-            '</div>',
-            "<h3>" + b("Garson (mobil)", "Waiter (mobile)") + "</h3>",
-            '<div class="fig-grid phones">',
-            "{fig:digitab/mobile-01-tables.webp|Masa seçimi|Pick table|||}",
-            "{fig:digitab/mobile-02-occupied.webp|Dolu masalar|Occupied tables|||}",
-            "{fig:digitab/mobile-03-menu.webp|Menü|Menu|||}",
-            "{fig:digitab/mobile-04-order.webp|Sipariş|Order|||}",
-            '</div>',
+            "{vid:digitab/promo.mp4|digitab/promo-02-cashier.webp|Tanıtım videosu|Promo video|Garson ekranından kasa paneline sipariş akışı.|Order flow from the waiter screen to the cashier panel.}",
+            "{fig:digitab/promo-02-cashier.webp|Kasa paneli|Cashier panel|Masa durumu, adisyon ve otomatik hesaplanan toplam.|Table status, open bill and automatic total.|}",
+            "{fig:digitab/promo-03-waiter.webp|Garson ekranı|Waiter screen|QR kodla açılan mobil ekranda masa seçimi, kategorili menü ve sipariş notu.|Table picker, categorised menu and order notes on the QR-launched mobile screen.|}",
+            "{fig:digitab/promo-04-realtime.webp|Gerçek zamanlı senkronizasyon|Real-time sync|Garsonun gönderdiği sipariş kasa ekranına bir saniyenin altında düşer.|An order sent by the waiter reaches the cashier screen in under a second.|}",
+            "{fig:digitab/promo-05-admin.webp|Yönetim|Admin|Kategori ve ürün yönetimi, açık / koyu tema.|Category and product management, light / dark theme.|}",
         ])),
         # TODO(Fatih): DigiTab reposu GitHub'da yok (eski sitedeki link 404 veriyordu). Repo açılınca bağlantı eklenecek.
     ],
