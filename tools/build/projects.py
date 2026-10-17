@@ -479,17 +479,20 @@ CNC = dict(
 
 # ---------------------------------------------------------------------------
 # 7) DigiTab
+# Kaynak: FatihAksoyEEE/DigiTab reposu (README, kaynak kod) ve v1.1.0 sürümü.
 # ---------------------------------------------------------------------------
-d = Diagram(760, 190, "DigiTab mimari diyagramı")
-d.box(10, 20, 150, 50, "Garson", "mobil · sipariş")
-d.box(10, 120, 150, 50, "Kasa / yönetim", "tablet · masa · menü")
-d.box(300, 60, 170, 70, "Node.js + Express", "REST · Socket.io", accent=True)
-d.wire([(160, 45), (230, 45), (230, 85), (300, 85)], both=True)
-d.wire([(160, 145), (230, 145), (230, 105), (300, 105)], both=True)
-d.box(560, 20, 190, 50, "MongoDB", "masa · sipariş · ürün")
-d.box(560, 120, 190, 50, "Mutfak / kasa ekranı", "anlık güncelleme")
-d.wire([(470, 85), (515, 85), (515, 45), (560, 45)])
-d.wire([(470, 105), (515, 105), (515, 145), (560, 145)]).text(508, 132, "socket", "s", "end")
+d = Diagram(760, 200, "DigiTab mimari diyagramı")
+d.box(10, 20, 170, 56, "Garson telefonu", "tarayıcı · QR kod")
+d.box(10, 134, 170, 56, "İstasyon ekranı", "tablet · mutfak")
+d.box(270, 62, 220, 86, "Kasa bilgisayarı", "Electron · Next.js · Socket.io", accent=True)
+d.wire([(180, 48), (225, 48), (225, 90), (270, 90)], both=True)
+d.wire([(180, 162), (225, 162), (225, 120), (270, 120)], both=True)
+d.text(190, 40, "sipariş").text(190, 182, "fiş · hazır")
+d.box(580, 20, 170, 56, "SQLite", "tek dosya · yerel")
+d.box(580, 134, 170, 56, "Fiş yazıcısı", "80 mm · USB")
+d.wire([(490, 90), (535, 90), (535, 48), (580, 48)])
+d.wire([(490, 120), (535, 120), (535, 162), (580, 162)])
+d.text(528, 162, "yazdır", "s", "end")
 DIGI_DIAGRAM = d.render()
 
 DIGI = dict(
@@ -498,39 +501,77 @@ DIGI = dict(
     title=("DigiTab Adisyon Sistemi", "DigiTab Order Management"),
     short=("DigiTab Adisyon Sistemi", "DigiTab Order Management"),
     year="2024",
-    tags="React · Node.js · Socket.io",
-    tags_en="React · Node.js · Socket.io",
+    tags="Next.js · Socket.io · SQLite · Electron",
+    tags_en="Next.js · Socket.io · SQLite · Electron",
     thumb=("digitab/logo.svg", "DigiTab logosu"),
-    og="digitab/promo-02-cashier.webp",
-    desc=("Restoran ve kafeler için gerçek zamanlı sipariş, masa ve menü yönetim sistemi.",
-          "A real-time order, table and menu management system for restaurants and cafés."),
-    meta=[(("Kategori", "Category"), b("Full-stack web uygulaması", "Full-stack web app")),
-          ("Frontend", "React, TypeScript, Tailwind CSS"),
-          ("Backend", "Node.js, Express, Socket.io"),
-          (b("Veritabanı", "Database"), "MongoDB")],
+    og="digitab/promo-01-overview.webp",
+    desc=("Restoran ve kafeler için kasa bilgisayarında çalışan adisyon sistemi: telefondan sipariş, mutfak istasyonları, fiş yazdırma ve gün sonu raporu.",
+          "An order management system for restaurants and cafés that runs on the cashier's computer: ordering from phones, kitchen stations, ticket printing and end-of-day reports."),
+    meta=[(("Kategori", "Category"), b("Masaüstü + yerel ağ web uygulaması", "Desktop + local-network web app")),
+          ("Frontend", "Next.js 16, React 19, TypeScript, Tailwind CSS"),
+          ("Backend", "Node.js, Socket.io"),
+          (("Veritabanı", "Database"), "SQLite (better-sqlite3)"),
+          (("Masaüstü", "Desktop"), "Electron · Windows, macOS"),
+          (("Kaynak", "Source"), f'<a href="{GH}DigiTab">GitHub ↗</a>')],
     sections=[
         ("summary", ("Özet", "Summary"), "\n".join([
-            B("p", "Kâğıt adisyonla çalışan bir işletmede sipariş garsondan mutfağa, oradan kasaya elden ele taşınıyor; bu da gecikme ve hata demek. DigiTab bu akışı dijitalleştiriyor: garson siparişi telefondan alıyor, mutfak ve kasa aynı anda görüyor, hesap tek tıkla çıkıyor.",
-              "In a business running on paper tickets, an order travels by hand from waiter to kitchen to cashier, which means delays and mistakes. DigiTab digitises that flow: the waiter takes the order on a phone, the kitchen and cashier see it at the same moment, and the bill is one click away."),
+            B("p", "Kâğıt adisyonla çalışan bir işletmede sipariş garsondan mutfağa, oradan kasaya elden ele taşınıyor; bu da gecikme ve hata demek. DigiTab bu akışı dijitalleştiriyor: garson siparişi telefondan alıyor, her kalem kendi mutfak istasyonuna düşüyor, hazır olunca garsonun telefonu titriyor, kasa her şeyi anında görüyor ve gün sonu raporu hazır bekliyor.",
+              "In a business running on paper tickets, an order travels by hand from waiter to kitchen to cashier, which means delays and mistakes. DigiTab digitises that flow: the waiter takes the order on a phone, each item lands on its own kitchen station, the waiter's phone vibrates when it is ready, the cashier sees everything at once and the end-of-day report is waiting."),
+            B("p", "Uygulama kasa bilgisayarına kurulan tek bir masaüstü programı. İnternet bağlantısı, abonelik ya da garson telefonlarına uygulama kurulumu gerektirmiyor: telefonlar ve mutfak tabletleri aynı Wi-Fi ağı üzerinden tarayıcıyla bağlanıyor, bütün veriler kasa bilgisayarındaki tek bir SQLite dosyasında tutuluyor.",
+              "The app is a single desktop program installed on the cashier's computer. It needs no internet connection, no subscription and no app on the waiters' phones: phones and kitchen tablets connect through a browser over the same Wi-Fi network, and all data lives in a single SQLite file on the cashier's computer."),
+            "{vid:digitab/promo.mp4|digitab/promo-01-overview.webp|Tanıtım videosu|Promo video|Kasa paneli, garson ekranı, istasyonlar, günlük satışlar ve fiş tasarımı.|Cashier panel, waiter screen, stations, daily sales and ticket designer.}",
         ])),
-        ("diagram", ("Mimari", "Architecture"), DIGI_DIAGRAM),
+        ("diagram", ("Mimari", "Architecture"), "\n".join([
+            DIGI_DIAGRAM,
+            B("p", "Kasa bilgisayarındaki Electron uygulaması aynı zamanda sunucu: Next.js sayfaları ve Socket.io olayları tek bir Node.js sürecinden sunuluyor. Veriyi değiştiren her işlem sunucudaki socket olaylarından geçiyor ve bütün ekranlara anında yayınlanıyor.",
+              "The Electron app on the cashier's computer is also the server: Next.js pages and Socket.io events are served from a single Node.js process. Every operation that changes data goes through a socket event on the server and is broadcast to all screens immediately."),
+        ])),
         ("features", ("Özellikler", "Features"), spec([
-            (b("Masa yönetimi", "Tables"), b("Masaların doluluk durumunu ve sipariş sürelerini anlık izleme", "Live table occupancy and order durations")),
-            (b("Sipariş", "Orders"), b("Mobil/tablet üzerinden hızlı sipariş ve mutfağa anında iletim", "Fast ordering from phone/tablet with instant delivery to the kitchen")),
-            (b("Menü", "Menu"), b("Ürün kategorileri, fiyatlandırma ve stok", "Product categories, pricing and stock")),
-            (b("Adisyon", "Billing"), b("Tek tıkla hesap dökümü", "One-click bill")),
-            (b("Raporlama", "Reports"), b("Günlük ciro ve en çok satan ürünler", "Daily revenue and best-selling items")),
-            (b("Garson girişi", "Waiter access"), b("Yerel ağ adresi ve QR kod ile garson ekranına bağlanma", "Join the waiter screen via local network address and QR code")),
-            (b("Dil", "Language"), b("TR / EN arayüz", "TR / EN interface")),
+            (b("Kasa paneli", "Cashier panel"), b("Masaların doluluk durumu, adisyon, notlar ve her kalemin hazırlık durumu", "Table occupancy, open bill, notes and the preparation status of every item")),
+            (b("Garson ekranı", "Waiter screen"), b("QR kodla tarayıcıdan bağlanma, kategorili menü, sepet ve sipariş notu", "Join from the browser with a QR code; categorised menu, cart and order notes")),
+            (b("İstasyonlar", "Stations"), b("Kalemler kategori veya ürün bazında ocak, bar, tatlı gibi istasyonlara otomatik ayrılıyor", "Items are routed automatically to stations such as grill, bar or desserts by category or product")),
+            (b("Mutfak ekranı", "Kitchen display"), b("Masa, adet, not ve geçen süre; geciken fiş sarı / kırmızı çerçeveyle öne çıkıyor", "Table, quantity, note and elapsed time; late tickets are highlighted in amber / red")),
+            (b("Hazır bildirimi", "Ready alert"), b("İstasyon “Hazır” deyince garson telefonu ses ve titreşimle uyarıyor", "When a station marks an order ready, the waiter's phone alerts with sound and vibration")),
+            (b("Ödeme", "Payment"), b("Alınan tutar (indirimli) ve ödeme türü (nakit / kart); adisyon satış defterine yazılıyor", "Amount received (discounts allowed) and payment type (cash / card); the bill is written to a sales ledger")),
+            (b("Günlük satışlar", "Daily sales"), b("Tahsilat, nakit / kart dağılımı, ürün bazlı adet ve tutar, geçmiş günler", "Takings, cash / card split, quantity and revenue per product, past days")),
+            (b("Fiş yazdırma", "Ticket printing"), b("80 mm termal yazıcı; kasaya bağlıysa yazdırma penceresi açılmadan", "80 mm thermal printer; without a print dialog when attached to the cashier's computer")),
+            (b("Fiş tasarımcısı", "Ticket designer"), b("Masa no, sipariş içeriği, saat, not gibi öğeler sürükle-bırakla dizilip boyut ve hizalaması ayarlanıyor", "Items such as table number, order lines, time and notes are arranged by drag and drop, with size and alignment controls")),
+            (b("Diğer", "Other"), b("Menü yönetimi, tek tıkla yedekleme, açık / koyu tema, TR / EN arayüz", "Menu management, one-click backup, light / dark theme, TR / EN interface")),
         ])),
         ("screens", ("Ekranlar", "Screens"), "\n".join([
-            "{vid:digitab/promo.mp4|digitab/promo-02-cashier.webp|Tanıtım videosu|Promo video|Garson ekranından kasa paneline sipariş akışı.|Order flow from the waiter screen to the cashier panel.}",
-            "{fig:digitab/promo-02-cashier.webp|Kasa paneli|Cashier panel|Masa durumu, adisyon ve otomatik hesaplanan toplam.|Table status, open bill and automatic total.|}",
-            "{fig:digitab/promo-03-waiter.webp|Garson ekranı|Waiter screen|QR kodla açılan mobil ekranda masa seçimi, kategorili menü ve sipariş notu.|Table picker, categorised menu and order notes on the QR-launched mobile screen.|}",
-            "{fig:digitab/promo-04-realtime.webp|Gerçek zamanlı senkronizasyon|Real-time sync|Garsonun gönderdiği sipariş kasa ekranına bir saniyenin altında düşer.|An order sent by the waiter reaches the cashier screen in under a second.|}",
-            "{fig:digitab/promo-05-admin.webp|Yönetim|Admin|Kategori ve ürün yönetimi, açık / koyu tema.|Category and product management, light / dark theme.|}",
+            "{fig:digitab/promo-02-cashier.webp|Kasa paneli|Cashier panel|Masa durumu, kalemlerin hazırlık durumu ve ödeme alma.|Table status, item preparation status and taking payment.|}",
+            "{fig:digitab/promo-03-waiter.webp|Garson ekranı|Waiter screen|QR kodla açılan mobil ekranda masa seçimi, menü ve hazır sipariş bildirimleri.|Table picker, menu and ready-order alerts on the QR-launched mobile screen.|}",
+            "{fig:digitab/promo-04-stations.webp|Mutfak istasyonu|Kitchen station|Bekleyen fişler, geçen süre ve 80 mm termal fiş.|Pending tickets, elapsed time and the 80 mm thermal ticket.|}",
+            "{fig:digitab/promo-05-sales.webp|Günlük satışlar|Daily sales|Tahsilat, nakit / kart dağılımı ve ürün bazlı satışlar.|Takings, cash / card split and sales per product.|}",
+            "{fig:digitab/promo-06-receipt.webp|Fiş tasarımcısı|Ticket designer|Öğeler sürükle-bırakla dizilir; önizleme basılan fişin aynısıdır.|Items are arranged by drag and drop; the preview matches the printed ticket.|}",
         ])),
-        # TODO(Fatih): DigiTab reposu GitHub'da yok (eski sitedeki link 404 veriyordu). Repo açılınca bağlantı eklenecek.
+        ("notes", ("Tasarım notları", "Design notes"), "\n".join([
+            '<ul>',
+            B("li", "<strong>Yerel öncelikli:</strong> sistem internete hiç ihtiyaç duymuyor. Bağlantı kesilse de servis sürüyor ve veriler işletmenin bilgisayarından çıkmıyor.",
+              "<strong>Local-first:</strong> the system never needs the internet. Service continues when the connection drops and data never leaves the business's computer."),
+            B("li", "<strong>Güven sınırı:</strong> yönetim ekranları ve işlemleri yalnızca kasa bilgisayarından (<code>localhost</code>) kabul ediliyor. Fiyatlar istemciden alınmıyor, her zaman menüden okunuyor; bütün socket olayları sunucuda doğrulanıyor.",
+              "<strong>Trust boundary:</strong> admin screens and operations are accepted only from the cashier's computer (<code>localhost</code>). Prices are never taken from the client but always read from the menu, and every socket event is validated on the server."),
+            B("li", "<strong>Satış defteri:</strong> masa kapatılırken ürün adı, fiyat ve masa numarası o anki haliyle ayrı tablolara kopyalanıyor. Menü değişse ya da masa sayısı düşse de geçmiş raporlar bozulmuyor.",
+              "<strong>Sales ledger:</strong> when a table is closed, product names, prices and the table number are copied as they are into separate tables, so past reports stay intact even if the menu or table layout changes."),
+            B("li", "<strong>Fiş HTML olarak basılıyor:</strong> fiş, ESC/POS ham komutları yerine 80 mm genişlikte bir sayfa olarak çiziliyor ve işletim sisteminin yazıcı sürücüsüyle basılıyor. Böylece Türkçe karakterlerde kod sayfası sorunu yaşanmıyor ve sürücüsü olan her fiş yazıcısı çalışıyor. Ayarlardaki önizleme ile basılan fiş aynı bileşenden üretiliyor.",
+              "<strong>Tickets print as HTML:</strong> instead of raw ESC/POS commands, the ticket is rendered as an 80 mm page and printed through the operating system's printer driver. This avoids code-page problems with Turkish characters and works with any receipt printer that has a driver. The preview in settings and the printed ticket come from the same component."),
+            B("li", "<strong>Yazdırma ajanı:</strong> Electron ana süreci sunucuya socket istemcisi olarak bağlanıp yazıcı listesini bildiriyor ve fişleri gizli bir pencerede açıp diyalogsuz basıyor. Bu yaklaşım hem geliştirmede (ayrı süreçler) hem kurulum sürümünde (tek süreç) aynı şekilde çalışıyor.",
+              "<strong>Print agent:</strong> the Electron main process connects to the server as a socket client, reports the printer list and prints tickets silently from a hidden window. The same approach works in development (separate processes) and in the installed app (single process)."),
+            '</ul>',
+        ])),
+        ("status", ("Durum", "Status"), status([
+            (True, b("Garson, kasa ve istasyon ekranları, hazır bildirimi", "Waiter, cashier and station screens, ready alerts")),
+            (True, b("Ödeme alma ve günlük satış raporu", "Taking payments and the daily sales report")),
+            (True, b("Fiş yazdırma ve fiş tasarımcısı", "Ticket printing and the ticket designer")),
+            (True, b("Windows ve macOS kurulum dosyaları (v1.1.0), GitHub Actions ile derleme ve paket testi", "Windows and macOS installers (v1.1.0), built and smoke-tested with GitHub Actions")),
+            (False, b("Yazar kasa (ÖKC) ve e-fatura entegrasyonu", "Cash register (fiscal device) and e-invoice integration")),
+            (False, b("Kullanıcı girişi ve yetki seviyeleri", "User login and permission levels")),
+            (False, b("Çoklu şube ve uzaktan raporlama", "Multiple branches and remote reporting")),
+        ])),
+        ("links", ("Bağlantılar", "Links"), links([
+            ("GitHub", "FatihAksoyEEE/DigiTab", GH + "DigiTab"),
+            ("Releases", b("v1.1.0 · Windows ve macOS kurulum dosyaları", "v1.1.0 · Windows and macOS installers"), GH + "DigiTab/releases/tag/v1.1.0"),
+        ])),
     ],
 )
 

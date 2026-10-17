@@ -138,7 +138,7 @@ Bu maddeler site tarafında yapılacak bir iş değil; içerik gelince eklenecek
 
 - [-] Tezgâh, lehim ve test fotoğrafları.
 - [-] STM32 uçuş kontrol kartı: MCU, IMU, şema/PCB görselleri, repo.
-- [-] DigiTab reposunun GitHub'da açılması (açılınca proje sayfasına bağlantı eklenecek; `projects.py` içinde TODO var).
+- [x] DigiTab reposu açıldı (`FatihAksoyEEE/DigiTab`, v1.1.0). Proje sayfası projenin son haline göre yeniden yazıldı (17 Ekim 2026): Next.js + Socket.io + SQLite + Electron mimarisi, istasyonlar, hazır bildirimi, kasa ve günlük satışlar, fiş yazdırma ve tasarımcısı; yeni tanıtım görselleri (WebP, 1600 px) ve video (H.264, CRF 28, 1280 px, 0,42 MB); logo yeni temanın renklerine geçirildi; GitHub ve Releases bağlantıları eklendi.
 - [-] YouTube videoları (yayınlanınca ilgili proje sayfalarına eklenecek).
 - [-] Opsiyonel: "Notlar / Blog" bölümü (örn. CAN hattını çözme süreci). Yazıların Fatih'in kendi anlatımıyla gelmesi gerekiyor.
 
@@ -156,6 +156,6 @@ Bu maddeler site tarafında yapılacak bir iş değil; içerik gelince eklenecek
 
 - [x] Proje yılları doğru mu? CAN 2026, GCS 2026, Robot Kol 2026, ESP32 Quadcopter 2025, CNC / STM32 FC / DigiTab 2024. **Fatih onayladı (Ekim 2026).**
 - [-] STM32 uçuş kontrol kartı: MCU modeli, IMU, şema/PCB görselleri, repo → Faz 12
-- [-] DigiTab reposu GitHub'da yok (Ekim 2026'da tekrar kontrol edildi: 404) → Faz 12
+- [x] DigiTab reposu GitHub'da açıldı (Ekim 2026) → Faz 12
 - [-] Gerçek proje fotoğrafları (tezgâh, lehim, test) → Faz 12
 - [x] SnapRoute siteye eklenecek mi? → Hayır.
