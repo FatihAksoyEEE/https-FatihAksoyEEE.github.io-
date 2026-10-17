@@ -106,7 +106,7 @@ Tek bir ortak şablon hazırlanır ve tüm projeler ona taşınır.
 ## Faz 8: Yayın öncesi
 
 - [x] Değişiklikler commit'lenip `main`'e push edildi (17 Ekim 2026); fatihaksoy.com üzerinde TR, `/en/`, 404 ve eski CV adresi kontrol edildi.
-  - ⚠️ GitHub Actions kontrolü çalışmıyor: GitHub iş akışını başlatmadı ("account is locked due to a billing issue"). GitHub hesabındaki ödeme sorunu çözülünce kendiliğinden çalışır; Pages yayını bundan etkilenmiyor.
+  - GitHub hesabındaki ödeme sorunu yüzünden ilk CI çalışması başlamamıştı; Fatih sorunu çözdü, kontrol geçiyor.
 - [x] Eski CV linki (`assets/FatihAksoy_CV.pdf`) kırılmasın diye güncel CV eski adla da bırakıldı.
 - [x] Videolar `ffmpeg` ile sıkıştırıldı (H.264, CRF 28, 1280 px, faststart): `demo-bench.mp4` 9,7 MB → 0,45 MB, `demo-tour.mp4` 2,3 → 0,14 MB, DigiTab `promo.mp4` 3,7 → 0,63 MB. Ekran kaydı olduğu için 720p yerine 1280 px genişlik korundu; kalite kare karşılaştırmasıyla kontrol edildi. DigiTab videosunun kapanış kartındaki "macOS masaüstü uygulaması" rozet satırı silindi.
 - [x] `404.html` eklendi ("Sinyal yok.", TR + EN, mutlak yollar sayesinde `/en/...` altında da çalışır, `noindex`).
