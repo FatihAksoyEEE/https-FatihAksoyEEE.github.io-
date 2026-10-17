@@ -105,7 +105,8 @@ Tek bir ortak şablon hazırlanır ve tüm projeler ona taşınır.
 
 ## Faz 8: Yayın öncesi
 
-- [ ] Bekleyen değişiklikler commit'lenip `main`'e push edilecek.
+- [x] Değişiklikler commit'lenip `main`'e push edildi (17 Ekim 2026); fatihaksoy.com üzerinde TR, `/en/`, 404 ve eski CV adresi kontrol edildi.
+  - ⚠️ GitHub Actions kontrolü çalışmıyor: GitHub iş akışını başlatmadı ("account is locked due to a billing issue"). GitHub hesabındaki ödeme sorunu çözülünce kendiliğinden çalışır; Pages yayını bundan etkilenmiyor.
 - [x] Eski CV linki (`assets/FatihAksoy_CV.pdf`) kırılmasın diye güncel CV eski adla da bırakıldı.
 - [x] Videolar `ffmpeg` ile sıkıştırıldı (H.264, CRF 28, 1280 px, faststart): `demo-bench.mp4` 9,7 MB → 0,45 MB, `demo-tour.mp4` 2,3 → 0,14 MB, DigiTab `promo.mp4` 3,7 → 0,63 MB. Ekran kaydı olduğu için 720p yerine 1280 px genişlik korundu; kalite kare karşılaştırmasıyla kontrol edildi. DigiTab videosunun kapanış kartındaki "macOS masaüstü uygulaması" rozet satırı silindi.
 - [x] `404.html` eklendi ("Sinyal yok.", TR + EN, mutlak yollar sayesinde `/en/...` altında da çalışır, `noindex`).
@@ -114,7 +115,11 @@ Tek bir ortak şablon hazırlanır ve tüm projeler ona taşınır.
 
 - [x] İngilizce sayfalar `/en/` altında üretiliyor; her sayfada `hreflang` (tr, en, x-default) ve dile göre canonical/og etiketleri var. Her dilin sayfasında yalnızca o dilin metni kalıyor (build sırasında diğer dil çıkarılıyor). Dil butonu artık karşı dildeki sayfaya giden bir bağlantı; JS gerekmiyor. Diyagram etiketleri ve görsel alt metinleri de çevrildi. `sitemap.xml` iki dili `xhtml:link` ile listeliyor.
 - [x] JSON-LD: ana sayfada `Person` (isim, üniversite, uzmanlıklar, `sameAs`: GitHub, LinkedIn, YouTube, Instagram), proje sayfalarında yazara bağlı `CreativeWork`.
-- [ ] Yayından sonra PageSpeed Insights / Lighthouse ölçümü.
+- [x] Yayından sonra Lighthouse ölçümü (17 Ekim 2026, canlı site; PageSpeed API kotası dolu olduğu için Lighthouse 12 yerelde çalıştırıldı). İlk ölçümde mobil performans ana sayfada 78'di (LCP 4,2 s); Google Fonts render'ı blokluyordu ve ana sayfa görselleri büyüktü. Düzeltmeler: fontlar `assets/fonts` altına alındı (preload), ana sayfa için 336 px görsel kopyaları build'de üretiliyor, dil bağlantısının erişilebilir adı düzeltildi. Sonuç (performans / erişilebilirlik / en iyi uygulamalar / SEO):
+  - `/` mobil 99 / 100 / 100 / 100 (LCP 2,2 s), masaüstü 100 / 100 / 100 / 100
+  - `/en/project-canbus-sniffer.html` mobil 98, masaüstü 100; diğerleri 100
+  - `/project-order-management.html` mobil ve masaüstü 100 / 100 / 100 / 100
+  - Kalan uyarılar: önbellek süresi (GitHub Pages'te değiştirilemiyor) ve proje sayfalarındaki şema görsellerinin boyutu (büyütme için bilerek büyük).
 
 ## Faz 10: Kullanılabilirlik
 
@@ -145,7 +150,7 @@ Bu maddeler site tarafında yapılacak bir iş değil; içerik gelince eklenecek
 2. **Faz 1 + Faz 2 + CNC sayfası** → prototip. localhost'ta gözden geçirilir, onay alınır.
 3. **Faz 3** (kalan sayfalar) + **Faz 4** → içerik geldikçe.
 4. **Faz 5** → yayın öncesi son geçiş.
-5. Yayın: `main`'e push edilir, fatihaksoy.com üzerinde kontrol edilir. → **Onay bekliyor** (commit'ler yerelde, push yapılmadı).
+5. Yayın: `main`'e push edilir, fatihaksoy.com üzerinde kontrol edilir. → **Yayında** (17 Ekim 2026).
 
 ## Açık sorular
 
