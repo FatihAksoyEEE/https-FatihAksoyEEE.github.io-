@@ -31,6 +31,23 @@ def img(path, alt, cls="", lazy=True, extra=""):
     return f'<img src="{IMG}{path}" width="{w}" height="{h}" alt="{html.escape(alt)}"{c}{l}{extra}>'
 
 
+THUMB_W = 336  # ana sayfadaki 168 px'lik kutunun iki katı (retina)
+
+
+def small_thumb(path):
+    """Ana sayfa için küçük kopya üretir (yoksa) ve yolunu döndürür. SVG olduğu gibi kalır."""
+    if path.endswith(".svg"):
+        return path
+    stem, _ = os.path.splitext(path)
+    small = f"{stem}-{THUMB_W}.webp"
+    dst = os.path.join(ROOT, IMG, small)
+    if not os.path.exists(dst):
+        with Image.open(os.path.join(ROOT, IMG, path)) as im:
+            h = round(im.height * THUMB_W / im.width)
+            im.convert("RGB").resize((THUMB_W, h), Image.LANCZOS).save(dst, "WEBP", quality=82, method=6)
+    return small
+
+
 def expand_figs(s, counter, lang):
     en = lang == "en"
     def rep(m):
@@ -156,7 +173,7 @@ def index_page(lang):
     rows = []
     for i, p in enumerate(PROJECTS):
         if p.get("thumb"):
-            thumb = img(p["thumb"][0], "", "thumb").replace('alt=""', 'alt="" aria-hidden="true"')
+            thumb = img(small_thumb(p["thumb"][0]), "", "thumb").replace('alt=""', 'alt="" aria-hidden="true"')
         else:
             thumb = f'<span class="thumb thumb-text" aria-hidden="true">{html.escape(p["thumb_text"])}</span>'
         rows.append(f"""<li data-cats="{' '.join(p['cats'])}"><a class="project-row" href="{p['slug']}">

@@ -57,9 +57,7 @@ def head(title, desc, path, lang, og_image="assets/og.jpg", og_type="website", l
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <script>try{{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
 {analytics()}{ld_tag}</head>
 """
@@ -106,9 +104,10 @@ def header(lang, path, on_home=True, active=None):
 
 
 def lang_switch(lang, path):
+    # Erişilebilir ad görünen metinle aynı kalsın diye aria-label yok; açıklama title'da
     if lang == "en":
-        return f'<a class="ctrl-btn" id="langBtn" href="../{path}" hreflang="tr" lang="tr" aria-label="Türkçe" title="Türkçe">TR</a>'
-    return f'<a class="ctrl-btn" id="langBtn" href="en/{path}" hreflang="en" lang="en" aria-label="English" title="English">EN</a>'
+        return f'<a class="ctrl-btn" id="langBtn" href="../{path}" hreflang="tr" lang="tr" title="Türkçe">TR</a>'
+    return f'<a class="ctrl-btn" id="langBtn" href="en/{path}" hreflang="en" lang="en" title="English">EN</a>'
 
 
 def footer():

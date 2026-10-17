@@ -25,9 +25,7 @@
     <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="../apple-touch-icon.png">
     <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="../assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../styles.css">
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://fatihaksoy.com/#person", "name": "Mehmet Fatih Aksoy", "alternateName": "Fatih Aksoy", "url": "https://fatihaksoy.com/", "image": "https://fatihaksoy.com/assets/img/portrait.webp", "jobTitle": "Electrical and Electronics Engineering Student", "affiliation": {"@type": "CollegeOrUniversity", "name": "Zonguldak Bülent Ecevit Üniversitesi"}, "knowsAbout": ["Embedded systems", "PCB design", "STM32", "ESP32", "KiCad", "CAN bus", "Industrial automation", "PLC"], "sameAs": ["https://github.com/FatihAksoyEEE", "https://www.linkedin.com/in/mehmet-fatih-aksoy-1217443ba", "https://www.youtube.com/@electronc_workshop", "https://www.instagram.com/fatih_aksoy6741/"]}</script>
 </head>
@@ -44,7 +42,7 @@
                 </ul>
             </nav>
             <div class="controls">
-                <a class="ctrl-btn" id="langBtn" href="../" hreflang="tr" lang="tr" aria-label="Türkçe" title="Türkçe">TR</a>
+                <a class="ctrl-btn" id="langBtn" href="../" hreflang="tr" lang="tr" title="Türkçe">TR</a>
                 <button class="ctrl-btn" id="themeBtn" type="button" aria-label="Toggle theme">
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
@@ -114,42 +112,42 @@
     <div class="body"><h3><span data-lang="en" lang="en">CAN-Bus Sniffer</span></h3>
 <p data-lang="en" lang="en" class="desc">A toolset that listens to a vehicle's CAN traffic through the OBD-II port and reverse-engineers the manufacturer-specific engine RPM signal.</p></div>
     <div class="meta"><span>2026</span><span><span data-lang="en" lang="en">Python · python-can · CANable · Reverse engineering</span></span></div>
-    <img src="../assets/img/canbus/canable.webp" width="634" height="420" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
+    <img src="../assets/img/canbus/canable-336.webp" width="336" height="223" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
 <li data-cats="sw"><a class="project-row" href="project-control-station.html">
     <span class="idx">02</span>
     <div class="body"><h3><span data-lang="en" lang="en">Ground Control Station: LoRa Controller and Receiver</span></h3>
 <p data-lang="en" lang="en" class="desc">Desktop ground control software for UAVs: decodes telemetry from a serial link, draws flight instruments and uploads missions from a map.</p></div>
     <div class="meta"><span>2026</span><span><span data-lang="en" lang="en">LoRa · React · Electron · Serial comms</span></span></div>
-    <img src="../assets/img/control-station/controller-thumb.webp" width="1200" height="900" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
+    <img src="../assets/img/control-station/controller-thumb-336.webp" width="336" height="252" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
 <li data-cats="fw sw"><a class="project-row" href="project-robot-arm.html">
     <span class="idx">03</span>
     <div class="body"><h3><span data-lang="en" lang="en">Robot Arm Controller</span></h3>
 <p data-lang="en" lang="en" class="desc">Firmware for a 6-servo robot arm on an STM32 Blackpill, plus a PyQt6 desktop app that controls it over USB.</p></div>
     <div class="meta"><span>2026</span><span><span data-lang="en" lang="en">STM32 · PlatformIO · PyQt6</span></span></div>
-    <img src="../assets/img/robot-arm/cover.webp" width="800" height="620" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
+    <img src="../assets/img/robot-arm/cover-336.webp" width="336" height="260" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
 <li data-cats="pcb fw"><a class="project-row" href="project-uav.html">
     <span class="idx">04</span>
     <div class="body"><h3><span data-lang="en" lang="en">ESP32 Quadcopter</span></h3>
 <p data-lang="en" lang="en" class="desc">A small ESP32-based quadcopter whose frame is the PCB itself: schematic, board layout and PID-stabilised flight firmware.</p></div>
     <div class="meta"><span>2025</span><span><span data-lang="en" lang="en">PCB · KiCad · ESP32 · Firmware</span></span></div>
-    <img src="../assets/img/quadcopter/pcb-3d.webp" width="1092" height="1038" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
+    <img src="../assets/img/quadcopter/pcb-3d-336.webp" width="336" height="319" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
 <li data-cats="pcb fw"><a class="project-row" href="project-flight-controller.html">
     <span class="idx">05</span>
     <div class="body"><h3><span data-lang="en" lang="en">STM32 Flight Controller</span></h3>
 <p data-lang="en" lang="en" class="desc">A custom STM32-based flight control board and stabilisation firmware.</p></div>
     <div class="meta"><span>2024</span><span><span data-lang="en" lang="en">PCB · STM32 · Embedded</span></span></div>
-    <img src="../assets/img/flight-controller/pcb-3d.webp" width="799" height="670" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
+    <img src="../assets/img/flight-controller/pcb-3d-336.webp" width="336" height="282" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
 <li data-cats="pcb"><a class="project-row" href="project-cnc.html">
     <span class="idx">06</span>
     <div class="body"><h3><span data-lang="en" lang="en">3-Axis CNC Mill</span></h3>
 <p data-lang="en" lang="en" class="desc">A desktop CNC mill designed from scratch: mechanics, control board and software.</p></div>
     <div class="meta"><span>2024</span><span><span data-lang="en" lang="en">Mechanical · PCB · GRBL</span></span></div>
-    <img src="../assets/img/cnc/cover.webp" width="1400" height="1156" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
+    <img src="../assets/img/cnc/cover-336.webp" width="336" height="277" alt="" aria-hidden="true" class="thumb" loading="lazy" decoding="async">
 </a></li>
 <li data-cats="sw"><a class="project-row" href="project-order-management.html">
     <span class="idx">07</span>
