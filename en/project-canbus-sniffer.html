@@ -55,7 +55,7 @@
         <div class="wrap">
             <a class="crumb" href="index.html#projects">← <span data-lang="en" lang="en">All projects</span></a>
             <header class="ds-head">
-                <p class="label"><span data-lang="en" lang="en">Project</span> 01 · 2026</p>
+                <p class="label"><span data-lang="en" lang="en">Project</span> 02 · 2026</p>
                 <h1><span data-lang="en" lang="en">CAN-Bus Sniffer and RPM Decoding</span></h1>
                 
 <p data-lang="en" lang="en" class="lead">A toolset that listens to a vehicle's CAN traffic through the OBD-II port and reverse-engineers the manufacturer-specific engine RPM signal.</p>
@@ -73,51 +73,51 @@
                 </nav>
                 <div class="ds-content">
 <section class="ds-section" id="summary" aria-labelledby="summary-h">
-<h2 id="summary-h"><span class="num">01.1</span><span data-lang="en" lang="en">Summary</span></h2>
+<h2 id="summary-h"><span class="num">02.1</span><span data-lang="en" lang="en">Summary</span></h2>
 
 <p data-lang="en" lang="en">Inside a vehicle, control units talk to each other over a CAN bus. Standard OBD-II queries return some values, but manufacturers broadcast most of the real data in their own messages, and the meaning of those messages is undocumented.</p>
 
 <p data-lang="en" lang="en">In this project I connected to the OBD-II port of a Toyota Hilux in <strong>listen-only</strong> mode, logged raw frames and compared recordings taken at different engine speeds to find the RPM signal: CAN ID <code>0x2C4</code>, first two bytes big-endian, scale <code>×0.8</code>. I then wrote a tachometer app that shows this signal live.</p>
 </section>
 <section class="ds-section" id="diagram" aria-labelledby="diagram-h">
-<h2 id="diagram-h"><span class="num">01.2</span><span data-lang="en" lang="en">Block diagram</span></h2>
-<div class="diagram"><svg viewBox="0 0 760 240" role="img"><title data-lang="en" lang="en">CAN sniffing chain block diagram</title><defs><marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah1s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
+<h2 id="diagram-h"><span class="num">02.2</span><span data-lang="en" lang="en">Block diagram</span></h2>
+<div class="diagram"><svg viewBox="0 0 760 240" role="img"><title data-lang="en" lang="en">CAN sniffing chain block diagram</title><defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah2s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
             <rect class="blk" x="10" y="30" width="140" height="56" rx="2"/>
             <text class="t" x="80.0" y="55.0" text-anchor="middle"><tspan data-lang="en" lang="en">Vehicle ECUs</tspan></text>
             <text class="s" x="80.0" y="72.0" text-anchor="middle"><tspan data-lang="en" lang="en">control units</tspan></text>
             <rect class="blk" x="10" y="160" width="140" height="56" rx="2"/>
             <text class="t" x="80.0" y="185.0" text-anchor="middle"><tspan data-lang="en" lang="en">OBD-II port</tspan></text>
             <text class="s" x="80.0" y="202.0" text-anchor="middle">pin 6 / 14 / 5</text>
-            <polyline class="wire" points="80,86 80,160" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="80,86 80,160" marker-end="url(#ah2)"/>
             <text class="s" x="90" y="128" text-anchor="start">CAN · 500 kbit/s</text>
             <rect class="blk-accent" x="210" y="160" width="160" height="56" rx="2"/>
             <text class="t" x="290.0" y="185.0" text-anchor="middle">CANable V2.1</text>
             <text class="s" x="290.0" y="202.0" text-anchor="middle">SLCAN · listen-only</text>
-            <polyline class="wire" points="150,188 210,188" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="150,188 210,188" marker-end="url(#ah2)"/>
             <text class="s" x="180" y="180" text-anchor="middle">CAN</text>
             <rect class="blk" x="430" y="160" width="160" height="56" rx="2"/>
             <text class="t" x="510.0" y="185.0" text-anchor="middle">canable_logger.py</text>
             <text class="s" x="510.0" y="202.0" text-anchor="middle"><tspan data-lang="en" lang="en">frames → CSV</tspan></text>
-            <polyline class="wire" points="370,188 430,188" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="370,188 430,188" marker-end="url(#ah2)"/>
             <text class="s" x="400" y="180" text-anchor="middle">USB</text>
             <rect class="blk" x="430" y="30" width="160" height="56" rx="2"/>
             <text class="t" x="510.0" y="55.0" text-anchor="middle">rpm_analyzer.py</text>
             <text class="s" x="510.0" y="72.0" text-anchor="middle"><tspan data-lang="en" lang="en">calibration</tspan></text>
-            <polyline class="wire" points="510,160 510,86" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="510,160 510,86" marker-end="url(#ah2)"/>
             <text class="s" x="520" y="128" text-anchor="start">CSV</text>
             <rect class="blk" x="640" y="30" width="110" height="56" rx="2"/>
             <text class="t" x="695.0" y="55.0" text-anchor="middle">rpm_gauge.py</text>
             <text class="s" x="695.0" y="72.0" text-anchor="middle"><tspan data-lang="en" lang="en">tachometer</tspan></text>
-            <polyline class="wire" points="590,58 640,58" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="590,58 640,58" marker-end="url(#ah2)"/>
             <text class="s" x="615" y="50" text-anchor="middle">0x2C4</text>
             <rect class="blk" x="640" y="160" width="110" height="56" rx="2"/>
             <text class="t" x="695.0" y="185.0" text-anchor="middle">rpm_live.py</text>
             <text class="s" x="695.0" y="202.0" text-anchor="middle">terminal RPM</text>
-            <polyline class="wire" points="590,188 640,188" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="590,188 640,188" marker-end="url(#ah2)"/>
             </svg></div>
 </section>
 <section class="ds-section" id="specs" aria-labelledby="specs-h">
-<h2 id="specs-h"><span class="num">01.3</span><span data-lang="en" lang="en">Specifications</span></h2>
+<h2 id="specs-h"><span class="num">02.3</span><span data-lang="en" lang="en">Specifications</span></h2>
 <table class="spec">
 <tr><th scope="row"><span data-lang="en" lang="en">Adapter</span></th><td>CANable V2.1 (stok SLCAN firmware)</td></tr>
 <tr><th scope="row"><span data-lang="en" lang="en">Mode</span></th><td><span data-lang="en" lang="en"><code>M1</code> silent / listen-only: no frames are transmitted</span></td></tr>
@@ -129,7 +129,7 @@
 </table>
 </section>
 <section class="ds-section" id="method" aria-labelledby="method-h">
-<h2 id="method-h"><span class="num">01.4</span><span data-lang="en" lang="en">Method</span></h2>
+<h2 id="method-h"><span class="num">02.4</span><span data-lang="en" lang="en">Method</span></h2>
 
 <p data-lang="en" lang="en">To find the RPM signal I took three short recordings with the vehicle stationary, in neutral, handbrake on: idle, 1500 and 2500 rpm. The actual engine speed read from the cluster or a diagnostic tool was used as reference for each.</p>
 <pre><code>python3 canable_logger.py --duration 15 --output data/rpm_idle.csv
@@ -142,7 +142,7 @@ python3 rpm_analyzer.py calibrate \
   --sample data/rpm_2500.csv=2500</code></pre>
 
 <p data-lang="en" lang="en"><code>rpm_analyzer.py</code> scans candidate 16-bit fields (start byte, endianness) for every CAN ID and ranks the candidate that gives the most consistent linear fit (scale, offset) against the reference speeds. If the log contains a standard OBD reply <code>41 0C A B</code>, the formula <code>((A × 256) + B) / 4</code> is used directly.</p>
-<div class="diagram"><svg viewBox="0 0 760 150" role="img"><title data-lang="en" lang="en">Byte layout of frame 0x2C4</title><defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah2s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
+<div class="diagram"><svg viewBox="0 0 760 150" role="img"><title data-lang="en" lang="en">Byte layout of frame 0x2C4</title><defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah3s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
             <text class="s" x="10" y="22" text-anchor="start"><tspan data-lang="en" lang="en">CAN ID 0x2C4 · DLC 8 · sample frame</tspan></text>
             <rect class="blk-accent" x="10" y="36" width="84" height="46" rx="2"/>
             <text class="t" x="52.0" y="56.0" text-anchor="middle">03</text>
@@ -175,7 +175,7 @@ python3 rpm_analyzer.py calibrate \
             </svg></div>
 </section>
 <section class="ds-section" id="software" aria-labelledby="software-h">
-<h2 id="software-h"><span class="num">01.5</span><span data-lang="en" lang="en">Software</span></h2>
+<h2 id="software-h"><span class="num">02.5</span><span data-lang="en" lang="en">Software</span></h2>
 <table class="spec">
 <tr><th scope="row"><code>canable_logger.py</code></th><td><span data-lang="en" lang="en">Shows raw frames live and appends them to CSV. Each run creates a new session id.</span></td></tr>
 <tr><th scope="row"><code>rpm_analyzer.py</code></th><td><span data-lang="en" lang="en">Scans logs, ranks RPM candidates and calibrates them.</span></td></tr>
@@ -194,7 +194,7 @@ python3 rpm_analyzer.py calibrate \
 <figure class="fig"><video controls muted playsinline preload="none" poster="../assets/img/canbus/demo-tour-poster.webp" width="1400" height="879" aria-label="Interface tour"><source src="../assets/img/canbus/demo-tour.mp4" type="video/mp4"></video><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 2</span></span><span data-lang="en" lang="en">Interface tour — Connection, send (including OBD-II presets) and filter tabs.</span></figcaption></figure>
 </section>
 <section class="ds-section" id="learned" aria-labelledby="learned-h">
-<h2 id="learned-h"><span class="num">01.6</span><span data-lang="en" lang="en">Results and lessons</span></h2>
+<h2 id="learned-h"><span class="num">02.6</span><span data-lang="en" lang="en">Results and lessons</span></h2>
 <ul>
 
 <li data-lang="en" lang="en">The manufacturer broadcast (<code>0x2C4</code>) arrives continuously, so it suits live monitoring better than OBD polling: no request ever has to be sent on the bus.</li>
@@ -205,13 +205,13 @@ python3 rpm_analyzer.py calibrate \
 </ul>
 </section>
 <section class="ds-section" id="links" aria-labelledby="links-h">
-<h2 id="links-h"><span class="num">01.7</span><span data-lang="en" lang="en">Links</span></h2>
+<h2 id="links-h"><span class="num">02.7</span><span data-lang="en" lang="en">Links</span></h2>
 <ul class="links-list"><li><span class="label" lang="en">GitHub</span><a href="https://github.com/FatihAksoyEEE/Canbus-Sniffer-CANABLEV2.1-">FatihAksoyEEE/Canbus-Sniffer-CANABLEV2.1- ↗</a></li></ul>
 </section>
                 </div>
             </div>
         </div>
-        <nav class="pager wrap" aria-label="Project navigation"><span></span><a href="project-control-station.html"><span class="label"><span data-lang="en" lang="en">Next</span> →</span><strong><span data-lang="en" lang="en">Ground Control Station: LoRa Controller and Receiver</span></strong></a></nav>
+        <nav class="pager wrap" aria-label="Project navigation"><a href="project-lorasim.html"><span class="label">← <span data-lang="en" lang="en">Previous</span></span><strong><span data-lang="en" lang="en">LoRaSim: LoRa Link Simulator</span></strong></a><a href="project-control-station.html"><span class="label"><span data-lang="en" lang="en">Next</span> →</span><strong><span data-lang="en" lang="en">Ground Control Station: LoRa Controller and Receiver</span></strong></a></nav>
     </main>
     <footer class="site-footer">
         <div class="wrap">

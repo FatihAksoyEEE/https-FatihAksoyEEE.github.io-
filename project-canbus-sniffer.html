@@ -55,7 +55,7 @@
         <div class="wrap">
             <a class="crumb" href="index.html#projects">← <span data-lang="tr">Tüm projeler</span></a>
             <header class="ds-head">
-                <p class="label"><span data-lang="tr">Proje</span> 01 · 2026</p>
+                <p class="label"><span data-lang="tr">Proje</span> 02 · 2026</p>
                 <h1><span data-lang="tr">CAN-Bus Sniffer ve RPM Çözümleme</span></h1>
                 <p data-lang="tr" class="lead">Bir aracın OBD-II soketinden CAN trafiğini dinleyip, üreticiye özel motor devri sinyalini tersine mühendislikle bulan araç seti.</p>
 
@@ -73,51 +73,51 @@
                 </nav>
                 <div class="ds-content">
 <section class="ds-section" id="summary" aria-labelledby="summary-h">
-<h2 id="summary-h"><span class="num">01.1</span><span data-lang="tr">Özet</span></h2>
+<h2 id="summary-h"><span class="num">02.1</span><span data-lang="tr">Özet</span></h2>
 <p data-lang="tr">Araçların içindeki kontrol üniteleri birbirleriyle CAN hattı üzerinden konuşur. Standart OBD-II sorguları bazı değerleri verir, ama üreticiler asıl verilerin çoğunu kendi tanımladıkları mesajlarla yayınlar ve bu mesajların anlamı belgelenmemiştir.</p>
 
 <p data-lang="tr">Bu projede bir Toyota Hilux'un OBD-II soketine <strong>sadece dinleme</strong> modunda bağlandım, ham çerçeveleri kaydettim ve farklı motor devirlerinde alınan kayıtları karşılaştırarak devir sinyalini buldum: CAN ID <code>0x2C4</code>, ilk iki bayt big-endian, ölçek <code>×0.8</code>. Ardından bu sinyali canlı gösteren bir devir saati uygulaması yazdım.</p>
 
 </section>
 <section class="ds-section" id="diagram" aria-labelledby="diagram-h">
-<h2 id="diagram-h"><span class="num">01.2</span><span data-lang="tr">Blok diyagram</span></h2>
-<div class="diagram"><svg viewBox="0 0 760 240" role="img"><title data-lang="tr">CAN dinleme zinciri blok diyagramı</title><defs><marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah1s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
+<h2 id="diagram-h"><span class="num">02.2</span><span data-lang="tr">Blok diyagram</span></h2>
+<div class="diagram"><svg viewBox="0 0 760 240" role="img"><title data-lang="tr">CAN dinleme zinciri blok diyagramı</title><defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah2s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
             <rect class="blk" x="10" y="30" width="140" height="56" rx="2"/>
             <text class="t" x="80.0" y="55.0" text-anchor="middle"><tspan data-lang="tr">Araç ECU&#x27;ları</tspan></text>
             <text class="s" x="80.0" y="72.0" text-anchor="middle"><tspan data-lang="tr">kontrol üniteleri</tspan></text>
             <rect class="blk" x="10" y="160" width="140" height="56" rx="2"/>
             <text class="t" x="80.0" y="185.0" text-anchor="middle"><tspan data-lang="tr">OBD-II soketi</tspan></text>
             <text class="s" x="80.0" y="202.0" text-anchor="middle">pin 6 / 14 / 5</text>
-            <polyline class="wire" points="80,86 80,160" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="80,86 80,160" marker-end="url(#ah2)"/>
             <text class="s" x="90" y="128" text-anchor="start">CAN · 500 kbit/s</text>
             <rect class="blk-accent" x="210" y="160" width="160" height="56" rx="2"/>
             <text class="t" x="290.0" y="185.0" text-anchor="middle">CANable V2.1</text>
             <text class="s" x="290.0" y="202.0" text-anchor="middle">SLCAN · listen-only</text>
-            <polyline class="wire" points="150,188 210,188" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="150,188 210,188" marker-end="url(#ah2)"/>
             <text class="s" x="180" y="180" text-anchor="middle">CAN</text>
             <rect class="blk" x="430" y="160" width="160" height="56" rx="2"/>
             <text class="t" x="510.0" y="185.0" text-anchor="middle">canable_logger.py</text>
             <text class="s" x="510.0" y="202.0" text-anchor="middle"><tspan data-lang="tr">çerçeve → CSV</tspan></text>
-            <polyline class="wire" points="370,188 430,188" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="370,188 430,188" marker-end="url(#ah2)"/>
             <text class="s" x="400" y="180" text-anchor="middle">USB</text>
             <rect class="blk" x="430" y="30" width="160" height="56" rx="2"/>
             <text class="t" x="510.0" y="55.0" text-anchor="middle">rpm_analyzer.py</text>
             <text class="s" x="510.0" y="72.0" text-anchor="middle"><tspan data-lang="tr">kalibrasyon</tspan></text>
-            <polyline class="wire" points="510,160 510,86" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="510,160 510,86" marker-end="url(#ah2)"/>
             <text class="s" x="520" y="128" text-anchor="start">CSV</text>
             <rect class="blk" x="640" y="30" width="110" height="56" rx="2"/>
             <text class="t" x="695.0" y="55.0" text-anchor="middle">rpm_gauge.py</text>
             <text class="s" x="695.0" y="72.0" text-anchor="middle"><tspan data-lang="tr">devir saati</tspan></text>
-            <polyline class="wire" points="590,58 640,58" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="590,58 640,58" marker-end="url(#ah2)"/>
             <text class="s" x="615" y="50" text-anchor="middle">0x2C4</text>
             <rect class="blk" x="640" y="160" width="110" height="56" rx="2"/>
             <text class="t" x="695.0" y="185.0" text-anchor="middle">rpm_live.py</text>
             <text class="s" x="695.0" y="202.0" text-anchor="middle">terminal RPM</text>
-            <polyline class="wire" points="590,188 640,188" marker-end="url(#ah1)"/>
+            <polyline class="wire" points="590,188 640,188" marker-end="url(#ah2)"/>
             </svg></div>
 </section>
 <section class="ds-section" id="specs" aria-labelledby="specs-h">
-<h2 id="specs-h"><span class="num">01.3</span><span data-lang="tr">Özellikler</span></h2>
+<h2 id="specs-h"><span class="num">02.3</span><span data-lang="tr">Özellikler</span></h2>
 <table class="spec">
 <tr><th scope="row"><span data-lang="tr">Adaptör</span></th><td>CANable V2.1 (stok SLCAN firmware)</td></tr>
 <tr><th scope="row"><span data-lang="tr">Çalışma modu</span></th><td><span data-lang="tr"><code>M1</code> silent / listen-only: hatta çerçeve gönderilmez</span></td></tr>
@@ -129,7 +129,7 @@
 </table>
 </section>
 <section class="ds-section" id="method" aria-labelledby="method-h">
-<h2 id="method-h"><span class="num">01.4</span><span data-lang="tr">Yöntem</span></h2>
+<h2 id="method-h"><span class="num">02.4</span><span data-lang="tr">Yöntem</span></h2>
 <p data-lang="tr">Devir sinyalini bulmak için araç sabit, vites boşta ve el freni çekiliyken üç kısa kayıt aldım: rölanti, 1500 ve 2500 d/dk. Her kayıtta gösterge veya diagnostik cihazdan okunan gerçek devir referans alındı.</p>
 
 <pre><code>python3 canable_logger.py --duration 15 --output data/rpm_idle.csv
@@ -142,7 +142,7 @@ python3 rpm_analyzer.py calibrate \
   --sample data/rpm_2500.csv=2500</code></pre>
 <p data-lang="tr"><code>rpm_analyzer.py</code> her CAN ID için olası 16 bitlik alanları (başlangıç baytı, endian) tarar ve referans devirlerle en tutarlı doğrusal ilişkiyi (ölçek, ofset) veren adayı sıralar. Kayıtta standart OBD cevabı <code>41 0C A B</code> varsa doğrudan <code>((A × 256) + B) / 4</code> formülü kullanılır.</p>
 
-<div class="diagram"><svg viewBox="0 0 760 150" role="img"><title data-lang="tr">0x2C4 çerçevesinin bayt yerleşimi</title><defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah2s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
+<div class="diagram"><svg viewBox="0 0 760 150" role="img"><title data-lang="tr">0x2C4 çerçevesinin bayt yerleşimi</title><defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah3s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
             <text class="s" x="10" y="22" text-anchor="start"><tspan data-lang="tr">CAN ID 0x2C4 · DLC 8 · örnek çerçeve</tspan></text>
             <rect class="blk-accent" x="10" y="36" width="84" height="46" rx="2"/>
             <text class="t" x="52.0" y="56.0" text-anchor="middle">03</text>
@@ -175,7 +175,7 @@ python3 rpm_analyzer.py calibrate \
             </svg></div>
 </section>
 <section class="ds-section" id="software" aria-labelledby="software-h">
-<h2 id="software-h"><span class="num">01.5</span><span data-lang="tr">Yazılım</span></h2>
+<h2 id="software-h"><span class="num">02.5</span><span data-lang="tr">Yazılım</span></h2>
 <table class="spec">
 <tr><th scope="row"><code>canable_logger.py</code></th><td><span data-lang="tr">Ham çerçeveleri canlı gösterir ve CSV'ye ekler. Her çalıştırma yeni bir oturum kimliği üretir.</span></td></tr>
 <tr><th scope="row"><code>rpm_analyzer.py</code></th><td><span data-lang="tr">Kayıtları tarar, RPM adaylarını sıralar ve kalibre eder.</span></td></tr>
@@ -194,7 +194,7 @@ python3 rpm_analyzer.py calibrate \
 <figure class="fig"><video controls muted playsinline preload="none" poster="assets/img/canbus/demo-tour-poster.webp" width="1400" height="879" aria-label="Arayüz turu"><source src="assets/img/canbus/demo-tour.mp4" type="video/mp4"></video><figcaption><span class="label"><span data-lang="tr">Şekil 2</span></span><span data-lang="tr">Arayüz turu — Bağlantı, gönderim (OBD-II hazır sorguları dahil) ve filtre sekmeleri.</span></figcaption></figure>
 </section>
 <section class="ds-section" id="learned" aria-labelledby="learned-h">
-<h2 id="learned-h"><span class="num">01.6</span><span data-lang="tr">Sonuçlar ve öğrenilenler</span></h2>
+<h2 id="learned-h"><span class="num">02.6</span><span data-lang="tr">Sonuçlar ve öğrenilenler</span></h2>
 <ul>
 <li data-lang="tr">Üreticiye özel yayın sinyali (<code>0x2C4</code>) sürekli geldiği için canlı izleme için OBD sorgusundan daha uygun: hatta hiçbir istek göndermek gerekmiyor.</li>
 
@@ -205,13 +205,13 @@ python3 rpm_analyzer.py calibrate \
 </ul>
 </section>
 <section class="ds-section" id="links" aria-labelledby="links-h">
-<h2 id="links-h"><span class="num">01.7</span><span data-lang="tr">Bağlantılar</span></h2>
+<h2 id="links-h"><span class="num">02.7</span><span data-lang="tr">Bağlantılar</span></h2>
 <ul class="links-list"><li><span class="label" lang="en">GitHub</span><a href="https://github.com/FatihAksoyEEE/Canbus-Sniffer-CANABLEV2.1-">FatihAksoyEEE/Canbus-Sniffer-CANABLEV2.1- ↗</a></li></ul>
 </section>
                 </div>
             </div>
         </div>
-        <nav class="pager wrap" aria-label="Proje gezinme"><span></span><a href="project-control-station.html"><span class="label"><span data-lang="tr">Sonraki</span> →</span><strong><span data-lang="tr">Yer Kontrol İstasyonu: LoRa Kontrolcü ve Alıcı</span></strong></a></nav>
+        <nav class="pager wrap" aria-label="Proje gezinme"><a href="project-lorasim.html"><span class="label">← <span data-lang="tr">Önceki</span></span><strong><span data-lang="tr">LoRaSim: LoRa Haberleşme Simülatörü</span></strong></a><a href="project-control-station.html"><span class="label"><span data-lang="tr">Sonraki</span> →</span><strong><span data-lang="tr">Yer Kontrol İstasyonu: LoRa Kontrolcü ve Alıcı</span></strong></a></nav>
     </main>
     <footer class="site-footer">
         <div class="wrap">

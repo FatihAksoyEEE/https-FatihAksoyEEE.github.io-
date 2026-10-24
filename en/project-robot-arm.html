@@ -55,7 +55,7 @@
         <div class="wrap">
             <a class="crumb" href="index.html#projects">← <span data-lang="en" lang="en">All projects</span></a>
             <header class="ds-head">
-                <p class="label"><span data-lang="en" lang="en">Project</span> 03 · 2026</p>
+                <p class="label"><span data-lang="en" lang="en">Project</span> 04 · 2026</p>
                 <h1><span data-lang="en" lang="en">6-Axis Robot Arm Controller</span></h1>
                 
 <p data-lang="en" lang="en" class="lead">Firmware for a 6-servo robot arm on an STM32 Blackpill, plus a PyQt6 desktop app that controls it over USB.</p>
@@ -73,22 +73,22 @@
                 </nav>
                 <div class="ds-content">
 <section class="ds-section" id="summary" aria-labelledby="summary-h">
-<h2 id="summary-h"><span class="num">03.1</span><span data-lang="en" lang="en">Summary</span></h2>
+<h2 id="summary-h"><span class="num">04.1</span><span data-lang="en" lang="en">Summary</span></h2>
 
 <p data-lang="en" lang="en">I wrote firmware and a desktop app to control a six-servo robot arm from a computer. The STM32 shows up as a virtual serial port over USB-CDC, so no separate USB-UART converter is needed.</p>
 
 <p data-lang="en" lang="en">The command set is deliberately plain text: the same commands can be sent from the GUI or from a serial terminal such as <code>screen</code>. That makes it easy to test the hardware independently of the GUI.</p>
 </section>
 <section class="ds-section" id="diagram" aria-labelledby="diagram-h">
-<h2 id="diagram-h"><span class="num">03.2</span><span data-lang="en" lang="en">Block diagram</span></h2>
-<div class="diagram"><svg viewBox="0 0 760 210" role="img"><title data-lang="en" lang="en">Robot arm control system block diagram</title><defs><marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah4s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
+<h2 id="diagram-h"><span class="num">04.2</span><span data-lang="en" lang="en">Block diagram</span></h2>
+<div class="diagram"><svg viewBox="0 0 760 210" role="img"><title data-lang="en" lang="en">Robot arm control system block diagram</title><defs><marker id="ah5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah5s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
             <rect class="blk" x="10" y="75" width="150" height="56" rx="2"/>
             <text class="t" x="85.0" y="100.0" text-anchor="middle"><tspan data-lang="en" lang="en">PyQt6 GUI</tspan></text>
             <text class="s" x="85.0" y="117.0" text-anchor="middle">slider · HOME</text>
             <rect class="blk-accent" x="220" y="75" width="160" height="56" rx="2"/>
             <text class="t" x="300.0" y="100.0" text-anchor="middle">STM32F411CE</text>
             <text class="s" x="300.0" y="117.0" text-anchor="middle">Blackpill · USB-CDC</text>
-            <polyline class="wire" points="160,103 220,103" marker-end="url(#ah4)" marker-start="url(#ah4s)"/>
+            <polyline class="wire" points="160,103 220,103" marker-end="url(#ah5)" marker-start="url(#ah5s)"/>
             <text class="s" x="190" y="95" text-anchor="middle">USB</text>
             <rect class="blk" x="460" y="15" width="130" height="46" rx="2"/>
             <text class="t" x="525.0" y="35.0" text-anchor="middle">TIM1 CH1–3</text>
@@ -96,31 +96,31 @@
             <rect class="blk" x="460" y="145" width="130" height="46" rx="2"/>
             <text class="t" x="525.0" y="165.0" text-anchor="middle">TIM4 CH1–3</text>
             <text class="s" x="525.0" y="182.0" text-anchor="middle">PB6 · PB7 · PB8</text>
-            <polyline class="wire" points="380,95 420,95 420,38 460,38" marker-end="url(#ah4)"/>
+            <polyline class="wire" points="380,95 420,95 420,38 460,38" marker-end="url(#ah5)"/>
             <text class="s" x="420" y="30" text-anchor="middle">PWM 50 Hz</text>
-            <polyline class="wire" points="380,111 420,111 420,168 460,168" marker-end="url(#ah4)"/>
+            <polyline class="wire" points="380,111 420,111 420,168 460,168" marker-end="url(#ah5)"/>
             <rect class="blk" x="640" y="15" width="110" height="46" rx="2"/>
             <text class="t" x="695.0" y="42.0" text-anchor="middle">Servo 1–3</text>
             <rect class="blk" x="640" y="145" width="110" height="46" rx="2"/>
             <text class="t" x="695.0" y="172.0" text-anchor="middle">Servo 4–6</text>
-            <polyline class="wire" points="590,38 640,38" marker-end="url(#ah4)"/>
-            <polyline class="wire" points="590,168 640,168" marker-end="url(#ah4)"/>
+            <polyline class="wire" points="590,38 640,38" marker-end="url(#ah5)"/>
+            <polyline class="wire" points="590,168 640,168" marker-end="url(#ah5)"/>
             <rect class="blk" x="640" y="80" width="110" height="46" rx="2"/>
             <text class="t" x="695.0" y="100.0" text-anchor="middle">5 V / 10 A</text>
             <text class="s" x="695.0" y="117.0" text-anchor="middle"><tspan data-lang="en" lang="en">servo power</tspan></text>
-            <polyline class="wire" points="695,80 695,61" marker-end="url(#ah4)"/>
-            <polyline class="wire" points="695,126 695,145" marker-end="url(#ah4)"/>
+            <polyline class="wire" points="695,80 695,61" marker-end="url(#ah5)"/>
+            <polyline class="wire" points="695,126 695,145" marker-end="url(#ah5)"/>
             </svg></div>
 </section>
 <section class="ds-section" id="model" aria-labelledby="model-h">
-<h2 id="model-h"><span class="num">03.3</span><span data-lang="en" lang="en">3D model</span></h2>
+<h2 id="model-h"><span class="num">04.3</span><span data-lang="en" lang="en">3D model</span></h2>
 <div class="fig-pair">
 <figure class="fig"><a href="../assets/img/robot-arm/cad-01.webp"><img src="../assets/img/robot-arm/cad-01.webp" width="1400" height="739" alt="Perspective: 3D model of the arm with joint angles." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 1</span></span><span data-lang="en" lang="en">Perspective — 3D model of the arm with joint angles.</span></figcaption></figure>
 <figure class="fig"><a href="../assets/img/robot-arm/cad-02.webp"><img src="../assets/img/robot-arm/cad-02.webp" width="1102" height="1356" alt="Side view: Arm in upright pose." loading="lazy" decoding="async"></a><figcaption><span class="label"><span data-lang="en" lang="en">Fig. 2</span></span><span data-lang="en" lang="en">Side view — Arm in upright pose.</span></figcaption></figure>
 </div>
 </section>
 <section class="ds-section" id="hardware" aria-labelledby="hardware-h">
-<h2 id="hardware-h"><span class="num">03.4</span><span data-lang="en" lang="en">Hardware</span></h2>
+<h2 id="hardware-h"><span class="num">04.4</span><span data-lang="en" lang="en">Hardware</span></h2>
 <table class="spec">
 <tr><th scope="row">MCU</th><td>STM32 Blackpill F411CE</td></tr>
 <tr><th scope="row"><span data-lang="en" lang="en">Actuators</span></th><td><span data-lang="en" lang="en">6 × PWM servo</span></td></tr>
@@ -138,7 +138,7 @@
 <p data-lang="en" lang="en"><strong>Common ground:</strong> if the servo supply's negative terminal is not tied to the STM32 GND, the PWM reference floats and the servos do not move. 100 µF capacitors at the servo connectors reduce voltage dips during current spikes.</p>
 </section>
 <section class="ds-section" id="software" aria-labelledby="software-h">
-<h2 id="software-h"><span class="num">03.5</span><span data-lang="en" lang="en">Software</span></h2>
+<h2 id="software-h"><span class="num">04.5</span><span data-lang="en" lang="en">Software</span></h2>
 <div class="table-scroll"><table class="spec cols"><thead><tr><th scope="col"><span data-lang="en" lang="en">Command</span></th><th scope="col"><span data-lang="en" lang="en">Function</span></th><th scope="col"><span data-lang="en" lang="en">Example</span></th></tr></thead>
 <tbody><tr><td><code>S&lt;n&gt;:<span data-lang="en" lang="en">&lt;angle&gt;</span></code></td><td><span data-lang="en" lang="en">Move servo n to angle (n = 1–6, angle = 0–180)</span></td><td><code>S1:90</code></td></tr>
 <tr><td><code>ALL:<span data-lang="en" lang="en">&lt;angle&gt;</span></code></td><td><span data-lang="en" lang="en">Move all servos to one angle</span></td><td><code>ALL:90</code></td></tr>
@@ -148,7 +148,7 @@
 <p data-lang="en" lang="en">Bad commands get explicit error replies (<code>ERROR:Angle out of range</code>, <code>ERROR:Servo ID out of range</code>, etc.). The GUI has a slider and min/max limits per servo; HOME, RESET and STATUS buttons send the same commands. On macOS the GUI can be bundled into a single <code>.app</code> with <code>py2app</code>.</p>
 </section>
 <section class="ds-section" id="links" aria-labelledby="links-h">
-<h2 id="links-h"><span class="num">03.6</span><span data-lang="en" lang="en">Links</span></h2>
+<h2 id="links-h"><span class="num">04.6</span><span data-lang="en" lang="en">Links</span></h2>
 <ul class="links-list"><li><span class="label" lang="en">GitHub</span><a href="https://github.com/FatihAksoyEEE/RoboArm">FatihAksoyEEE/RoboArm ↗</a></li></ul>
 </section>
                 </div>

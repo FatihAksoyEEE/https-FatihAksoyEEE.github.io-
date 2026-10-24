@@ -55,7 +55,7 @@
         <div class="wrap">
             <a class="crumb" href="index.html#projects">← <span data-lang="tr">Tüm projeler</span></a>
             <header class="ds-head">
-                <p class="label"><span data-lang="tr">Proje</span> 02 · 2026</p>
+                <p class="label"><span data-lang="tr">Proje</span> 03 · 2026</p>
                 <h1><span data-lang="tr">Yer Kontrol İstasyonu: LoRa Kontrolcü ve Alıcı Tasarımı</span></h1>
                 <p data-lang="tr" class="lead">İHA'lar için masaüstü yer kontrol yazılımı: seri hattan gelen telemetriyi çözer, uçuş göstergelerini çizer ve harita üzerinden görev yükler.</p>
 
@@ -73,26 +73,26 @@
                 </nav>
                 <div class="ds-content">
 <section class="ds-section" id="summary" aria-labelledby="summary-h">
-<h2 id="summary-h"><span class="num">02.1</span><span data-lang="tr">Özet</span></h2>
+<h2 id="summary-h"><span class="num">03.1</span><span data-lang="tr">Özet</span></h2>
 <p data-lang="tr">Uçuş sırasında operatörün aracın durumunu tek ekranda görmesi ve rotayı uçuş sırasında değiştirebilmesi gerekiyor. Hazır yer istasyonları (Mission Planner, QGroundControl) MAVLink'e bağlı; benim kartlarım ise kendi tanımladığım daha küçük bir ikili protokol kullanıyor.</p>
 
 <p data-lang="tr">Bu yüzden Electron üzerinde çalışan bir yer kontrol istasyonu yazdım. Seri porttan gelen paketleri çözüyor, yapay ufuk ve hız/irtifa şeritleriyle bir birincil uçuş ekranı (PFD) çiziyor ve harita üzerinde oluşturulan görevi sağlama toplamıyla birlikte araca gönderiyor.</p>
 
 </section>
 <section class="ds-section" id="diagram" aria-labelledby="diagram-h">
-<h2 id="diagram-h"><span class="num">02.2</span><span data-lang="tr">Blok diyagram</span></h2>
-<div class="diagram"><svg viewBox="0 0 760 230" role="img"><title data-lang="tr">Yer kontrol istasyonu blok diyagramı</title><defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah3s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
+<h2 id="diagram-h"><span class="num">03.2</span><span data-lang="tr">Blok diyagram</span></h2>
+<div class="diagram"><svg viewBox="0 0 760 230" role="img"><title data-lang="tr">Yer kontrol istasyonu blok diyagramı</title><defs><marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0,1 L9,5 L0,9 z"/></marker><marker id="ah4s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M10,1 L1,5 L10,9 z"/></marker></defs>
             <rect class="blk" x="10" y="85" width="130" height="56" rx="2"/>
             <text class="t" x="75.0" y="110.0" text-anchor="middle"><tspan data-lang="tr">İHA</tspan></text>
             <text class="s" x="75.0" y="127.0" text-anchor="middle"><tspan data-lang="tr">uçuş kontrolcüsü</tspan></text>
             <rect class="blk" x="190" y="85" width="140" height="56" rx="2"/>
             <text class="t" x="260.0" y="110.0" text-anchor="middle"><tspan data-lang="tr">Telsiz / seri</tspan></text>
             <text class="s" x="260.0" y="127.0" text-anchor="middle">57600 baud</text>
-            <polyline class="wire" points="140,113 190,113" marker-end="url(#ah3)" marker-start="url(#ah3s)"/>
+            <polyline class="wire" points="140,113 190,113" marker-end="url(#ah4)" marker-start="url(#ah4s)"/>
             <rect class="blk-accent" x="380" y="85" width="150" height="56" rx="2"/>
             <text class="t" x="455.0" y="110.0" text-anchor="middle">Electron main</text>
             <text class="s" x="455.0" y="127.0" text-anchor="middle">serialport · IPC</text>
-            <polyline class="wire" points="330,113 380,113" marker-end="url(#ah3)" marker-start="url(#ah3s)"/>
+            <polyline class="wire" points="330,113 380,113" marker-end="url(#ah4)" marker-start="url(#ah4s)"/>
             <rect class="blk" x="590" y="15" width="160" height="50" rx="2"/>
             <text class="t" x="670.0" y="37.0" text-anchor="middle"><tspan data-lang="tr">Paket ayrıştırıcı</tspan></text>
             <text class="s" x="670.0" y="54.0" text-anchor="middle">DataView · 0xAA 0xBB</text>
@@ -102,15 +102,15 @@
             <rect class="blk" x="590" y="165" width="160" height="50" rx="2"/>
             <text class="t" x="670.0" y="187.0" text-anchor="middle"><tspan data-lang="tr">Görev planlayıcı</tspan></text>
             <text class="s" x="670.0" y="204.0" text-anchor="middle">Leaflet · waypoint</text>
-            <polyline class="wire" points="530,100 560,100 560,40 590,40" marker-end="url(#ah3)"/>
+            <polyline class="wire" points="530,100 560,100 560,40 590,40" marker-end="url(#ah4)"/>
             <text class="s" x="552" y="62" text-anchor="end"><tspan data-lang="tr">telemetri</tspan></text>
-            <polyline class="wire" points="670,65 670,90" marker-end="url(#ah3)"/>
-            <polyline class="wire" points="590,190 560,190 560,126 530,126" marker-end="url(#ah3)"/>
+            <polyline class="wire" points="670,65 670,90" marker-end="url(#ah4)"/>
+            <polyline class="wire" points="590,190 560,190 560,126 530,126" marker-end="url(#ah4)"/>
             <text class="s" x="552" y="170" text-anchor="end"><tspan data-lang="tr">görev</tspan></text>
             </svg></div>
 </section>
 <section class="ds-section" id="protocol" aria-labelledby="protocol-h">
-<h2 id="protocol-h"><span class="num">02.3</span><span data-lang="tr">Telemetri paketi</span></h2>
+<h2 id="protocol-h"><span class="num">03.3</span><span data-lang="tr">Telemetri paketi</span></h2>
 <p data-lang="tr">Araçtan gelen her paket 34 bayt. <code>0xAA 0xBB</code> başlığıyla senkronize olunuyor, alanlar little-endian ve ölçekli tam sayı olarak taşınıyor.</p>
 
 <div class="table-scroll"><table class="spec cols"><thead><tr><th scope="col"><span data-lang="tr">Ofset</span></th><th scope="col"><span data-lang="tr">Tip</span></th><th scope="col"><span data-lang="tr">Alan</span></th><th scope="col"><span data-lang="tr">Ölçek</span></th></tr></thead>
@@ -130,7 +130,7 @@
 
 </section>
 <section class="ds-section" id="features" aria-labelledby="features-h">
-<h2 id="features-h"><span class="num">02.4</span><span data-lang="tr">Özellikler</span></h2>
+<h2 id="features-h"><span class="num">03.4</span><span data-lang="tr">Özellikler</span></h2>
 <table class="spec">
 <tr><th scope="row">PFD</th><td><span data-lang="tr">Yapay ufuk, hız ve irtifa şeritleri, dairesel göstergeler</span></td></tr>
 <tr><th scope="row"><span data-lang="tr">Harita</span></th><td><span data-lang="tr">Leaflet ile canlı konum, rota çizimi, sürükle-bırak waypoint düzenleme</span></td></tr>
@@ -141,7 +141,7 @@
 </table>
 </section>
 <section class="ds-section" id="status" aria-labelledby="status-h">
-<h2 id="status-h"><span class="num">02.5</span><span data-lang="tr">Durum</span></h2>
+<h2 id="status-h"><span class="num">03.5</span><span data-lang="tr">Durum</span></h2>
 <ul class="status-list"><li class="done"><span data-lang="tr">Seri port yönetimi ve ikili protokol ayrıştırıcı</span></li>
 <li class="done"><span data-lang="tr">PFD, harita ve telemetri panelleri</span></li>
 <li class="done"><span data-lang="tr">Waypoint yükleme ve uçuş sırasında rota değiştirme</span></li>
@@ -150,7 +150,7 @@
 <li class=""><span data-lang="tr">Setup ekranındaki ayarların araca yazılması</span></li></ul>
 </section>
 <section class="ds-section" id="links" aria-labelledby="links-h">
-<h2 id="links-h"><span class="num">02.6</span><span data-lang="tr">Bağlantılar</span></h2>
+<h2 id="links-h"><span class="num">03.6</span><span data-lang="tr">Bağlantılar</span></h2>
 <ul class="links-list"><li><span class="label" lang="en">GitHub</span><a href="https://github.com/FatihAksoyEEE/Ground-Control-System">FatihAksoyEEE/Ground-Control-System ↗</a></li></ul>
 </section>
                 </div>

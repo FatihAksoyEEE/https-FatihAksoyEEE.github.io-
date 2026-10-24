@@ -377,7 +377,7 @@ for name, fn in pages:
     write("en/" + name, localize(fn("en"), "en", "../"))
 write("404.html", not_found_page())
 
-LASTMOD = "2026-10-17"
+LASTMOD = "2026-10-24"
 urls = [""] + [p["slug"] for p in PROJECTS]
 sm = ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
       'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n')

@@ -28,6 +28,111 @@ def links(items):
 
 
 # ---------------------------------------------------------------------------
+# 0) LoRaSim
+# Kaynak: FatihAksoyEEE/LoRaSim reposu (README, docs/KULLANIM.md, plan.md §16 kararları, testler).
+# ---------------------------------------------------------------------------
+d = Diagram(760, 230, "LoRaSim mimari diyagramı")
+d.box(10, 20, 150, 56, "Arayüz / CLI", "PySide6 · argparse")
+d.box(200, 20, 150, 56, "SimConfig", "doğrulama · JSON")
+d.wire([(160, 48), (200, 48)])
+d.box(390, 20, 170, 56, "Olay zamanlayıcı", "heapq · tek seed", accent=True)
+d.wire([(350, 48), (390, 48)])
+d.box(600, 20, 150, 56, "Metrikler", "PER · RSSI · enerji")
+d.box(10, 154, 150, 56, "Vericiler", "trafik · ACK · DC")
+d.wire([(430, 76), (430, 115), (85, 115), (85, 154)])
+d.box(200, 154, 150, 56, "Kanal", "kayıp · sönümleme")
+d.wire([(160, 182), (200, 182)], "paket", 180, 174)
+d.box(390, 154, 170, 56, "PHY modeli", "link-level / CSS")
+d.wire([(350, 182), (390, 182)])
+d.box(600, 154, 150, 56, "Dışa aktarma", "CSV · JSON · PDF")
+d.wire([(560, 182), (580, 182), (580, 48), (600, 48)]).text(586, 120, "kayıt", "s")
+d.wire([(675, 76), (675, 154)])
+LORA_DIAGRAM = d.render()
+
+LORASIM = dict(
+    slug="project-lorasim.html",
+    cats=["sw"],
+    title=("LoRaSim: SX1276 LoRa Haberleşme Simülatörü", "LoRaSim: SX1276 LoRa Link Simulator"),
+    short=("LoRaSim: LoRa Haberleşme Simülatörü", "LoRaSim: LoRa Link Simulator"),
+    year="2026",
+    tags="Python · PySide6 · LoRa · Simülasyon",
+    tags_en="Python · PySide6 · LoRa · Simulation",
+    thumb=("lorasim/cover.webp", "Link-level ve CSS modellerinin PER–SNR karşılaştırması"),
+    og="lorasim/gui.webp",
+    desc=("SX1276 tabanlı LoRa vericiler ve alıcılar arasındaki haberleşme kalitesini; kanal, mesafe, hareket ve trafik koşulları altında inceleyen simülatör.",
+          "A simulator that studies link quality between SX1276-based LoRa transmitters and receivers under different channel, distance, mobility and traffic conditions."),
+    meta=[(("Rol", "Role"), b("Tek geliştirici", "Sole developer")),
+          (("Dil", "Language"), "Python 3.11+"),
+          (("Arayüz", "GUI"), "PySide6, PyQtGraph"),
+          (("Lisans", "License"), "MIT"),
+          (("Kaynak", "Source"), f'<a href="{GH}LoRaSim">GitHub ↗</a>')],
+    sections=[
+        ("summary", ("Özet", "Summary"), "\n".join([
+            B("p", "Bir LoRa bağlantısının sahada ne kadar iyi çalışacağı; spreading factor, bant genişliği, gönderim gücü, mesafe, ortam ve ağdaki diğer cihazlar gibi birçok etkene bağlı. Her kombinasyonu donanımla denemek zaman alıyor, bazı durumları (hareketli cihazlar, yoğun trafik, girişim) tekrarlanabilir biçimde kurmak ise neredeyse imkânsız.",
+              "How well a LoRa link performs in the field depends on many factors: spreading factor, bandwidth, transmit power, distance, environment and the other devices on the network. Trying every combination with hardware takes time, and some situations (moving nodes, heavy traffic, interference) are almost impossible to set up repeatably."),
+            B("p", "LoRaSim bu soruları bilgisayarda yanıtlamak için yazdığım bir simülatör. SX1276 modülünün parametreleriyle çalışıyor; vericileri, kanalı ve alıcıları ayrık olay tabanlı bir motorda modelliyor, sonuçları canlı grafiklerle gösteriyor ve CSV, JSON, PNG ya da PDF rapor olarak kaydediyor. Grafik arayüzün yanında aynı motoru kullanan bir komut satırı arayüzü de var.",
+              "LoRaSim is a simulator I wrote to answer these questions on a computer. It works with the SX1276 module's parameters, models transmitters, channel and receivers in a discrete-event engine, shows results in live plots and saves them as CSV, JSON, PNG or PDF reports. Alongside the GUI there is a command-line interface that drives the same engine."),
+            "{fig:lorasim/gui.webp|Arayüz|Interface|Sol tarafta parametre panelleri, ortada canlı RSSI, SNR, paket durumu, PER, throughput, gecikme ve cihaz konumu grafikleri.|Parameter panels on the left; live RSSI, SNR, packet status, PER, throughput, latency and device position plots in the middle.|}",
+        ])),
+        ("diagram", ("Mimari", "Architecture"), "\n".join([
+            LORA_DIAGRAM,
+            B("p", "Arayüz ve komut satırı aynı <code>SimConfig</code> nesnesini üretiyor; doğrulama kuralları ve hata mesajları tek yerde. Motor, tüm rastgeleliği tek bir seed'den türetiyor: aynı ayarlar ve aynı seed, arayüzde de komut satırında da birebir aynı sonucu veriyor. Arayüzde motor ayrı bir iş parçacığında çalışıyor, kayıtlar 200 ms'de bir ekrana aktarılıyor.",
+              "The GUI and the CLI both build the same <code>SimConfig</code> object, so validation rules and error messages live in one place. The engine derives all randomness from a single seed: the same settings and seed give exactly the same result in the GUI and on the command line. In the GUI the engine runs on a separate thread, and records are pushed to the screen every 200 ms."),
+        ])),
+        ("models", ("Fiziksel katman modelleri", "Physical-layer models"), "\n".join([
+            B("p", "Simülatörde iki model var ve arayüzden seçilebiliyor:",
+              "The simulator has two models, selectable from the GUI:"),
+            '<ul>',
+            B("li", "<strong>Link-level model:</strong> dalga şekli üretmeden link bütçesi, yol kaybı, SNR ve hassasiyetten paket kararını veriyor. Sembol hata olasılığı LoRa'nın evreuyumsuz ortogonal modülasyon eşdeğerinden sayısal olarak hesaplanıyor; header ve interleaver blokları, Hamming düzeltmesi ve CRC-16 kontrolü gerçekten uygulanıyor. Çok cihazlı ve uzun simülasyonlar için bu model kullanılıyor.",
+              "<strong>Link-level model:</strong> decides each packet from the link budget, path loss, SNR and sensitivity without generating a waveform. The symbol error probability is computed numerically from LoRa's non-coherent orthogonal modulation equivalent; header and interleaver blocks, Hamming correction and the CRC-16 check are actually applied. This model is used for multi-node and long runs."),
+            B("li", "<strong>CSS fiziksel katman modeli:</strong> preamble, sync word, SFD, header ve payload'dan oluşan gerçek chirp dalga şeklini üretiyor, kanal etkilerini sinyale uyguluyor; alıcı frekans kaymasını preamble'dan kestirip düzeltiyor ve dechirp + FFT ile çözüyor. Link-level modelden SF7'de yaklaşık 25, SF12'de yaklaşık 270 kat yavaş.",
+              "<strong>CSS physical-layer model:</strong> generates the real chirp waveform (preamble, sync word, SFD, header and payload) and applies the channel to the signal; the receiver estimates and corrects the frequency offset from the preamble and demodulates with dechirp + FFT. It is about 25× slower than the link-level model at SF7 and about 270× slower at SF12."),
+            '</ul>',
+            B("p", "İki model birbirini doğrulamak için kullanıldı: aynı SNR noktalarında PER eğrileri örtüşüyor, CSS modelinde ölçülen SER de teorik eğriyi izliyor.",
+              "The two models were used to validate each other: their PER curves match at the same SNR points, and the SER measured with the CSS model follows the theoretical curve."),
+            "{fig:lorasim/model-comparison.webp|Model karşılaştırması|Model comparison|SF9; solda iki modelin PER–SNR eğrileri, sağda CSS modelinde ölçülen SER ile teorik SER.|SF9; left: PER vs SNR for both models, right: SER measured with the CSS model against theory.|on-white}",
+        ])),
+        ("features", ("Özellikler", "Features"), spec([
+            (b("LoRa ayarları", "LoRa settings"), b("SF7–SF12; 125 / 250 / 500 kHz; CR 4/5–4/8; güç, frekans (137–1020 MHz), payload, CRC; preamble, implicit header, sync word, IQ inversion, LDRO", "SF7–SF12; 125 / 250 / 500 kHz; CR 4/5–4/8; power, frequency (137–1020 MHz), payload, CRC; preamble, implicit header, sync word, IQ inversion, LDRO")),
+            (b("Ortamlar", "Environments"), b("Serbest uzay, açık alan, kırsal, kentsel, yoğun kentsel, kapalı alan", "Free space, open area, rural, urban, dense urban, indoor")),
+            (b("Kanal", "Channel"), b("Serbest uzay ve log-distance yol kaybı, AWGN, gölgeleme, Rayleigh/Rician sönümleme, çok yollu yayılım (COST 207, ITU Indoor A), zamana bağlı kanal, Doppler, kristal frekans kayması, harici girişim", "Free-space and log-distance path loss, AWGN, shadowing, Rayleigh/Rician fading, multipath (COST 207, ITU Indoor A), time-varying channel, Doppler, crystal frequency offset, external interference")),
+            (b("Çakışmalar", "Collisions"), b("Capture effect: aynı SF'de 6 dB eşiği, farklı SF'ler için SIR eşik matrisi", "Capture effect: 6 dB threshold for the same SF, an SIR threshold matrix across SFs")),
+            (b("Ağ", "Network"), b("Çoklu verici ve alıcı; mesafe, kartezyen veya rastgele yerleşim; half-duplex", "Multiple transmitters and receivers; distance, Cartesian or random placement; half-duplex")),
+            (b("Hareket", "Mobility"), b("Sabit hız ve yön, rastgele yürüyüş, rota, dairesel", "Constant velocity, random walk, route, circular")),
+            (b("Trafik", "Traffic"), b("ACK ve tekrar gönderim, gönderim kuyruğu, duty-cycle kontrolü (uyar / zorla)", "ACK and retransmission, transmit queue, duty-cycle control (warn / enforce)")),
+            (b("Ölçümler", "Metrics"), b("BER, SER, PER, paket kaybı, RSSI, SNR, throughput, gecikme, ACK başarısı, duty-cycle ihlali, SX1276 akımlarına göre enerji, başarılı haberleşme mesafesi", "BER, SER, PER, packet loss, RSSI, SNR, throughput, latency, ACK success, duty-cycle violations, energy from SX1276 currents, maximum working range")),
+            (b("Analiz", "Analysis"), b("Ortam, mesafe, güç ve SF taramaları; link-level ↔ CSS karşılaştırması", "Environment, distance, power and SF sweeps; link-level ↔ CSS comparison")),
+            (b("Çıktılar", "Outputs"), "CSV, JSON, PNG, PDF " + b("rapor", "report")),
+        ])),
+        ("analysis", ("Analiz", "Analysis"), "\n".join([
+            B("p", "Analiz sekmesi ve <code>--sweep</code> seçeneği, tek bir parametreyi değiştirip diğerlerini sabit tutarak taramalar yapıyor. Taramanın her noktası aynı seed ile çalıştığı için noktalar arasındaki fark rastgelelikten değil, değiştirilen parametreden geliyor.",
+              "The Analysis tab and the <code>--sweep</code> option vary one parameter while holding the rest fixed. Every point of a sweep runs with the same seed, so the differences between points come from the parameter, not from randomness."),
+            "{fig:lorasim/environments.webp|Ortam karşılaştırması|Environment comparison|2 km mesafede altı ortam profili için başarı oranı, ortalama SNR ve throughput.|Success rate, mean SNR and throughput for six environment profiles at 2 km.|on-white}",
+            '<pre><code>python -m lorasim --sweep environment --distance 2000 --png ortam.png\npython -m lorasim --max-range 0.9 --env rural --sf 10\npython -m lorasim --compare-models --sf 9 --png modeller.png</code></pre>',
+        ])),
+        ("testing", ("Doğrulama", "Verification"), "\n".join([
+            B("p", "Projede 270'ten fazla otomatik test var. Testler airtime ve hassasiyet hesaplarını, SER modelinin Monte Carlo ile doğrulanmasını, kanal etkilerini, çoklu cihaz ve çakışma davranışını, ACK ve duty-cycle mantığını, CSS modülasyonunu, uzun süreli çalışmada bellek kararlılığını ve arayüzü kapsıyor. Planda tanımladığım on başarı kriterinin her biri ayrı bir testle sınanıyor. Testler her push'ta GitHub Actions üzerinde Python 3.11 ve 3.12 ile çalışıyor.",
+              "The project has more than 270 automated tests. They cover airtime and sensitivity calculations, Monte Carlo validation of the SER model, channel effects, multi-node and collision behaviour, ACK and duty-cycle logic, CSS modulation, memory stability in long runs, and the GUI. Each of the ten success criteria I defined in the plan is checked by its own test. The tests run on GitHub Actions with Python 3.11 and 3.12 on every push."),
+        ])),
+        ("learned", ("Sonuçlar ve öğrenilenler", "Results and lessons"), "\n".join([
+            '<ul>',
+            B("li", "Veri sayfasındaki SNR eşikleri, teorik hata modelinden 0,5–2,5 dB daha kötümser. Bu yüzden simülasyonda paket kaybını çoğunlukla hassasiyet eşiği belirliyor; teorik SER eğrisi tek başına iyimser sonuç veriyor.",
+              "The SNR thresholds in the datasheet are 0.5–2.5 dB more pessimistic than the theoretical error model, so in the simulation packet loss is mostly set by the sensitivity threshold; the theoretical SER curve alone gives optimistic results."),
+            B("li", "Ortam profilleri literatürdeki tipik değerlerden alındı ve sahada ölçülerek kalibre edilmedi. Her değer arayüzden değiştirilebiliyor; gerçek bir kurulum için önce saha ölçümüyle ayarlanmaları gerekiyor.",
+              "The environment profiles use typical values from the literature and have not been calibrated with field measurements. Every value can be changed in the GUI; for a real deployment they should first be tuned against field data."),
+            B("li", "İki farklı yaklaşımla yazılmış iki modelin aynı sonucu vermesi, ikisindeki hataları da yakalamanın en etkili yolu oldu.",
+              "Having two models built with different approaches agree with each other turned out to be the most effective way to catch bugs in both."),
+            B("li", "CI'da, testler geçtiği hâlde Linux + Python 3.11'de sürecin kapanışta çöktüğü görüldü. Sebebi PySide6 6.12.0'daki bir referans sayımı hatasıydı (<code>None</code> döndüren her çağrı); bu sürüm bağımlılıklardan dışlandı ve hatayı yakalayan bir test eklendi.",
+              "CI showed the process crashing at exit on Linux + Python 3.11 even though all tests passed. The cause was a reference-counting bug in PySide6 6.12.0 (every call returning <code>None</code>); that release was excluded from the dependencies and a test that catches the bug was added."),
+            '</ul>',
+        ])),
+        ("links", ("Bağlantılar", "Links"), links([
+            ("GitHub", "FatihAksoyEEE/LoRaSim", GH + "LoRaSim"),
+        ])),
+    ],
+)
+
+# ---------------------------------------------------------------------------
 # 1) CAN-Bus Sniffer
 # ---------------------------------------------------------------------------
 d = Diagram(760, 240, "CAN dinleme zinciri blok diyagramı")
@@ -575,4 +680,4 @@ DIGI = dict(
     ],
 )
 
-PROJECTS = [CANBUS, GCS, ARM, QUAD, FC, CNC, DIGI]
+PROJECTS = [LORASIM, CANBUS, GCS, ARM, QUAD, FC, CNC, DIGI]

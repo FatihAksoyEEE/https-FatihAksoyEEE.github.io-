@@ -140,6 +140,7 @@ Bu maddeler site tarafında yapılacak bir iş değil; içerik gelince eklenecek
 - [-] STM32 uçuş kontrol kartı: MCU, IMU, şema/PCB görselleri, repo.
 - [x] DigiTab reposu açıldı (`FatihAksoyEEE/DigiTab`, v1.1.0). Proje sayfası projenin son haline göre yeniden yazıldı (17 Ekim 2026): Next.js + Socket.io + SQLite + Electron mimarisi, istasyonlar, hazır bildirimi, kasa ve günlük satışlar, fiş yazdırma ve tasarımcısı; yeni tanıtım görselleri (WebP, 1600 px) ve video (H.264, CRF 28, 1280 px, 0,42 MB); logo yeni temanın renklerine geçirildi; GitHub ve Releases bağlantıları eklendi.
 - [-] YouTube videoları (yayınlanınca ilgili proje sayfalarına eklenecek).
+- [x] LoRaSim eklendi (24 Ekim 2026): `project-lorasim.html` (TR + EN), `FatihAksoyEEE/LoRaSim` reposundan (README, KULLANIM.md, plan.md kararları). Görseller simülatörün kendi çıktıları (arayüz ekranı, model ve ortam karşılaştırması, WebP). En yeni proje olduğu için listenin başında; diğer projelerin numaraları birer kaydı.
 - [-] Opsiyonel: "Notlar / Blog" bölümü (örn. CAN hattını çözme süreci). Yazıların Fatih'in kendi anlatımıyla gelmesi gerekiyor.
 
 ---
